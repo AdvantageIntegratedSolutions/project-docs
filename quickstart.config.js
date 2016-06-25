@@ -1,11 +1,11 @@
 module.exports = {
-  name: "coke-uxd-skills-assessment",
-  description: "Skills Assessment QuickBase tool.",
-  client: "Coke",
+  name: "quickstart",
+  description: "",
+  client: "QuickStart",
   username: "kith",
-  origin: "https://github.com/AdvantageIntegratedSolutions/coke-uxd-skills-assessment.git",
-  authors: ["khensel@advantagequickbase.com"],
-  bootstrap: "./src/main.js",
+  origin: "https://github.com/AdvantageIntegratedSolutions/quickstart.git",
+  authors: ["cjett@advantagequickbase.com", "khensel@advantagequickbase.com"],
+  bootstrap: "./app/main.js",
   timezone: "mountain",
   baseConfig: {
     realm: "ais",

@@ -1,9 +1,9 @@
 module.exports = {
   app: "../../quickstart.config.js",
-  javascript: "src/**/*.js",
-  html: "src/index.html",
-  css: "src/**/*.{sass,scss,css}",
-  templates: "src/**/!(index).html",
+  javascript: "app/**/*.js",
+  html: "app/index.html",
+  css: "app/**/*.{sass,scss,css}",
+  templates: "app/**/!(index).html",
   outputDev: "./tmp",
   outputProd: "./dist"
 };

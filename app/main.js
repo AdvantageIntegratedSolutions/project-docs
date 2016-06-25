@@ -1,17 +1,15 @@
 import "../tmp/templates";
 
-import "./dashboard";
-import "./employees";
-import "./skills";
+import "./heroes"; //example feature
+import "./villains"; //example feature
 import "./layout";
 import "./shared";
 
 const DEPENDENCIES = [
   'ui.router',
   'templates',
-  'app.dashboard',
-  'app.employees',
-  'app.skills',
+  'app.heroes', //example feature
+  'app.villains', //example feature
   'app.layout',
   'app.shared'
 ];
@@ -25,7 +23,7 @@ angular
         templateUrl: 'layout/app-layout.html'
       })
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/heroes');
   })
   .run($rootScope => {
     // Change page title based on state
