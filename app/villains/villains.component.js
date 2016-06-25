@@ -1,14 +1,23 @@
 //https://angular.io/docs/ts/latest/guide/style-guide.html#!#components
 
 class VillainsCtrl {
-  constructor($scope) {
-    $scope.villains = [
-      { villainName: "Joker", nemesis: "Batman", mainPower: "Criminal Mastermind"},
-      { villainName: "Venom", nemesis: "Spiderman", mainPower: "Spider-sense" },
-      { villainName: "Dr. Doom", nemesis: "Fantastic Four", mainPower: "Can exchange minds with others" },
-      { villainName: "Lex Luthor", nemesis: "Superman", mainPower: "Genius-level Intellect" },
-      { villainName: "Green Goblin", nemesis: "Spiderman", mainPower: "Super-human Strength" }
-    ];
+  constructor($q, $scope, quickbase) {
+    this.$q = $q;
+    this.quickbase = quickbase;
+
+    this.all().then(function(villains){
+      $scope.villains = villains;
+    })
+  }
+
+  all(){
+    let dfd = this.$q.defer();
+
+    this.quickbase.villains.all({}).then(function(villains){
+      dfd.resolve(villains);
+    })
+
+    return dfd.promise;
   }
 }
 

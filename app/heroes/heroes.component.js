@@ -1,14 +1,23 @@
 //https://angular.io/docs/ts/latest/guide/style-guide.html#!#components
 
 class HeroesCtrl {
-  constructor($scope) {
-  	$scope.heroes = [
-  		{ heroName: "Superman", realName: "Clark Kent", mainPower: "Superhuman Strength"},
-  		{ heroName: "Batman", realName: "Bruce Wayne", mainPower: "Vast Wealth" },
-  		{ heroName: "Spiderman", realName: "Peter Parker", mainPower: "Spider-sense" },
-  		{ heroName: "Ironman", realName: "Tony Stark", mainPower: "Iron Man Armor" },
-  		{ heroName: "The Flash", realName: "Barry Allen", mainPower: "Speed" }
-  	];
+  constructor($q, $scope, quickbase) {
+    this.$q = $q;
+    this.quickbase = quickbase;
+
+    this.all().then(function(heroes){
+      $scope.heroes = heroes;
+    })
+  }
+
+  all(){
+    let dfd = this.$q.defer();
+
+    this.quickbase.heroes.all({}).then(function(heroes){
+      dfd.resolve(heroes);
+    })
+
+    return dfd.promise;
   }
 }
 
