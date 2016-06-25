@@ -3,16 +3,14 @@
 
 quickstart is an local development environment and deployment tool for QuickBase. gulp-base utilizes gulp and its plugins to improve and automate the development environment and deployment for QuickBase.
 
-**Please note:** for simple pages(Exact Forms, JS buttons, misc pages, etc.) this current version may not be the best option. This environment is more suited for full single-page applications.
-
 ## System Dependencies
-* Node ^5.5.0 ( recommend using nvm to manage node versions )
+* Node ^5.5.0
 
 ## Start New Project
 * Create new repo on Github.
-* Clone 'gulp-base' repo.
+* Clone 'quickstart' repo.
 ```shell
-  git clone https://github.com/AdvantageIntegratedSolutions/gulp-base.git <NEW APP NAME>
+  git clone https://github.com/AdvantageIntegratedSolutions/quickstart.git <NEW APP NAME>
 ```
 
 * Update the git origin remote with your app's repo url.
@@ -33,22 +31,20 @@ Set the "GULPPASSWORD" ENV variable to avoid committing password. Simply keep th
 ## Local Development
 Start up a local server on "localhost:3000" with "gulp local" or "gulp watch".
 
-Changes in the src directly will trigger an automatic live-reload of your browser.
+Changes in the /app directly will trigger an automatic live-reload of your browser.
 
 ## Css & JavaScript
 Sass and ES6 are totally allowed (but not mandatory).
 
 To include your compiled JS and CSS, include the following in your index.html file. This will work for both local devleopment and after deploying to QuickBase, as these paths are auto resolved to their corresponding QuickBase urls after running "gulp deploy".
 ```html
-  <script src="https://s3.amazonaws.com/ais_libraries/BaseJS/4.8/base.min.js"></script>
+  <script src="https://s3.amazonaws.com/ais_libraries/BaseJS/4.8.2/base.min.js"></script>
   <script src="bundle.js"></script>
   <link rel="stylesheet" type="text/css" href="bundle.css">
 ```
 
 ## Modules
 gulp-base allows for either file concatenation or es6/requirejs modules via Browserify to compile your javascript files. To use Browserify give the "bootstrap" property in app.json the file path to the initialization javascript file for your app (the top of the .js file dependency tree). For straight concatentation simply leave the "bootstrap" property blank.
-
-**Please be aware:** while you can bundle all dependencies using Browserify such as jQuery or underscore, the page editor in the QuickBase pages begins to become unresponsive if the code page is too large. Instead, try to use modules to include your own files and use script includes where possible so the browser can cache that nonsense.
 
 ## Deployment
 Deploy to QuickBase with "gulp deploy".
@@ -68,13 +64,19 @@ All development has to be done inside the app/ directory, otherwise there are no
 |   +-- paths.js ( defines file paths for gulp to reference )
 +-- node_modules ( gulp dependencies )
 +-- app
+|   +-- layout
+|   +-- shared
+|   +-- styles
 |   +-- index.html ( duh )
+|   +-- main.js
+|   +-- main.scss
 +-- tmp
 |   +-- bundle.css ( compiled styles for local )
 |   +-- bundle.js ( compiled js for local )
 |   +-- index.html ( compiled html for local )
-+-- app.json
+|   +-- templates.js ( compiled templates for local )
 +-- package.json
++-- quickstart.config.js
 +-- gulpfile.js ( loads the tasks defined in build/tasks/ )
 +-- README.md ( fresh readme for project )
 ```
