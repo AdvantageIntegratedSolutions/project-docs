@@ -21,22 +21,7 @@ quickstart is an local development environment and deployment tool for QuickBase
 ```
 * run "npm install"
 
-* Complete configuration in app.json.
-```js
-  {
-    "name": "Time Tracker", //name of app
-    "description": "Simple daily time tracker app", //short description of app
-    "client": "Coca-Cola", //client name
-    "realm": "ais", //quickbase realm
-    "dbid": "bjbsgxy2r", //quickbase main db
-    "username": "uSeRnAmE", //quickbase username
-    "password": "pAsSwOrD", //quickbase password
-    "token": "8t82d3b3sxnfxiu2pbepcjfd", //quickbase app token
-    "origin": "https://github.com/AdvantageIntegratedSolutions/<NEW APP NAME>.git", //url
-    "authors": ["dev@advantagequickbase.com"], //list of authors
-    "bootstrap": "./src/main.js" //the initialization file for your Browserify modules. leave blank for concatenation instead.
-  }
-```
+* Update configuration in quickstart.config.js.
 
 ## Password Management
 Set the "GULPPASSWORD" ENV variable to avoid committing password. Simply keep the password value empty in app.json or remove it.
@@ -71,7 +56,7 @@ Deploy to QuickBase with "gulp deploy".
 Deploying will automatically compile src code, push to QuickBase, and replace local paths in index.html with their corrseponding QuickBase urls for the bundled css and js files. HTML files are all uploaded to QB separately, so if you are referencing them in your code you will need to update those references manually to reflect their QB urls (for now, stay tuned for an update here).
 
 ## File Structure
-All development has to be done inside the src/ directory, otherwise there are no enforced file structures. All files ending in .js will be run through Babel and Browserify (if applicable), and all .css, .scss, or .sass files will be complied with Sass and sent through autoprefixer before being concatenated into a bundle.css file.
+All development has to be done inside the app/ directory, otherwise there are no enforced file structures. All files ending in .js will be run through Babel and Browserify (if applicable), and all .css, .scss, or .sass files will be complied with Sass and sent through autoprefixer before being concatenated into a bundle.css file.
 
 ```
 +-- dist ( production distribution, pages uploaded to QB )
