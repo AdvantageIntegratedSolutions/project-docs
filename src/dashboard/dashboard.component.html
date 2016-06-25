@@ -1,0 +1,23 @@
+<section class="row">
+	<div class="row">
+		<div class="col-md-4 col-md-offset-7">
+			<skill-legend></skill-legend>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<hr>
+			<sortable-table
+	      data="$ctrl.skills"
+	      field-list="[
+	      	{ name: 'Skills/Capabilities - GBS UXC', class: 'col-md-6'},
+	      	{ serviceLine: 'Service Line', class: 'col-md-2'},
+	      	{ numberQualified: '# of Team Members >= Level 2', class: 'col-md-2'},
+	      	{ percentQualified: '% of Team >= Level 2', class: 'col-md-2'}
+	      ]"
+	      is-loading="$ctrl.isLoading"
+	      on-click-row="$ctrl.onClickRow(id)">
+	    </sortable-table>
+	  </div>
+	</div>
+</section>

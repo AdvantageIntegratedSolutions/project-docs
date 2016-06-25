@@ -1,0 +1,47 @@
+<section class="row">
+	<div class="row">
+		<div class="col-sm-6 col-md-offset-1">
+			<label>Skills/Capability:</label>
+			<div class="select-wrapper">
+		    <select
+		      name="type"
+		      id="type"
+		      class="form-control">
+		      <option>Client Relationship Management</option>
+					<option>Business Development</option>
+					<option>Business Analysis</option>
+					<option>Scoping/Estimation</option>
+					<option>Project Management</option>
+					<option>UX Strategy</option>
+					<option>UX Research & Testing</option>
+					<option>User Zoom</option>
+					<option>Interactive Prototyping</option>
+					<option>Mobile App Development</option>
+					<option>Responsive Design</option>
+					<option>Human Centered Design</option>
+		    </select>
+		  </div>
+		</div>
+
+		<div class="col-md-4">
+			<skill-legend></skill-legend>
+		</div>
+	</div>
+
+	<hr class="col-md-10 col-md-offset-1">
+
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<sortable-table
+	      data="$ctrl.employees"
+	      field-list="[
+	      	{ name: 'Employee Name', class: 'col-md-6'},
+	      	{ team: 'Team', class: 'col-md-3'},
+	      	{ level: 'Skill Level', type: 'circle', class: 'col-md-3'}
+	      ]"
+	      is-loading="$ctrl.isLoading"
+	      on-click-row="$ctrl.onClickRow(id)">
+	    </sortable-table>
+		</div>
+	</div>
+</section>

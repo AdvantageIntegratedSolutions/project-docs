@@ -1,0 +1,99 @@
+@import 'styles/variables';
+
+body {
+  font-family: $serif;
+  font-size: 1.6rem;
+  color: $dark-grey;
+}
+
+a,
+a:focus {
+  color: inherit;
+}
+
+a:hover,
+a:focus,
+a:visited {
+  // text-decoration: none;
+}
+
+.hero {
+  padding: 4rem;
+  margin: 2rem -4rem;
+  background: $white;
+  box-shadow: 0 5px 3rem -3px rgba(0,0,0,0.1);
+  clear: both;
+}
+
+.hero__title {
+  margin: 0 0 5rem 0;
+}
+
+.margin-bottom {
+  margin-bottom: 3rem;
+}
+
+.circle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: .5rem solid $light-grey;
+  align-items: center;
+  border-radius: 50%;
+  height: 12rem;
+  width: 12rem;
+  margin: 0 auto;
+}
+
+// .circle-success{
+//   border: .5rem solid $brand-success;
+// }
+
+// .circle-primary{
+//   border: .5rem solid $brand-primary;
+// }
+
+// .circle-warning{
+//   border: .5rem solid $brand-warning;
+// }
+
+.circle__number {
+  font-size: 4rem;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.circle__text {
+  font-size: 1.5rem;
+  margin: 0;
+  text-align: center;
+  padding: .5rem 1rem 1rem 1rem;
+}
+.circle__text:hover {
+  color: $dark-grey;
+}
+
+.spinner {
+  display: block;
+  width: 5rem;
+  height: 5rem;
+  border: 1rem double;
+  border-radius: 50%;
+  border-color: transparent $light-grey $light-grey $light-grey;
+  margin: 0 auto;
+  animation: spin 800ms infinite linear;
+  -webkit-animation: spin 800ms infinite linear;
+}
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}

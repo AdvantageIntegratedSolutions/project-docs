@@ -1,0 +1,47 @@
+<section class="row">
+	<div class="row">
+		<div class="col-sm-6 col-md-offset-1">
+			<label>Employee:</label>
+			<div class="select-wrapper">
+		    <select
+		      name="type"
+		      id="type"
+		      class="form-control">
+		      <option>Name 1</option>
+					<option>Name 2</option>
+					<option>Name 3</option>
+					<option>Name 4</option>
+					<option>Name 5</option>
+					<option>Name 6</option>
+					<option>Name 7</option>
+					<option>Name 8</option>
+					<option>Name 9</option>
+					<option>Name 10</option>
+					<option>Name 11</option>
+					<option>Name 12</option>
+		    </select>
+		  </div>
+		</div>
+
+		<div class="col-md-4">
+			<skill-legend></skill-legend>
+		</div>
+	</div>
+
+	<hr class="col-md-10 col-md-offset-1">
+
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<sortable-table
+	      data="$ctrl.skills"
+	      field-list="[
+	      	{ name: 'Skills/Capabilities - GBS UXC', class: 'col-md-6' },
+	      	{ serviceLine: 'Service Line', class: 'col-md-3' },
+	      	{ level: 'Skill Level', type: 'circle', class: 'col-md-3' }
+	      ]"
+	      is-loading="$ctrl.isLoading"
+	      on-click-row="$ctrl.onClickRow(id)">
+	    </sortable-table>
+		</div>
+	</div>
+</section>
