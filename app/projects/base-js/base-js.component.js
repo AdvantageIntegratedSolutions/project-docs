@@ -5,7 +5,7 @@ class BaseJSCtrl {
 }
 
 export default {
-  bindings: { score: '=' },
-  templateUrl: 'base-js/base-js.component.html',
+  bindings: {},
+  templateUrl: 'projects/base-js/base-js.component.html',
   controller: BaseJSCtrl
 }

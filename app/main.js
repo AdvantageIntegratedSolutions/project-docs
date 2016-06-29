@@ -1,14 +1,18 @@
 import "../dist/templates";
 import "./layout";
 import "./shared";
-import "./base-js";
+import "./dashboard";
+import "./projects/base-js";
+import "./projects/quickstart";
 
 const DEPENDENCIES = [
   'ui.router',
   'templates',
   'app.layout',
   'app.shared',
-  'app.base-js'
+  'app.dashboard',
+  'app.base-js',
+  'app.quickstart'
 ];
 
 angular
@@ -20,7 +24,7 @@ angular
         templateUrl: 'layout/app-layout.html'
       })
 
-    $urlRouterProvider.otherwise('/base-js');
+    $urlRouterProvider.otherwise('/dashboard');
   })
   .run($rootScope => {
     // Change page title based on state
