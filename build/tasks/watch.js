@@ -7,12 +7,11 @@ var insert = require('gulp-insert');
 var notify = require('gulp-notify');
 
 var paths = require('../paths');
-var app = require(paths.app);
 
-var htmlTasks = [ 'html-dev', browserSync.reload ];
-var templateTasks = [ 'templates', 'js-dev', 'html-dev', browserSync.reload ];
-var jsTasks = [ 'js-dev', browserSync.reload ];
-var cssTasks = [ 'css-dev' ];
+var htmlTasks = [ 'html', browserSync.reload ];
+var templateTasks = [ 'templates', 'js', 'html', browserSync.reload ];
+var jsTasks = [ 'js', browserSync.reload ];
+var cssTasks = [ 'css' ];
 
 function interceptErrors(error) {
   var args = Array.prototype.slice.call(arguments);
@@ -29,24 +28,15 @@ function interceptErrors(error) {
 
 gulp.task('watch', ['local']);
 
-gulp.task('local', ['html-dev', 'templates', 'css-dev', 'js-dev'], function() {
+gulp.task('local', ['html', 'templates', 'css', 'js'], function() {
   browserSync.init({
     open: true,
     notify: false,
-    server: paths.outputDev
+    server: paths.output
   });
 
   gulp.watch(paths.html, htmlTasks);
   gulp.watch(paths.templates, templateTasks);
   gulp.watch(paths.javascript, jsTasks);
   gulp.watch(paths.css, cssTasks);
-});
-
-gulp.task('css-dev', function() {
-  return gulp.src(paths.css)
-    .pipe(sass())
-    .on('error', interceptErrors)
-    .pipe(concat('bundle.css'))
-    .pipe(gulp.dest(paths.outputDev))
-    .pipe(browserSync.stream());
 });

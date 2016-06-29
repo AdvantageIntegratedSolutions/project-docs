@@ -5,13 +5,11 @@ var concat = require('gulp-concat');
 var insert = require('gulp-insert');
 
 var paths = require('../paths');
-var app = require(paths.app);
 
-gulp.task('css-prod', function() {
+gulp.task('css', function() {
   return gulp.src(paths.css)
     .pipe(sass())
     .pipe(autoprefixer({ browsers: ['last 2 versions'] }))
-    .pipe(concat(app.name + '-bundle.css'))
-    .pipe(insert.prepend('/*' + app.origin + '*/\n'))
-    .pipe(gulp.dest(paths.outputProd));
+    .pipe(concat('bundle.css'))
+    .pipe(gulp.dest(paths.output));
 });

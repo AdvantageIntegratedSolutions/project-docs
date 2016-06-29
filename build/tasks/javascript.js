@@ -13,7 +13,6 @@ var source = require('vinyl-source-stream');
 var notify = require('gulp-notify');
 
 var paths = require('../paths');
-var app = require(paths.app);
 
 function interceptErrors(error) {
   var args = Array.prototype.slice.call(arguments);
@@ -28,21 +27,12 @@ function interceptErrors(error) {
   this.emit('end');
 };
 
-gulp.task('js-dev', ['templates'], function(){
-  return browserify(app.bootstrap, {debug: true})
+gulp.task('js', ['templates'], function(){
+  return browserify(paths.bootstrap, {debug: true})
     .transform('babelify', {presets: ['es2015']})
     .bundle()
     .on('error', interceptErrors)
     .pipe(source('bundle.js'))
-    .pipe(gulp.dest(paths.outputDev));
-});
-
-gulp.task('js-prod', ['templates'], function(){
-  return browserify(app.bootstrap, {debug: true})
-    .transform('babelify', {presets: ['es2015']})
-    .bundle()
-    .on('error', interceptErrors)
-    .pipe(source(app.name + '-bundle.js'))
-    .pipe(gulp.dest(paths.outputProd));
+    .pipe(gulp.dest(paths.output));
 });
 

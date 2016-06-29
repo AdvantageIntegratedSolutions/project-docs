@@ -1,17 +1,14 @@
-import "../tmp/templates";
+import "../dist/templates";
 import "./layout";
 import "./shared";
-
-import "./heroes"; //example feature
-import "./villains"; //example feature
+import "./base-js";
 
 const DEPENDENCIES = [
   'ui.router',
   'templates',
   'app.layout',
   'app.shared',
-  'app.heroes', //example feature
-  'app.villains', //example feature
+  'app.base-js'
 ];
 
 angular
@@ -23,7 +20,7 @@ angular
         templateUrl: 'layout/app-layout.html'
       })
 
-    $urlRouterProvider.otherwise('/heroes');
+    $urlRouterProvider.otherwise('/base-js');
   })
   .run($rootScope => {
     // Change page title based on state
