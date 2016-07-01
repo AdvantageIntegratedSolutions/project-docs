@@ -1,11 +1,12 @@
 class SideNavCtrl {
-  constructor($q, $scope) {
+  constructor($q, $scope, $location) {
+  	this.url = $location.url();
     $(".button-collapse").sideNav();
   }
 }
 
 export default {
-  bindings: { headings: '=' },
+  bindings: {},
   templateUrl: 'side-nav/side-nav.component.html',
   controller: SideNavCtrl
 }

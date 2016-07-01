@@ -4,7 +4,7 @@
 		<img ng-src="https://s3.amazonaws.com/advantage_assets/logo.png">
 	</header>
 
-	<li ng-repeat="heading in $root.project.sections">
+	<li ng-repeat="heading in $root.project.sections" ng-class="$ctrl.url==heading.url ? 'active' : ''">
 		<a href="#/{{ $root.project.route }}#{{ heading.title | lowercase }}">
 			{{ heading.title | uppercase }}
 		</li>
