@@ -1,11 +1,12 @@
-<ul id="slide-out" class="side-nav fixed white">
-	<header>
-		<h5>{{ $root.project.name | uppercase }}</h5>
-		<img src="https://avatars2.githubusercontent.com/u/634423?v=3&s=200" alt="Advantage Integrated Solutions">
-		<br>
+<ul id="slide-out" class="side-nav fixed">
+	<header class="z-depth-1">
+		<h5 class="title header">{{ $root.project.name | uppercase }}</h5>
+		<img ng-src="https://s3.amazonaws.com/advantage_assets/logo.png">
 	</header>
 
 	<li ng-repeat="heading in $root.project.sections">
-		<a href="#/{{ $root.project.route }}#{{heading.title | lowercase }}">{{ heading.title | uppercase }}</li>
+		<a href="#/{{ $root.project.route }}#{{ heading.title | lowercase }}">
+			{{ heading.title | uppercase }}
+		</li>
 	</li>
 </ul>

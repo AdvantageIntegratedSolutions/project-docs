@@ -11,7 +11,7 @@ var paths = require('../paths');
 var htmlTasks = [ 'html', browserSync.reload ];
 var templateTasks = [ 'templates', 'js', 'html', browserSync.reload ];
 var jsTasks = [ 'js', browserSync.reload ];
-var cssTasks = [ 'css' ];
+var cssTasks = [ 'css', browserSync.reload ];
 
 function interceptErrors(error) {
   var args = Array.prototype.slice.call(arguments);

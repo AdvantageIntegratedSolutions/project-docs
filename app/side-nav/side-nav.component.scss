@@ -1,21 +1,25 @@
 .side-nav{
-	border-right: 1px solid black;
-
 	li{
 		cursor: pointer;
-		border-top: 1px solid black;
 
 		a{
-			font-size: 12px;
+			font-size: 14px;
 		}
-	}
-
-	li:last-child {
-    border-bottom: 1px solid black;
 	}
 
 	header{
 		text-align: center;
-		margin-top: 12px;
+		margin-bottom: 4px;
+		height: 200px;
+
+		.title{
+			padding: 20px;
+			margin: 0px;
+		}
+
+		img{
+			height: 100px;
+			width: auto;
+		}
 	}
 }
