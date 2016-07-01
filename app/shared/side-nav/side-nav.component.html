@@ -1,4 +1,11 @@
-<ul id="slide-out" class="side-nav fixed">
-	<li><a href="#!">First Sidebar Link</a></li>
-	<li><a href="#!">Second Sidebar Link</a></li>
+<ul id="slide-out" class="side-nav fixed white">
+	<header>
+		<h5>{{ $root.project.name | uppercase }}</h5>
+		<img src="https://avatars2.githubusercontent.com/u/634423?v=3&s=200" alt="Advantage Integrated Solutions">
+		<br>
+	</header>
+
+	<li ng-repeat="heading in $root.project.sections">
+		<a href="#{{ heading.title | lowercase }}">{{ heading.title | uppercase }}</li>
+	</li>
 </ul>

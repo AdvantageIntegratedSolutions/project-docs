@@ -2,8 +2,7 @@ import "../dist/templates";
 import "./layout";
 import "./shared";
 import "./dashboard";
-import "./projects/base-js";
-import "./projects/quickstart";
+import "./projects";
 
 const DEPENDENCIES = [
   'ui.router',
@@ -11,8 +10,7 @@ const DEPENDENCIES = [
   'app.layout',
   'app.shared',
   'app.dashboard',
-  'app.base-js',
-  'app.quickstart'
+  'app.projects'
 ];
 
 angular
@@ -27,17 +25,9 @@ angular
     $urlRouterProvider.otherwise('/dashboard');
   })
   .run($rootScope => {
-    // Change page title based on state
     $rootScope.$on('$stateChangeSuccess', (event, nextState) => {
-      $rootScope.setPageTitle(nextState.title);
+      $rootScope.project = nextState.project;
     });
-
-    // Helper method for setting the page's title
-    $rootScope.setPageTitle = (title) => {
-      if (title) {
-        $rootScope.pageTitle = title;
-      }
-    };
   })
 
 angular.bootstrap(document, ['app']);

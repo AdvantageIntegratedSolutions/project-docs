@@ -1,0 +1,26 @@
+<div class="project">
+	<div id="{{ section | lowercase }}" ng-repeat="section in $root.project.sections">
+		<div class="row">
+			<div class="col m12"><h4>{{ section.title | uppercase }}</h4></div>
+		</div>
+
+		<div class="row">
+			<div class="col s6 m6 l6">{{ section.content }}</div>
+
+			<div class="col s6 m6 l6 card grey lighten-2" >
+				<code>{{ section.code }}</code>
+			</div>
+		</div>
+
+		<div class="row" ng-repeat="header in section.subheaders">
+			<div class="row">
+				<div class="col m12"><h5>{{ header.title | uppercase }}</h5></div>
+			</div>
+			<div class="col s6 m6 l6">{{ header.content }}</div>
+
+			<div class="col s6 m6 l6 card grey lighten-2" >
+				<code>{{ section.code }}</code>
+			</div>
+		</div>
+	</div>
+</div>

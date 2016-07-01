@@ -8,6 +8,6 @@ angular
       .state('app.dashboard', {
         url: '/dashboard',
         template: '<dashboard></dashboard>',
-        title: 'Documentation Dashboard'
+        title: 'Projects'
       })
   })

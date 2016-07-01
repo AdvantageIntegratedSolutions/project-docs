@@ -5,7 +5,7 @@ class SideNavCtrl {
 }
 
 export default {
-  bindings: {},
+  bindings: { headings: '=' },
   templateUrl: 'shared/side-nav/side-nav.component.html',
   controller: SideNavCtrl
 }

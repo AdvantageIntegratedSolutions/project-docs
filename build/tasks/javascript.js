@@ -9,6 +9,7 @@ var replace = require('gulp-replace');
 var inject = require('gulp-inject-string');
 var browserify = require('browserify');
 var babelify = require('babelify');
+var fs = require('fs');
 var source = require('vinyl-source-stream');
 var notify = require('gulp-notify');
 
