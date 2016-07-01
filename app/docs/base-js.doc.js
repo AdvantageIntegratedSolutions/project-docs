@@ -2,7 +2,7 @@ var content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendi
 var code = "{$(document).ready(function(){//alert here});};"
 
 module.exports = {
-	name: "basejs",
+	name: "base-js",
 	sections: [
 		{ title: "abvc", content: content, code: code },
 		{ title: "abvc", content: content, code: code },

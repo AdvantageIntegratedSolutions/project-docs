@@ -6,8 +6,11 @@ angular
   .component('projects', ProjectsComponent)
   .config(($stateProvider) => {
     Docs.forEach(function(doc){
-      $stateProvider.state('app.' + doc.name.toLowerCase(), {
-        url: '/' + doc.name.toLowerCase(),
+
+      var name = doc.name.replace(/-/g, "").toLowerCase();
+
+      $stateProvider.state('app.' + name, {
+        url: '/' + name,
         template: '<projects></projects>',
         project: doc
       })

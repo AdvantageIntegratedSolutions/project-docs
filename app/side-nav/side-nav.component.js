@@ -10,6 +10,6 @@ class SideNavCtrl {
 
 export default {
   bindings: { headings: '=' },
-  templateUrl: 'shared/side-nav/side-nav.component.html',
+  templateUrl: 'side-nav/side-nav.component.html',
   controller: SideNavCtrl
 }

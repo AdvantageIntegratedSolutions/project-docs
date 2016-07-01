@@ -1,9 +1,9 @@
-import projectdocs from "./projectdocs.doc";
-import basejs from "./basejs.doc";
+import projectDocs from "./project-docs.doc";
+import baseJs from "./base-js.doc";
 import quickstart from "./quickstart.doc";
 
 module.exports = [
-	projectdocs,
-	basejs, 
+	projectDocs,
+	baseJs, 
 	quickstart
 ];

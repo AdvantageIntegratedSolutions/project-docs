@@ -1,5 +1,5 @@
-import Header from './header.component';
+import HeaderComponent from './header.component';
 
 angular
   .module('app.layout', [])
-  .component('appHeader', Header)
+  .component('appHeader', HeaderComponent)

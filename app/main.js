@@ -2,13 +2,15 @@ import "../dist/templates";
 import "./layout";
 import "./shared";
 import "./projects";
+import "./side-nav";
 
 const DEPENDENCIES = [
   'ui.router',
   'templates',
   'app.layout',
   'app.shared',
-  'app.projects'
+  'app.projects',
+  'app.sideNav'
 ];
 
 angular
