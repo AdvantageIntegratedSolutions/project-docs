@@ -1,25 +1,47 @@
 <div class="project">
 	<div id="{{ section | lowercase }}" ng-repeat="section in $root.project.sections">
 		<div class="row">
-			<div class="col m12"><h4>{{ section.title | uppercase }}</h4></div>
+			<div class="col m12"><h4 id="{{ section.title | lowercase }}">{{ section.title | uppercase }}</h4></div>
 		</div>
 
 		<div class="row">
-			<div class="col s6 m6 l6">{{ section.content }}</div>
+			<div ng-if="section.code">
+				<div class="col s6 m6 l6">{{ section.content }}</div>
 
-			<div class="col s6 m6 l6 card grey lighten-2" >
-				<code>{{ section.code }}</code>
+				<div class="col s6 m6 l6 card grey lighten-2" >
+					<pre class="language-javascript">
+						<code class="language-markup">{{ section.code }}</code>
+					</pre>
+				</div>
+			</div>
+
+			<div ng-if="!section.code">
+				<div class="col s12 m12 l12">{{ section.content }}</div>
 			</div>
 		</div>
 
-		<div class="row" ng-repeat="header in section.subheaders">
+		<div ng-repeat="subsection in section.subsections">
 			<div class="row">
-				<div class="col m12"><h5>{{ header.title | uppercase }}</h5></div>
+				<div class="col m12">
+					<h4>
+						<a href="#/{{ subsection.link || '#' }}">{{ subsection.title | uppercase }}</a>
+					</h4>
+				</div>
 			</div>
-			<div class="col s6 m6 l6">{{ header.content }}</div>
+			<div class="row">
+				<div ng-if="subsection.code">
+					<div class="col s6 m6 l6">{{ subsection.content }}</div>
 
-			<div class="col s6 m6 l6 card grey lighten-2" >
-				<code>{{ section.code }}</code>
+					<div class="col s6 m6 l6 card grey lighten-2" >
+						<pre class="language-javascript">
+							<code class="language-markup">{{ subsection.code }}</code>
+						</pre>
+					</div>
+				</div>
+
+				<div ng-if="!subsection.code">
+					<div class="col s12 m12 l12">{{ subsection.content }}</div>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -1,7 +1,6 @@
 import "../dist/templates";
 import "./layout";
 import "./shared";
-import "./dashboard";
 import "./projects";
 
 const DEPENDENCIES = [
@@ -9,7 +8,6 @@ const DEPENDENCIES = [
   'templates',
   'app.layout',
   'app.shared',
-  'app.dashboard',
   'app.projects'
 ];
 
@@ -22,7 +20,7 @@ angular
         templateUrl: 'layout/app-layout.html'
       })
 
-    $urlRouterProvider.otherwise('/dashboard');
+    $urlRouterProvider.otherwise('/projectdocs');
   })
   .run($rootScope => {
     $rootScope.$on('$stateChangeSuccess', (event, nextState) => {

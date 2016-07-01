@@ -1,6 +1,10 @@
 class SideNavCtrl {
-  constructor($scope) {
+  constructor($q, $scope) {
     $(".button-collapse").sideNav();
+  }
+
+  anchor(id){
+  	$("html, body").animate({ scrollTop: $('#' + id.toLowerCase()).offset().top - 200 }, 1000);
   }
 }
 
