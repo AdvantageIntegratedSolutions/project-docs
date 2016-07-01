@@ -6,6 +6,6 @@
 	</header>
 
 	<li ng-repeat="heading in $root.project.sections">
-		<a ui-sref="{{$ctrl.anchor(heading.title)}}">{{ heading.title | uppercase }}</li>
+		<a href="#/{{ $root.project.route }}#{{heading.title | lowercase }}">{{ heading.title | uppercase }}</li>
 	</li>
 </ul>

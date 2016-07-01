@@ -4,22 +4,11 @@ var code = "{$(document).ready(function(){//alert here});};"
 module.exports = {
 	name: "base-js",
 	sections: [
-		{ title: "abvc", content: content, code: code },
-		{ title: "abvc", content: content, code: code },
-		{ title: "abvc", content: content, code: code },
-		{ title: "abvc", content: content, code: code },
-		{ title: "abvc", content: content, code: code },
-		{ title: "abvc", content: content, code: code },
-		{ title: "abvc", content: content, code: code },
-		{ title: "abvc", content: content, code: code },
 		{ title: "Introduction", content: content, code: code },
-		{ title: "abvc", content: content, code: code },
-		{ title: "abvc", content: content, code: code },
-		{ title: "abvc", content: content, code: code },
-		{ title: "abvc", content: content, code: code },
-		{ title: "abvc", content: content, code: code },
-		{ title: "abvc", content: content, code: code },
-		{ title: "abvc", content: content, code: code },
-		{ title: "abvc", content: content, code: code }
+		{ title: "QuickStart", content: content, code: code },
+		{ title: "Functions", content: content, code: code },
+		{ title: "Querying", content: content, code: code },
+		{ title: "Deployment", content: content, code: code },
+		{ title: "Tutorials", content: content, code: code }
 	]
 }
