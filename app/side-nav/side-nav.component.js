@@ -1,7 +1,24 @@
 class SideNavCtrl {
-  constructor($q, $scope, $location) {
+  constructor($q, $scope, $rootScope, $location) {
+  	var _self = this;
+  	
   	this.url = $location.url();
-    $(".button-collapse").sideNav();
+
+    _self.headings = _self.updateSideNavHeadings();
+    $rootScope.$on('$stateChangeSuccess', function(event, nextState){ 
+    	_self.headings = _self.updateSideNavHeadings();
+		})
+  }
+
+  updateSideNavHeadings(){
+  	var headings = [];
+  	
+  	$(".side-nav-heading").each(function(index, heading){
+  		headings.push($(heading).text());
+  	})
+
+    console.log(headings)
+  	return headings;
   }
 }
 

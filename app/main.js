@@ -1,15 +1,15 @@
 import "../dist/templates";
 import "./layout";
 import "./shared";
-import "./projects";
 import "./side-nav";
+
+import Docs from "./docs/_docs"
 
 const DEPENDENCIES = [
   'ui.router',
   'templates',
   'app.layout',
   'app.shared',
-  'app.projects',
   'app.sideNav'
 ];
 
@@ -22,11 +22,19 @@ angular
         templateUrl: 'layout/app-layout.html'
       })
 
-    $urlRouterProvider.otherwise('/projectdocs');
+    Docs.forEach(function(doc){
+      $stateProvider.state('app.' + doc, {
+        url: '/' + doc,
+        templateUrl: 'docs/' + doc + ".doc.html",
+        title: doc
+      })
+    });
+
+    $urlRouterProvider.otherwise('/quickstart');
   })
   .run($rootScope => {
     $rootScope.$on('$stateChangeSuccess', (event, nextState) => {
-      $rootScope.project = nextState.project;
+      $rootScope.title = nextState.title;
     });
   })
 

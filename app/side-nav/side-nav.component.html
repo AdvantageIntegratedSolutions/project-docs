@@ -1,12 +1,13 @@
 <ul id="slide-out" class="side-nav fixed">
 	<header class="z-depth-1">
-		<h5 class="title header">{{ $root.project.name | uppercase }}</h5>
+		<h5 class="title header">{{ $root.title | uppercase }}</h5>
 		<img ng-src="https://s3.amazonaws.com/advantage_assets/logo.png">
 	</header>
 
-	<li ng-repeat="heading in $root.project.sections" ng-class="$ctrl.url==heading.url ? 'active' : ''">
-		<a href="#/{{ $root.project.route }}#{{ heading.title | lowercase }}">
-			{{ heading.title | uppercase }}
+	<div id="side-nav-headings">
+		<li ng-repeat="heading in $ctrl.headings">
+			<a href="#/{{ $root.title }}#{{ heading | lowercase }}">
+				{{ heading | uppercase }}
 		</li>
-	</li>
+	</div>
 </ul>
