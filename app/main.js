@@ -15,7 +15,7 @@ const DEPENDENCIES = [
 
 angular
   .module('app', DEPENDENCIES)
-  .config(($stateProvider, $urlRouterProvider) => {
+  .config(($stateProvider, $urlRouterProvider, $locationProvider) => {
     $stateProvider
       .state('app', {
         abstract: true,
@@ -29,6 +29,8 @@ angular
         title: doc
       })
     });
+
+    $locationProvider.html5Mode(true);
 
     $urlRouterProvider.otherwise('/quickstart');
   })
