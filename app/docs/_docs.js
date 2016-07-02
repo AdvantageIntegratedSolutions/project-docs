@@ -1,4 +1,5 @@
 module.exports = [
+	"project-docs",
 	"quickstart",
-	"basejs"
+	"base-js"
 ];

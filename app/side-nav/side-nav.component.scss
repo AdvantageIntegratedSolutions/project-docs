@@ -1,3 +1,5 @@
+@import '../styles/variables';
+
 .side-nav{
 	li{
 		cursor: pointer;
@@ -5,12 +7,33 @@
 		a{
 			font-size: 14px;
 		}
+
+		&.active{
+			background-color: $brand-primary;
+
+			a{
+				color: white;
+			}
+
+			:hover{
+				background-color: $brand-primary;
+			}
+		}
+
+		:hover{
+			background-color: $gray-light;
+			color: white;
+		}
 	}
 
 	header{
 		text-align: center;
 		margin-bottom: 4px;
-		height: 200px;
+		height: 150px;
+
+		h5{
+			font-weight: 300;
+		}
 
 		.title{
 			padding: 20px;
@@ -18,7 +41,7 @@
 		}
 
 		img{
-			height: 100px;
+			height: 50px;
 			width: auto;
 		}
 	}

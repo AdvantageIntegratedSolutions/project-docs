@@ -24,6 +24,7 @@ angular
       })
 
     Docs.forEach(function(doc){
+      console.log(doc)
       $stateProvider.state('app.' + doc, {
         url: '/' + doc,
         templateUrl: 'docs/' + doc + ".doc.html",
@@ -31,9 +32,7 @@ angular
       })
     });
 
-    
-
-    $urlRouterProvider.otherwise('/quickstart');
+    $urlRouterProvider.otherwise('/project-docs');
   })
   .run($rootScope => {
     $rootScope.$on('$stateChangeSuccess', (event, nextState) => {
