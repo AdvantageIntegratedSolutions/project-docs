@@ -8,6 +8,15 @@
 			font-size: 14px;
 		}
 
+		&.secondary{
+			display: none;
+			padding-left: 20px;
+
+			a{
+				font-size: 12px;
+			}
+		}
+
 		&.active{
 			background-color: $brand-primary;
 

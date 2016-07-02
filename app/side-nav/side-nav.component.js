@@ -9,11 +9,34 @@ class SideNavCtrl {
   }
 
   updateActive(anchor){
+    var _self = this;
+
+    var childFoundParent;
+
     this.headings.forEach(function(heading){
+
+
       if(anchor == heading.anchor){
+        if(heading.tier){
+          var closest = $("#" + heading.anchor)
+            .closest('section')
+            .find('.side-nav-heading:not(.secondary)').attr("id");
+
+          _self.headings.forEach(function(h){
+            if(h.anchor == closest){
+              childFoundParent = closest
+              heading = h;
+            }
+          });
+        };
+
+        $(".secondary").show();
+
         heading["status"] = "active"
       }else{
-        heading["status"] = ""
+        if(childFoundParent != heading.anchor){
+          heading["status"] = ""
+        };
       };
     });
   }
@@ -24,7 +47,8 @@ class SideNavCtrl {
   	$(".side-nav-heading").each(function(index, heading){
       heading = { 
         text: $(heading).text(), 
-        anchor: $(heading).attr("id")
+        anchor: $(heading).attr("id"),
+        tier: $(heading).hasClass("secondary") ? "secondary": "",
       };
 
       //one state change, default first nav to active
@@ -50,10 +74,13 @@ class SideNavCtrl {
       var bottom = $(window).scrollTop() == ($(document).height() - $(window).height());
 
       headings.forEach(function(item, index){
-        var itemOffset = $("#" + item.anchor).offset().top - fromTop;
-        if(itemOffset < 100){
-          currentAnchors.push(item.anchor);
-        };
+
+        if(item.tier != "secondary"){
+          var itemOffset = $("#" + item.anchor).offset().top - fromTop;
+          if(itemOffset < 100){
+            currentAnchors.push(item.anchor);
+          };
+        }
       });
 
       var lastItem = currentAnchors[currentAnchors.length - 1];

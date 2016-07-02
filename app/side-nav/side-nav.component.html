@@ -6,13 +6,14 @@
 
 	<div id="side-nav-headings">
 		<li 
-			id="{{heading.anchor}}-nav" 
+			id="{{ heading.anchor }}-nav" 
 			ng-repeat="heading in $ctrl.headings" 
-			ng-class="heading.status"
+			ng-class="[heading.status, heading.tier]"
 			ng-click="$ctrl.activate(heading.anchor)"
 		>
 			<a href="#{{ heading.anchor | lowercase }}">
 				{{ heading.text | uppercase }}
+				<i ng-if="!heading.tier" class="material-icons">expand_more</i>
 		</li>
 	</div>
 </ul>
