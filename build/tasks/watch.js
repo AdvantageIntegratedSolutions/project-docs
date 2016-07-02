@@ -5,6 +5,7 @@ var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var insert = require('gulp-insert');
 var notify = require('gulp-notify');
+var historyApiFallback = require('connect-history-api-fallback');
 
 var paths = require('../paths');
 
@@ -32,7 +33,8 @@ gulp.task('local', ['html', 'templates', 'css', 'js'], function() {
   browserSync.init({
     open: true,
     notify: false,
-    server: paths.output
+    server: paths.output,
+    middleware: [ historyApiFallback() ]
   });
 
   gulp.watch(paths.html, htmlTasks);
