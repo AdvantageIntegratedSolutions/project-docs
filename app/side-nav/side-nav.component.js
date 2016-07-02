@@ -5,7 +5,7 @@ class SideNavCtrl {
   	this.url = $location.url();
 
     _self.headings = _self.updateSideNavHeadings();
-    $rootScope.$on('$stateChangeSuccess', function(event, nextState){ 
+    $rootScope.$on('$viewContentLoaded', function(event, nextState){ 
     	_self.headings = _self.updateSideNavHeadings();
 		})
   }
@@ -14,10 +14,14 @@ class SideNavCtrl {
   	var headings = [];
   	
   	$(".side-nav-heading").each(function(index, heading){
-  		headings.push($(heading).text());
-  	})
-
-    console.log(headings)
+      heading = { 
+        text: $(heading).text(), 
+        anchor: $(heading).attr("id") 
+      };
+      
+  		headings.push(heading);
+  	});
+    
   	return headings;
   }
 }

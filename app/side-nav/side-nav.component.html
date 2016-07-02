@@ -6,8 +6,8 @@
 
 	<div id="side-nav-headings">
 		<li ng-repeat="heading in $ctrl.headings">
-			<a href="#/{{ $root.title }}#{{ heading | lowercase }}">
-				{{ heading | uppercase }}
+			<a href="#/{{ $root.title }}#{{ heading.anchor | lowercase }}">
+				{{ heading.text | uppercase }}
 		</li>
 	</div>
 </ul>
