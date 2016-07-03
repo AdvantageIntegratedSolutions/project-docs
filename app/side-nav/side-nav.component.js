@@ -2,103 +2,114 @@ class SideNavCtrl {
   constructor($q, $scope, $rootScope, $location) {
   	var _self = this;
 
-    _self.headings = _self.updateSideNavHeadings();
+    _self.navs = _self.injectNavsOnStateChange();
     $rootScope.$on('$viewContentLoaded', function(event, nextState){ 
-    	_self.headings = _self.updateSideNavHeadings();
+    	_self.navs = _self.injectNavsOnStateChange();
 		})
   }
 
-  updateActive(anchor){
-    var _self = this;
-
-    var childFoundParent;
-
-    this.headings.forEach(function(heading){
-      if(anchor == heading.anchor){
-        if(heading.tier == "secondary-nav"){
-          var closest = $("#" + heading.anchor)
-            .closest('section')
-            .find('.side-nav-heading:not(.secondary)').attr("id");
-
-          _self.headings.forEach(function(h){
-            if(h.anchor == closest){
-              childFoundParent = closest
-              heading = h;
-            }
-          });
-        }else{
-          $(".secondary-nav").hide();
-          $("#" + heading.anchor + "-nav").nextUntil(".primary-nav").show();
-        };
-
-        heading["status"] = "active"
-      }else{
-        if(childFoundParent != heading.anchor){
-          heading["status"] = ""
-        };
-      };
-    });
-  }
-
-  updateSideNavHeadings(){
-  	var headings = [];
-  	
-  	$(".side-nav-heading").each(function(index, heading){
-      heading = { 
-        text: $(heading).text(), 
-        anchor: $(heading).attr("id"),
-        tier: $(heading).hasClass("secondary") ? "secondary-nav": "primary-nav",
+  injectNavsOnStateChange(){
+    var navs = [];
+    
+    $(".side-nav-heading").each(function(index, nav){
+      nav = { 
+        text: $(nav).text(), 
+        anchor: $(nav).attr("id"),
+        tier: $(nav).hasClass("secondary") ? "secondary-nav": "primary-nav",
       };
 
-      //one state change, default first nav to active
-      //onscroll function controls updating
       if(index == 0){
-        heading["status"] = "active";
+        nav["status"] = "active";
       };
       
-  		headings.push(heading);
-  	});
+      navs.push(nav);
+    });
 
-    this.activateHeading(headings);
+    this.findActiveNav(navs);
     
-  	return headings;
+    return navs;
   }
 
-  activateHeading(headings){
+  findActiveNav(navs){
     $(window).unbind("scroll");
+
+    var _self = this;
+
     $(window).scroll(function(){
-      var fromTop = $(this).scrollTop();
-      var currentAnchors = [];
+      var activeNavs = _self.getActiveNavs(navs);
+      var lastNav = activeNavs[activeNavs.length - 1];
 
-      var bottom = $(window).scrollTop() == ($(document).height() - $(window).height());
-
-      headings.forEach(function(item, index){
-
-        if(item.tier != "secondary-nav"){
-          var itemOffset = $("#" + item.anchor).offset().top - fromTop;
-          if(itemOffset < 100){
-            currentAnchors.push(item.anchor);
-          };
-        }
-      });
-
-      var lastItem = currentAnchors[currentAnchors.length - 1];
-
-      if(bottom){
-        lastItem = headings[headings.length - 1].anchor;
+      if(_self.atBottom()){
+        lastNav = navs[navs.length - 1].anchor;
       };
 
-      document.location.hash = "#" + lastItem;
-      $(".secondary-nav").hide();
-      $("#" + lastItem + "-nav").nextUntil(".primary-nav").show();
-
-      $("#side-nav-headings li").removeClass("active");
-      $("#" + lastItem + "-nav").addClass("active");
+      _self.updateActivePrimaryNav(lastNav);
     });
   }
 
-  activate(anchor){
-    this.updateActive(anchor)
+  updateActivePrimaryNav(lastAnchor){
+    $("#side-nav-headings li").removeClass("active");
+    $("#" + lastAnchor + "-nav").addClass("active");
+    
+    this.updateActiveSecondaryNav(lastAnchor);
+  }
+
+  updateActiveSecondaryNav(anchor){
+    $(".secondary-nav").hide();
+    $("#" + anchor + "-nav").nextUntil(".primary-nav").show();
+  }
+
+  updateActiveNavOnClick(anchor){
+    var _self = this;
+    var childFoundParent;
+
+    this.navs.forEach(function(nav){
+      if(anchor == nav.anchor){
+        if(nav.tier == "secondary-nav"){
+          nav = _self.findParentPrimaryNav(nav, _self.navs)
+        }else{
+          _self.updateActiveSecondaryNav(nav.anchor);
+        };
+
+        nav["status"] = "active"
+      };
+    });
+  }
+
+  findParentPrimaryNav(nav, navs){
+    var childFoundParent;
+
+    var closestPrimaryAnchor = $("#" + nav.anchor)
+      .closest('section')
+      .find('.side-nav-heading:not(.secondary)').attr("id");
+
+    navs.forEach(function(h){
+      if(h.anchor == closestPrimaryAnchor){
+        closestPrimaryAnchor = h;
+      }
+    });
+
+    return closestPrimaryAnchor;
+  }
+
+  atBottom(){
+    return $(window).scrollTop() == ($(document).height() - $(window).height());
+  }
+
+  getActiveNavs(navs, fromTop){
+    var fromTop = $(window).scrollTop();
+    var activeNavs = [];
+
+    navs.forEach(function(nav){
+      if(nav.tier != "secondary-nav"){
+        var navOffset = $("#" + nav.anchor).offset().top - fromTop;
+        if(navOffset < 100){
+          activeNavs.push(nav.anchor);
+        };
+      }
+    });
+
+    return activeNavs;
   }
 }
 

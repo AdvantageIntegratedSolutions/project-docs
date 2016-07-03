@@ -6,16 +6,18 @@
 
 	<div id="side-nav-headings">
 		<li 
-			id="{{ heading.anchor }}-nav" 
-			ng-repeat="heading in $ctrl.headings" 
-			ng-class="[heading.status, heading.tier]"
-			ng-click="$ctrl.activate(heading.anchor)"
-		>
-			<a href="#{{ heading.anchor | lowercase }}">
-				<i class="material-icons secondary-icon tiny" ng-if="heading.tier=='secondary-nav'">remove</i>
+			id="{{ nav.anchor }}-nav" 
+			ng-repeat="nav in $ctrl.navs" 
+			ng-class="[nav.status, nav.tier]"
+			ng-click="$ctrl.updateActiveNavOnClick(nav.anchor)">
+			<a href="#{{ nav.anchor | lowercase }}">
+				<i 
+					class="material-icons secondary-icon tiny" 
+					ng-if="nav.tier=='secondary-nav'">
+					remove
+				</i>
 
-				{{ heading.text | uppercase }}
-				<!-- <i ng-if="heading.tier=='primary-nav'" class="material-icons primary-icon">expand_more</i> -->
+				{{ nav.text | uppercase }}
 		</li>
 	</div>
 </ul>
