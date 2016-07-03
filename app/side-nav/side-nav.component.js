@@ -14,10 +14,8 @@ class SideNavCtrl {
     var childFoundParent;
 
     this.headings.forEach(function(heading){
-
-
       if(anchor == heading.anchor){
-        if(heading.tier){
+        if(heading.tier == "secondary-nav"){
           var closest = $("#" + heading.anchor)
             .closest('section')
             .find('.side-nav-heading:not(.secondary)').attr("id");
@@ -28,9 +26,10 @@ class SideNavCtrl {
               heading = h;
             }
           });
+        }else{
+          $(".secondary-nav").hide();
+          $("#" + heading.anchor + "-nav").nextUntil(".primary-nav").show();
         };
-
-        $(".secondary").show();
 
         heading["status"] = "active"
       }else{
@@ -48,7 +47,7 @@ class SideNavCtrl {
       heading = { 
         text: $(heading).text(), 
         anchor: $(heading).attr("id"),
-        tier: $(heading).hasClass("secondary") ? "secondary": "",
+        tier: $(heading).hasClass("secondary") ? "secondary-nav": "primary-nav",
       };
 
       //one state change, default first nav to active
@@ -75,7 +74,7 @@ class SideNavCtrl {
 
       headings.forEach(function(item, index){
 
-        if(item.tier != "secondary"){
+        if(item.tier != "secondary-nav"){
           var itemOffset = $("#" + item.anchor).offset().top - fromTop;
           if(itemOffset < 100){
             currentAnchors.push(item.anchor);
@@ -90,6 +89,8 @@ class SideNavCtrl {
       };
 
       document.location.hash = "#" + lastItem;
+      $(".secondary-nav").hide();
+      $("#" + lastItem + "-nav").nextUntil(".primary-nav").show();
 
       $("#side-nav-headings li").removeClass("active");
       $("#" + lastItem + "-nav").addClass("active");

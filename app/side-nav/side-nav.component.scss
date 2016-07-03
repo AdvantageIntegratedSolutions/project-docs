@@ -1,6 +1,17 @@
 @import '../styles/variables';
 
 .side-nav{
+	.primary-icon{
+		float: right;
+		margin-top: 20px;
+	}
+
+	.secondary-icon{
+		float: left;
+		margin-top: 24px;
+		margin-right: 2px;
+	}
+
 	li{
 		cursor: pointer;
 
@@ -8,9 +19,9 @@
 			font-size: 14px;
 		}
 
-		&.secondary{
+		&.secondary-nav{
 			display: none;
-			padding-left: 20px;
+			background-color: $gray-lighter;
 
 			a{
 				font-size: 12px;

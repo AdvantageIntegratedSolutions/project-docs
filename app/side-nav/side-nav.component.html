@@ -12,8 +12,10 @@
 			ng-click="$ctrl.activate(heading.anchor)"
 		>
 			<a href="#{{ heading.anchor | lowercase }}">
+				<i class="material-icons secondary-icon tiny" ng-if="heading.tier=='secondary-nav'">remove</i>
+
 				{{ heading.text | uppercase }}
-				<i ng-if="!heading.tier" class="material-icons">expand_more</i>
+				<!-- <i ng-if="heading.tier=='primary-nav'" class="material-icons primary-icon">expand_more</i> -->
 		</li>
 	</div>
 </ul>
