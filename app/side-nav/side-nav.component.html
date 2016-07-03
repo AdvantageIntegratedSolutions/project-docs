@@ -9,7 +9,7 @@
 			id="{{ nav.anchor }}-nav" 
 			ng-repeat="nav in $ctrl.navs" 
 			ng-class="[nav.status, nav.tier]"
-			ng-click="$ctrl.updateActiveNavOnClick(nav.anchor)">
+			ng-click="$ctrl.setSecondaryClicked()">
 			<a href="#{{ nav.anchor | lowercase }}">
 				<i 
 					class="material-icons secondary-icon tiny" 

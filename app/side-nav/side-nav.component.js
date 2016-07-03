@@ -2,6 +2,8 @@ class SideNavCtrl {
   constructor($q, $scope, $rootScope, $location) {
   	var _self = this;
 
+    this.secondaryClicked = false;
+
     _self.navs = _self.injectNavsOnStateChange();
     $rootScope.$on('$viewContentLoaded', function(event, nextState){ 
     	_self.navs = _self.injectNavsOnStateChange();
@@ -25,12 +27,12 @@ class SideNavCtrl {
       navs.push(nav);
     });
 
-    this.findActiveNav(navs);
+    this.onScroll(navs);
     
     return navs;
   }
 
-  findActiveNav(navs){
+  onScroll(navs){
     $(window).unbind("scroll");
 
     var _self = this;
@@ -47,33 +49,26 @@ class SideNavCtrl {
     });
   }
 
-  updateActivePrimaryNav(lastAnchor){
+  setSecondaryClicked(){
+    this.secondaryClicked = true;
+  }
+
+  updateActivePrimaryNav(lastNav){
     $("#side-nav-headings li").removeClass("active");
-    $("#" + lastAnchor + "-nav").addClass("active");
+    $("#" + lastNav + "-nav").addClass("active");
+
+    if(!this.secondaryClicked){
+      document.location.hash = lastNav;
+    };
+
+    this.secondaryClicked = false;
     
-    this.updateActiveSecondaryNav(lastAnchor);
+    this.updateActiveSecondaryNav(lastNav);
   }
 
-  updateActiveSecondaryNav(anchor){
+  updateActiveSecondaryNav(nav){
     $(".secondary-nav").hide();
-    $("#" + anchor + "-nav").nextUntil(".primary-nav").show();
-  }
-
-  updateActiveNavOnClick(anchor){
-    var _self = this;
-    var childFoundParent;
-
-    this.navs.forEach(function(nav){
-      if(anchor == nav.anchor){
-        if(nav.tier == "secondary-nav"){
-          nav = _self.findParentPrimaryNav(nav, _self.navs)
-        }else{
-          _self.updateActiveSecondaryNav(nav.anchor);
-        };
-
-        nav["status"] = "active"
-      };
-    });
+    $("#" + nav + "-nav").nextUntil(".primary-nav").show();
   }
 
   findParentPrimaryNav(nav, navs){
