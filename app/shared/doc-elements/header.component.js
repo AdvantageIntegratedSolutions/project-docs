@@ -4,7 +4,8 @@ class DocHeaderCtrl {
       text: $element.attr("nav-text"), 
       anchor: $element.attr("id"),
       tier: $element.hasClass("secondary") ? "secondary-nav": "primary-nav",
-      status: ""
+      status: "",
+      display: $element.hasClass("secondary") ? "hide": ""
     }
     
     $rootScope.sideNavs.push(nav);

@@ -2,50 +2,68 @@ class SideNavCtrl {
   constructor($q, $scope, $rootScope, $location) {
   	var _self = this;
 
-    this.secondaryClicked = false;
+    this.navs = $rootScope.sideNavs;
+    this.location = $location;
+    this.onScroll();
   }
 
-  onScroll(navs){
+  onScroll(){
     $(window).unbind("scroll");
 
     var _self = this;
 
     $(window).scroll(function(){
-      var activeNavs = _self.getActiveNavs(navs);
+      var activeNavs = _self.getActiveNavs();
       var lastNav = activeNavs[activeNavs.length - 1];
 
       if(_self.atBottom()){
-        lastNav = navs[navs.length - 1].anchor;
+        lastNav = activeNavs[activeNavs.length - 1].anchor;
       };
 
       _self.updateActivePrimaryNav(lastNav);
     });
   }
 
-  setSecondaryClicked(){
-    this.secondaryClicked = true;
-  }
-
   updateActivePrimaryNav(lastNav){
-    $("#side-nav-headings li").removeClass("active");
-    $("#" + lastNav + "-nav").addClass("active");
+    this.navs.forEach(function(nav){
+      nav["status"] = nav.anchor == lastNav ? "active" : "";
+    });
 
     if(!lastNav){
       lastNav = ""
     };
 
-    if(!this.secondaryClicked){
+    if(lastNav){
       document.location.hash = lastNav;
-    };
+    }
 
-    this.secondaryClicked = false;
-    
-    this.updateActiveSecondaryNav(lastNav);
+    this.updateActiveSecondaryNav(lastNav);    
   }
 
-  updateActiveSecondaryNav(nav){
-    $(".secondary-nav").hide();
-    $("#" + nav + "-nav").nextUntil(".primary-nav").show();
+  updateActiveSecondaryNav(currentAnchor){
+    var found = false;
+
+    this.navs.forEach(function(nav){
+      if(found){
+        if(nav.tier == "primary-nav"){
+          found = false;
+        }else{
+          nav["display"] = "";
+        };
+      }else{
+        if(nav.tier == "secondary-nav"){
+          nav["display"] = "hide";
+        };
+      }
+
+      if(nav.anchor == currentAnchor){
+        found = true;
+        console.log(currentAnchor)
+        nav["status"] = "active"
+
+        console.log(currentAnchor, "active")
+      };
+    });
   }
 
   findParentPrimaryNav(nav, navs){
@@ -72,10 +90,10 @@ class SideNavCtrl {
     var fromTop = $(window).scrollTop();
     var activeNavs = [];
 
-    navs.forEach(function(nav){
+    this.navs.forEach(function(nav){
       if(nav.tier != "secondary-nav"){
         var navOffset = $("#" + nav.anchor).offset().top - fromTop;
-        if(navOffset < 0){
+        if(navOffset < 20){
           activeNavs.push(nav.anchor);
         };
       }
