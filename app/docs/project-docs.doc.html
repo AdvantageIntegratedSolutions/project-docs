@@ -1,65 +1,127 @@
 <section>
-	<section>
-		<h4 id="introduction" class="side-nav-heading">Introduction</h4>
-		
-		<p>
-			project-docs is a documentation guide tool to store and improve quality of documentation for projects. project-docs comes with the tools neccessary to quickly document projects using html and providing consistent standards.
-		</p>  
+	<doc-section>
+		<doc-header id="introduction">Introduction</doc-header>
+		<doc-caption>
+			<p><b>project-docs</b> is a platform to develop and store documentation for common libraries, projects and tools.
+			</p>
+		</doc-caption>
 
-		<h5 id="do-query" class="side-nav-heading secondary">Do Query</h5>
-		<p>
-			project-docs is a documentation guide tool to store and improve quality of documentation for projects.
+		<p>project-docs provides a standard UI to improve ease of use and readability, tools to shorten the documentation process and help develop documentation standards.</p>
+
+		<p>All documentation is written in common HTML & SASS, no new rules or markdown to learn.</p>
+
+		<p>Functionality includes helper tags, responsive CSS framework, automatic side-navigation and syntax highlighted code examples.</p>
+	</doc-section>
+
+	<doc-section>
+		<doc-header id="projects">Projects</doc-header>
+
+		<p>All project documentation is stored within project-docs. Project documentation files are located in the docs folder.</p>
+
+		<doc-sub-header>Documented Projects</doc-sub-header>
+
+		<doc-card>base-js</doc-card>
+		<doc-card>quickstart</doc-card>
+	</doc-section>
+
+	<doc-section>
+		<doc-header id="new-project">Document New Project</doc-header>
+
+		<doc-caption>Documenting a new project is easy.</doc-caption>
+
+		<doc-sub-header>Steps to document a new project</doc-sub-header>
+		<ol>
+			<li>Add a new html file for your project to the docs folder.</li>
+			<li>Add the name of the new document to the "_docs.js" file.</li>
+			<li>Add the new project to the project-docs list of current projects("project-docs.doc.html")</li>
+		</ol>
+	</doc-section>
+
+	<doc-section>
+		<doc-header id="doc-style-guide">Doc Style Guide</doc-header>
+
+		<p>All documentation is written in common html. No new markdown language or a long list of rules. Be sure to take advantage of the responsive CSS framework included(<a target="_blank" href="http://materializecss.com/">Materialize</a>).
 		</p>
 
-		<h5 id="add-record" class="side-nav-heading secondary">Add Record</h5>
-		<p>
-			project-docs is a documentation guide tool to store and improve quality of documentation for projects.
+		<doc-sub-header>Helper Tags</doc-sub-header>
+
+		<p>Helper tags help speed up the process of writing the HTML by packing up the common parts of a document.
 		</p>
 
-		<h5 id="edit-record" class="side-nav-heading secondary">Edit Record</h5>
+		<table class="table bordered striped">
+			<tbody>
+				<tr>
+					<td>doc-section</td>
+					<td>Adding class to headers will add heading to side-navigation.</td>
+				</tr>
+				<tr>
+					<td>doc-header</td>
+					<td>Adding class to headers will add heading to side-navigation.</td>
+				</tr>
+				<tr>
+					<td>doc-sub-header</td>
+					<td>Adding class to headers will add heading as indented header to side-navigation.</td>
+				</tr>
+				<tr>
+					<td>doc-summary</td>
+					<td>Adding class to headers will add heading as indented header to side-navigation.</td>
+				</tr>
+				<tr>
+					<td>doc-code</td>
+					<td>Adding class to headers will add heading as indented header to side-navigation.</td>
+				</tr>
+				<tr>
+					<td>doc-notice</td>
+					<td>Adding class to headers will add heading as indented header to side-navigation.</td>
+				</tr>
+				<tr>
+					<td>doc-alert</td>
+					<td>Adding class to headers will add heading as indented header to side-navigation.</td>
+				</tr>
+				<tr>
+					<td>doc-caption</td>
+					<td>Adding class to headers will add heading as indented header to side-navigation.</td>
+				</tr>
+				<tr>
+					<td>doc-card</td>
+					<td>Adding class to headers will add heading as indented header to side-navigation.</td>
+				</tr>
+			</tbody>
+		</table>
 
-		<p>
-			project-docs is a documentation guide tool to store and improve quality of documentation for projects.
+		<doc-notice>
+			These tags are optional. You can use any HTML tag you wish but these tags pack a punch.
+		</doc-notice>
+
+		<doc-sub-header>Classes</doc-sub-header>
+		<p>These classes apply common styling or bind functionality to your elements as usual.</p>
 		</p>
 
-		<h5 id="delete-record" class="side-nav-heading secondary">Delete Record</h5>
-		<p>
-			project-docs is a documentation guide tool to store and improve quality of documentation for projects.
-		</p>
+		<table class="table bordered striped">
+			<tbody>
+				<tr>
+					<td>doc-nav-hide</td>
+					<td>Added to 'doc-header' or 'doc-sub-header' will prevent the header from displaying in side-nav.</td>
+				</tr>
+			</tbody>
+		</table>
+	</doc-section>
 
-		<h5 id="import-from-csv" class="side-nav-heading secondary">Import From CSV</h5>
-		<p>
-			project-docs is a documentation guide tool to store and improve quality of documentation for projects.
-		</p>
+	<doc-section>
+		<doc-header id="side-navigation">Side-Navigation</doc-header>
 
-		<h5 id="purge-records" class="side-nav-heading secondary">Purge Records</h5>
-		<p>
-			project-docs is a documentation guide tool to store and improve quality of documentation for projects.
-		</p>
-	</section>
+		<doc-caption>The side-navigation is automatically rendered.</doc-caption>
 
-	<section>
-		<h4 id="projects" class="side-nav-heading">Projects</h4>
+		<p>To add a header to the side-navigation, add a <b>'doc-header'</b> or <b>'doc-sub-header'</b> tag to your document. The side-navigation will be rendered in the order the headers appear in your document. Adding the class, "doc-nav-hide", will prevent the header from displaying in the side nav.</p>
 
-		<ul>
-			<li><a href="/base-js">base-js</a></li>
-			<li><a href="/quickstart">quickstart</a></li>
-		</ul>
+		<doc-notice>Ensure to add an 'id' attr to your headers and subheaders to create an anchor.</doc-notice>
 
-		<h5 id="project-1" class="side-nav-heading secondary">Project 1</h5>
-		<h5 id="project-2" class="side-nav-heading secondary">Project 2</h5>
-		<h5 id="project-3" class="side-nav-heading secondary">Project 3</h5>
-	</section>
+		<doc-warning>Place the headers and subheaders in order. It doesn't make sense to put a subheader before a header or have a subheader without a header.</doc-warning>
+	</doc-section>
 
-	<section>
-		<h4 id="basics" class="side-nav-heading">Basics</h4>
-	</section>
+	<doc-section>
+		<doc-header id="deployment">Deployment</doc-header>
 
-	<section>
-		<h4 id="doc-style-guide" class="side-nav-heading">Doc Style Guide</h4>
-	</section>
-
-	<section>
-		<h4 id="deployment" class="side-nav-heading">Deployment</h4>
-	</section>
+		<p>Just push to git. Application is hosted using Github pages.</p>
+	</doc-section>
 </section>

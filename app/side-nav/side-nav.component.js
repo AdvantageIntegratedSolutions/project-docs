@@ -6,12 +6,15 @@ class SideNavCtrl {
 
     _self.navs = _self.injectNavsOnStateChange();
     $rootScope.$on('$viewContentLoaded', function(event, nextState){ 
+      console.log("HER2")
     	_self.navs = _self.injectNavsOnStateChange();
 		})
   }
 
   injectNavsOnStateChange(){
     var navs = [];
+
+    console.log("HERE")
     
     $(".side-nav-heading").each(function(index, nav){
       nav = { 
@@ -20,9 +23,9 @@ class SideNavCtrl {
         tier: $(nav).hasClass("secondary") ? "secondary-nav": "primary-nav",
       };
 
-      if(index == 0){
-        nav["status"] = "active";
-      };
+      // if(index == 0){
+      //   nav["status"] = "active";
+      // };
       
       navs.push(nav);
     });
@@ -56,6 +59,10 @@ class SideNavCtrl {
   updateActivePrimaryNav(lastNav){
     $("#side-nav-headings li").removeClass("active");
     $("#" + lastNav + "-nav").addClass("active");
+
+    if(!lastNav){
+      lastNav = ""
+    };
 
     if(!this.secondaryClicked){
       document.location.hash = lastNav;
@@ -98,7 +105,7 @@ class SideNavCtrl {
     navs.forEach(function(nav){
       if(nav.tier != "secondary-nav"){
         var navOffset = $("#" + nav.anchor).offset().top - fromTop;
-        if(navOffset < 100){
+        if(navOffset < 0){
           activeNavs.push(nav.anchor);
         };
       }
