@@ -34,10 +34,15 @@ angular
     $urlRouterProvider.otherwise('/project-docs');
   })
   .run($rootScope => {
+    $rootScope.sideNavs = [];
+
+    $rootScope.$on('$stateChangeStart', function(event, nextState){ 
+      $rootScope.sideNavs = [];
+    })
+
     $rootScope.$on('$stateChangeSuccess', (event, nextState) => {
       $rootScope.title = nextState.title;
     });
   })
-  .value("sideNavs", []);
 
 angular.bootstrap(document, ['app']);

@@ -1,5 +1,5 @@
 class DocHeaderCtrl {
-  constructor($element, sideNavs) {
+  constructor($rootScope, $element) {
     var nav = { 
       text: $element.attr("nav-text"), 
       anchor: $element.attr("id"),
@@ -7,7 +7,7 @@ class DocHeaderCtrl {
       status: ""
     }
     
-    sideNavs.push(nav);
+    $rootScope.sideNavs.push(nav);
   }
 }
 

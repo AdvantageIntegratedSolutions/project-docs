@@ -1,13 +1,8 @@
 class SideNavCtrl {
-  constructor($q, $scope, $rootScope, $location, sideNavs) {
+  constructor($q, $scope, $rootScope, $location) {
   	var _self = this;
 
     this.secondaryClicked = false;
-    _self.navs = sideNavs;
-
-    // $rootScope.$on('$viewContentLoaded', function(event, nextState){ 
-    //   _self.navs = _self.injectNavsOnStateChange();
-    // })
   }
 
   onScroll(navs){
