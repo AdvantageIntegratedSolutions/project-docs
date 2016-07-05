@@ -19,6 +19,10 @@
 			font-size: 14px;
 		}
 
+		&.primary-nav{
+			background-color: white;
+		}
+
 		&.secondary-nav{
 			display: none;
 			background-color: $gray-lighter;

@@ -38,5 +38,6 @@ angular
       $rootScope.title = nextState.title;
     });
   })
+  .value("sideNavs", []);
 
 angular.bootstrap(document, ['app']);

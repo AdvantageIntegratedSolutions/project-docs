@@ -5,19 +5,6 @@
 	</header>
 
 	<div id="side-nav-headings">
-		<li 
-			id="{{ nav.anchor }}-nav" 
-			ng-repeat="nav in $ctrl.navs" 
-			ng-class="[nav.status, nav.tier]"
-			ng-click="$ctrl.setSecondaryClicked()">
-			<a href="#{{ nav.anchor | lowercase }}">
-				<i 
-					class="material-icons secondary-icon tiny" 
-					ng-if="nav.tier=='secondary-nav'">
-					remove
-				</i>
-
-				{{ nav.text | uppercase }}
-		</li>
+		<nav ng-repeat="nav in $ctrl.navs" data="nav"></nav>
 	</div>
 </ul>

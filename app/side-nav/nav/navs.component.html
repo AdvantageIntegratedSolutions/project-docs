@@ -1,0 +1,13 @@
+<li 
+	id="{{ $ctrl.data.anchor }}-nav" 
+	ng-class="[$ctrl.data.status, $ctrl.data.tier]"
+	ng-click="$ctrl.data.setSecondaryClicked()">
+	<a href="#{{ $ctrl.data.anchor | lowercase }}">
+		<i 
+			class="material-icons secondary-icon tiny" 
+			ng-if="$ctrl.data.tier=='secondary-nav'">
+			remove
+		</i>
+
+		{{ $ctrl.data.text | uppercase }}
+</li>

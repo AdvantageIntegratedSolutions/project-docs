@@ -1,6 +1,13 @@
 class DocHeaderCtrl {
-  constructor() {
+  constructor($element, sideNavs) {
+    var nav = { 
+      text: $element.attr("nav-text"), 
+      anchor: $element.attr("id"),
+      tier: $element.hasClass("secondary") ? "secondary-nav": "primary-nav",
+      status: ""
+    }
     
+    sideNavs.push(nav);
   }
 }
 

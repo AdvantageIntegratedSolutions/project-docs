@@ -1,38 +1,13 @@
 class SideNavCtrl {
-  constructor($q, $scope, $rootScope, $location) {
+  constructor($q, $scope, $rootScope, $location, sideNavs) {
   	var _self = this;
 
     this.secondaryClicked = false;
+    _self.navs = sideNavs;
 
-    _self.navs = _self.injectNavsOnStateChange();
-    $rootScope.$on('$viewContentLoaded', function(event, nextState){ 
-      console.log("HER2")
-    	_self.navs = _self.injectNavsOnStateChange();
-		})
-  }
-
-  injectNavsOnStateChange(){
-    var navs = [];
-
-    console.log("HERE")
-    
-    $(".side-nav-heading").each(function(index, nav){
-      nav = { 
-        text: $(nav).text(), 
-        anchor: $(nav).attr("id"),
-        tier: $(nav).hasClass("secondary") ? "secondary-nav": "primary-nav",
-      };
-
-      // if(index == 0){
-      //   nav["status"] = "active";
-      // };
-      
-      navs.push(nav);
-    });
-
-    this.onScroll(navs);
-    
-    return navs;
+    // $rootScope.$on('$viewContentLoaded', function(event, nextState){ 
+    //   _self.navs = _self.injectNavsOnStateChange();
+    // })
   }
 
   onScroll(navs){
