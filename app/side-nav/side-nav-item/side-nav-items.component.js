@@ -8,6 +8,6 @@ export default {
   bindings: {
   	data: "="
   },
-  templateUrl: 'side-nav/nav/navs.component.html',
+  templateUrl: 'side-nav/side-nav-item/side-nav-items.component.html',
   controller: NavsCtrl
 }
