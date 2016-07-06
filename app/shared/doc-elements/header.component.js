@@ -1,15 +1,18 @@
 class DocHeaderCtrl {
-  constructor($rootScope, $element) {
+  constructor($rootScope, $element, $transclude) {
     this.$rootScope = $rootScope;
-    var nav = { 
-      text: $element.attr("nav-text"), 
-      anchor: $element.attr("id"),
-      tier: $element.hasClass("secondary") ? "secondary-nav": "primary-nav",
-      status: "",
-      display: $element.hasClass("secondary") ? "hide": "",
-    }
 
-    $rootScope.sideNavs.push(nav);
+    $transclude(function(text){
+      var nav = { 
+        text: $(text).html(), 
+        anchor: $element.attr("id"),
+        tier: $element.hasClass("secondary") ? "secondary-nav": "primary-nav",
+        status: "",
+        display: $element.hasClass("secondary") ? "hide": "",
+      }
+
+      $rootScope.sideNavs.push(nav);
+    });
   }
 }
 
