@@ -21,6 +21,18 @@
 
 		&.primary-nav{
 			background-color: white;
+
+			&.active{
+				background-color: $brand-primary;
+
+				a{
+					color: white;
+				}
+
+				:hover{
+					background-color: $brand-primary;
+				}
+			}
 		}
 
 		&.secondary-nav{
@@ -29,23 +41,12 @@
 			a{
 				font-size: 12px;
 			}
-		}
 
-		&.active{
-			background-color: $brand-primary;
-
-			a{
-				color: white;
+			&.active{
+				a{
+					color: $brand-primary;
+				}
 			}
-
-			:hover{
-				background-color: $brand-primary;
-			}
-		}
-
-		:hover{
-			background-color: $gray-light;
-			color: white;
 		}
 	}
 

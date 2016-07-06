@@ -3,6 +3,11 @@ class SideNavCtrl {
   	var _self = this;
 
     this.navs = $rootScope.sideNavs;
+
+    $rootScope.$watch('sideNavs', function(navs) {
+      _self.findClosestParents(navs);
+    }); 
+
     this.onScroll();
   }
 
@@ -38,26 +43,15 @@ class SideNavCtrl {
         nav.anchor == currentNav.closestParent
       ){
         nav["display"] = "";
-
-        //console.log("ANCHOR: " + nav.anchor + " is shown.")
-
         if(nav.anchor == currentNav.anchor || nav.anchor == currentNav.closestParent){
-
-          //console.log("ANCHOR: " + nav.anchor + " is active.")
-
-          if(nav.tier == "primary-nav"){
-            nav["status"] = "active";
-          }
+          nav["status"] = "active";
         }else{
           nav["status"] = "";
         }
       }else{
         if(nav.tier == "secondary-nav"){
-          //console.log("ANCHOR: " + nav.anchor + " is hidden.")
           nav["display"] = "hide"
         };
-
-        //console.log("ANCHOR: " + nav.anchor + " is not active.")
 
         nav["status"] = "";
       };
@@ -73,15 +67,27 @@ class SideNavCtrl {
     var activeNavs = [];
 
     this.navs.forEach(function(nav){
-      if(nav.tier != "econdary-nav"){
-        var navOffset = $("#" + nav.anchor).offset().top - fromTop;
-        if(navOffset < 20){
-          activeNavs.push(nav);
-        };
-      }
+      var navOffset = $("#" + nav.anchor).offset().top - fromTop;
+      if(navOffset < 20){
+        activeNavs.push(nav);
+      };
     });
 
     return activeNavs;
+  }
+
+  findClosestParents(navs){
+    navs.forEach(function(nav, index){
+      if(nav.tier == "secondary-nav"){
+        var reverseNavs = navs.slice(0, index).reverse();
+      
+        reverseNavs.forEach(function(originalNav){
+          if(originalNav.tier == "primary-nav" && !nav.closestParent){
+            nav.closestParent = originalNav.anchor;
+          };
+        });
+      }
+    });
   }
 }
 
