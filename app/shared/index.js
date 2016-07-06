@@ -5,6 +5,7 @@ import DocCaptionComponent from './doc-elements/caption.component';
 import DocCodeComponent from './doc-elements/code.component';
 import DocNoticeComponent from './doc-elements/notice.component';
 import DocWarningComponent from './doc-elements/warning.component';
+import DocBestPracticeComponent from './doc-elements/best-practice.component';
 import DocCardComponent from './doc-elements/card.component';
 
 angular
@@ -16,4 +17,5 @@ angular
   .component('docCode', DocCodeComponent)
   .component('docNotice', DocNoticeComponent)
   .component('docWarning', DocWarningComponent)
+  .component('docBestPractice', DocBestPracticeComponent)
   .component('docCard', DocCardComponent)

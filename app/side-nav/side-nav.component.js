@@ -68,7 +68,7 @@ class SideNavCtrl {
 
     this.navs.forEach(function(nav){
       var navOffset = $("#" + nav.anchor).offset().top - fromTop;
-      if(navOffset < 20){
+      if(navOffset < 10){
         activeNavs.push(nav);
       };
     });

@@ -11,33 +11,26 @@
 		<p>All documentation is written in common HTML & SASS, no new rules or markdown to learn.</p>
 
 		<p>Functionality includes helper tags, responsive CSS framework, automatic side-navigation and syntax highlighted code examples.</p>
-
-		<doc-header id="tutorial" nav-text="Tutorial" class="secondary">Tutorial</doc-header>
-		<p>project-docs provides a standard UI to improve ease of use and readability, tools to shorten the documentation process and help develop documentation standards.</p>
-
-		<p>All documentation is written in common HTML & SASS, no new rules or markdown to learn.</p>
-
-		<p>Functionality includes helper tags, responsive CSS framework, automatic side-navigation and syntax highlighted code examples.</p>
-
-		<doc-header id="examples" nav-text="examples" class="secondary">Examples</doc-header>
-		<p>project-docs provides a standard UI to improve ease of use and readability, tools to shorten the documentation process and help develop documentation standards.</p>
-
-		<p>All documentation is written in common HTML & SASS, no new rules or markdown to learn.</p>
-
-		<p>Functionality includes helper tags, responsive CSS framework, automatic side-navigation and syntax highlighted code examples.</p>
 	</doc-section>
 
 	<doc-section>
 		<doc-header id="projects" nav-text="Projects">Projects</doc-header>
-
-		<doc-header id="basejs" nav-text="basejs" class="secondary">basejs</doc-header>
-
 		<p>All project documentation is stored within project-docs. Project documentation files are located in the docs folder.</p>
 
 		<doc-sub-header>Documented Projects</doc-sub-header>
 
-		<doc-card>base-js</doc-card>
-		<doc-card>quickstart</doc-card>
+		<table class="table bordered striped">
+			<tbody>
+				<tr>
+					<td><a href="/base-js">base-js</a></td>
+					<td>JavaScript library for the QuickBase API</td>
+				</tr>
+				<tr>
+					<td><a href="/quickstart">quickstart</a></td>
+					<td>Angular template application to jumpstart projects</td>
+				</tr>
+			</tbody>
+		</table>
 	</doc-section>
 
 	<doc-section>
@@ -95,6 +88,10 @@
 					<td>Adding class to headers will add heading as indented header to side-navigation.</td>
 				</tr>
 				<tr>
+					<td>doc-best-practice</td>
+					<td>Adding class to headers will add heading as indented header to side-navigation.</td>
+				</tr>
+				<tr>
 					<td>doc-caption</td>
 					<td>Adding class to headers will add heading as indented header to side-navigation.</td>
 				</tr>
@@ -133,6 +130,8 @@
 		<doc-notice>Ensure to add an 'id' attr to your headers and subheaders to create an anchor.</doc-notice>
 
 		<doc-warning>Place the headers and subheaders in order. It doesn't make sense to put a subheader before a header or have a subheader without a header.</doc-warning>
+
+		<doc-best-practice>Place the headers and subheaders in order. It doesn't make sense to put a subheader before a header or have a subheader without a header.</doc-best-practice>
 	</doc-section>
 
 	<doc-section>
