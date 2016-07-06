@@ -46,8 +46,7 @@ class SideNavCtrl {
         nav.anchor == currentNav.closestParent
       ){
 
-
-        nav["display"] = "";
+        nav["display"] = true;
         if(nav.anchor == currentNav.anchor || nav.anchor == currentNav.closestParent){
           nav["status"] = "active";
         }else{
@@ -55,7 +54,7 @@ class SideNavCtrl {
         }
       }else{
         if(nav.tier == "secondary-nav"){
-          nav["display"] = "hide"
+          nav["display"] = false;
         };
 
         nav["status"] = "";

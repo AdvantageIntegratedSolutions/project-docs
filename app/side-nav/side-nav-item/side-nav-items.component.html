@@ -1,6 +1,6 @@
 <li 
 	id="{{ $ctrl.data.anchor }}-nav" 
-	ng-class="[$ctrl.data.status, $ctrl.data.tier, $ctrl.data.display]">
+	ng-class="[$ctrl.data.status, $ctrl.data.tier]" ng-show="$ctrl.data.display">
 	<a href="#{{ $ctrl.data.anchor | lowercase }}">
 		<i 
 			class="material-icons secondary-icon tiny" 
