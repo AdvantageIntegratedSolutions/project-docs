@@ -5,6 +5,7 @@ class SideNavCtrl {
     this.navs = $rootScope.sideNavs;
 
     $rootScope.$watch('sideNavs', function(navs) {
+      _self.navs = $rootScope.sideNavs;
       _self.findClosestParents(navs);
     }); 
 
@@ -26,14 +27,16 @@ class SideNavCtrl {
 
       if(!currentNav){
         currentNav = _self.navs[0];
-      }
+      };
 
       _self.updateActivePrimaryNav(currentNav);
     });
   }
 
   updateActivePrimaryNav(currentNav){
-    document.location.hash = currentNav.anchor;
+    if((currentNav.offset > -30 && currentNav.offset < -5) || !currentNav.offset){
+      document.location.hash = currentNav.anchor;
+    }
 
     this.navs.forEach(function(nav){
       if(
@@ -42,6 +45,8 @@ class SideNavCtrl {
         nav.tier == "secondary-nav" && nav.closestParent == currentNav.anchor || 
         nav.anchor == currentNav.closestParent
       ){
+
+
         nav["display"] = "";
         if(nav.anchor == currentNav.anchor || nav.anchor == currentNav.closestParent){
           nav["status"] = "active";
@@ -68,7 +73,8 @@ class SideNavCtrl {
 
     this.navs.forEach(function(nav){
       var navOffset = $("#" + nav.anchor).offset().top - fromTop;
-      if(navOffset < 10){
+      if(navOffset <= 2){
+        nav["offset"] =  navOffset;
         activeNavs.push(nav);
       };
     });
