@@ -1,9 +1,8 @@
-<ul id="slide-out" class="side-nav fixed">
-	<div class="header z-depth-2">
-		<h5 class="title">{{ $root.title }}</h5>
-		<img ng-src="https://s3.amazonaws.com/advantage_assets/logo.png">
-	</div>
+<div id="side-nav-header" class="grey darken-3 white-text">
+	<h5 class="title">{{ $root.title }}</h5>
+</div>
 
+<ul id="slide-out" class="side-nav fixed">
 	<div id="side-nav-headings">
 		<side-nav-item ng-repeat="nav in $root.sideNavs" data="nav"></side-nav-item>
 	</div>

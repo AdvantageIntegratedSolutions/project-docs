@@ -1,6 +1,28 @@
 @import '../styles/variables';
 
+#side-nav-header{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	text-align: left;
+	height: 64px;
+	width: 240px;
+
+	h5{
+		font-weight: 300;
+	}
+
+	.title{
+		padding-top: 17px;
+		padding-left: 15px;
+		// padding: 20px 0px 20px 20px;
+		margin: 0px;
+	}
+}
+
 .side-nav{
+	top: 64px;
+	overflow: scroll;
 	.primary-icon{
 		float: right;
 		margin-top: 20px;
@@ -22,6 +44,10 @@
 		&.primary-nav{
 			background-color: white;
 
+			a{
+				padding-left: 15px;
+			}
+
 			&.active{
 				background-color: $brand-primary;
 
@@ -39,8 +65,9 @@
 			background-color: $gray-lighter;
 
 			a{
-				font-size: 12px;
+				font-size: 11px;
 				font-weight: bold;
+				padding-left: 15px;
 			}
 
 			&.active{
@@ -48,25 +75,6 @@
 					color: $brand-primary;
 				}
 			}
-		}
-	}
-
-	.header{
-		text-align: center;
-		height: 180px;
-
-		h5{
-			font-weight: 300;
-		}
-
-		.title{
-			padding: 20px;
-			margin: 0px;
-		}
-
-		img{
-			height: 80px;
-			width: auto;
 		}
 	}
 }
