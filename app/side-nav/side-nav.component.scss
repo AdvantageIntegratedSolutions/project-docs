@@ -15,14 +15,18 @@
 	.title{
 		padding-top: 17px;
 		padding-left: 15px;
-		// padding: 20px 0px 20px 20px;
 		margin: 0px;
 	}
 }
 
+#slide-out {
+	padding-bottom: 174px;
+	background-color: $gray-lightest;
+}
+
 .side-nav{
-	top: 64px;
-	overflow: scroll;
+	top: 64px; //height of navbar
+
 	.primary-icon{
 		float: right;
 		margin-top: 20px;
@@ -77,9 +81,4 @@
 			}
 		}
 	}
-}
-
-@keyframes fadeOut {
-  from { opacity: 1; }
-  to   { opacity: 0; }
 }
