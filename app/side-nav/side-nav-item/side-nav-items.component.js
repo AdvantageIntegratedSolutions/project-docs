@@ -5,9 +5,7 @@ class NavsCtrl {
 }
 
 export default {
-  bindings: {
-  	data: "="
-  },
+  bindings: { data: "=" },
   templateUrl: 'side-nav/side-nav-item/side-nav-items.component.html',
   controller: NavsCtrl
 }
