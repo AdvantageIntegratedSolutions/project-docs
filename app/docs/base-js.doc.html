@@ -103,7 +103,7 @@
 
 		<a href="https://www.quickbase.com/api-guide/index.html#do_query.html" target="_blank">API_DoQuery</a>
 
-		<table>
+		<table class="table striped bordered">
 			<thead>
 				<th>Parameter</th>
 				<th>Value</th>
@@ -145,21 +145,56 @@
 		<doc-notice>By default a simple { field : value } will be treated as an equals operator("EX").</doc-notice>
 
 		<p>Common comparison operators include:</p>
-		<ul>
-			<li>EX - is equal to value</li>
-			<li>XEX - is not equal to value</li>
-			<li>CT - contains value</li>
-			<li>XCT - does not contain value</li>
-			<li>OBF - on or before value</li>
-			<li>OAF - on or after value</li>
-			<li>LT - less than value</li>
-			<li>GT - greater than value</li>
-		</ul>
 
-		<b>Examples:</b><br>
-		<code>
-			{ firstName: "Kit Hensel"}
-		</code>
+		<table class="table striped bordered">
+			<thead>
+				<th>Operator</th>
+				<th>Detail</th>
+				<th>Example</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td>EX</td>
+					<td>is equal to value</td>
+					<td>{ name: "Walter White" }</td>
+				</tr>
+				<tr>
+					<td>XEX</td>
+					<td>is not equal to value</td>
+					<td>{ name: { XEX: "Walter White" } }</td>
+				</tr>
+				<tr>
+					<td>CT</td>
+					<td>contains value</td>
+					<td>{ name: { CT: "White" } }</td>
+				</tr>
+				<tr>
+					<td>XCT</td>
+					<td>does not contain value</td>
+					<td>{ name: { XCT: "White" } }</td>
+				</tr>
+				<tr>
+					<td>OBF</td>
+					<td>on or before value</td>
+					<td>{ birthday: { OBF: "01-01-1990" } }</td>
+				</tr>
+				<tr>
+					<td>OAF</td>
+					<td>on or after value</td>
+					<td>{ birthday: { OAF: "01-01-1990" } }</td>
+				</tr>
+				<tr>
+					<td>LT</td>
+					<td>less than value</td>
+					<td>{ dollars_in_bank: { LT: 10000 } }</td>
+				</tr>
+				<tr>
+					<td>GT</td>
+					<td>greater than value</td>
+					<td>{ dollars_in_bank: { GT: 10000 } }</td>
+				</tr>
+			</tbody>
+		</table>
 
 		<doc-header id="do-query-count" class="secondary">doQueryCount</doc-header>
 		<doc-header id="find" class="secondary">Find</doc-header>
@@ -174,7 +209,7 @@
 
 		<doc-notice>BaseHelpers is bundled and automatically loaded with base-js. There is no additional requiring to access these functions.</doc-notice>
 
-		<table>
+		<table class="table striped bordered">
 			<thead>
 
 			</thead>

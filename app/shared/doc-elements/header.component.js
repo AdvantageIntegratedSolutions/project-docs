@@ -1,6 +1,8 @@
 class DocHeaderCtrl {
   constructor($rootScope, $element, $transclude) {
-    this.$rootScope = $rootScope;
+
+    var _self = this;
+    _self.$rootScope = $rootScope;
 
     $transclude(function(text){
       var nav = { 
@@ -11,6 +13,7 @@ class DocHeaderCtrl {
         display: !$element.hasClass("secondary")
       }
 
+      _self.nav = nav;
       $rootScope.sideNavs.push(nav);
     });
   }

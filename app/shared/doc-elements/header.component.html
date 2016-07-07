@@ -1,3 +1,2 @@
-<h3 class="doc-header">
-	<ng-transclude></ng-transclude>
-</h3>
+<h3 class="doc-header" ng-if="$ctrl.nav.tier=='primary-nav'" ng-transclude></h3>
+<h4 class="doc-header" ng-if="$ctrl.nav.tier=='secondary-nav'" ng-transclude></h4>
