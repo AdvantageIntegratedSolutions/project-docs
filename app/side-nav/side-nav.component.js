@@ -2,14 +2,14 @@ class SideNavCtrl {
   constructor($q, $scope, $rootScope) {
   	var _self = this;
 
-    this.navs = $rootScope.sideNavs;
+    _self.navs = $rootScope.sideNavs;
 
     $rootScope.$watch('sideNavs', function(navs) {
       _self.navs = $rootScope.sideNavs;
       _self.findClosestParents(navs);
-    }); 
+    });
 
-    this.onScroll();
+    _self.onScroll();
   }
 
   onScroll(){
@@ -17,9 +17,16 @@ class SideNavCtrl {
 
     var _self = this;
 
+
     $(window).scroll(function(){
       var activeNavs = _self.getActiveNavs();
-      var currentNav = activeNavs[activeNavs.length - 1];
+
+      if(activeNavs.length == 0){
+        var currentNav = _self.navs[0];
+        currentNav.offset = 0;
+      }else{
+        var currentNav = activeNavs[activeNavs.length - 1];
+      };
 
       if(_self.atBottom()){
         currentNav = _self.navs[_self.navs.length - 1];
@@ -34,8 +41,11 @@ class SideNavCtrl {
   }
 
   updateActivePrimaryNav(currentNav){
-    if((currentNav.offset > -30 && currentNav.offset < -5) || !currentNav.offset){
+    if((currentNav.offset > -50 && currentNav.offset < 0) || !currentNav.offset){
+      var element = $("#" + currentNav.anchor);
+      $(element).attr("id", "");
       document.location.hash = currentNav.anchor;
+      $(element).attr("id", currentNav.anchor);
     }
 
     this.navs.forEach(function(nav){
@@ -66,15 +76,28 @@ class SideNavCtrl {
     return $(window).scrollTop() == ($(document).height() - $(window).height());
   }
 
-  getActiveNavs(navs, fromTop){
+  atTop(){
+    return $(window).scrollTop() == 0;
+  }
+
+  getActiveNavs(){
     var fromTop = $(window).scrollTop();
     var activeNavs = [];
 
-    this.navs.forEach(function(nav){
-      var navOffset = $("#" + nav.anchor).offset().top - fromTop;
-      if(navOffset <= 2){
-        nav["offset"] =  navOffset;
-        activeNavs.push(nav);
+    this.navs.forEach(function(nav, index){
+
+      var top = fromTop;
+
+      if(index == 0){
+        //top = top - 84;
+      };
+
+      if(nav.anchor){
+        var navOffset = $("#" + nav.anchor).offset().top - top;
+        if(navOffset <= 2){
+          nav["offset"] =  navOffset;
+          activeNavs.push(nav);
+        };
       };
     });
 
