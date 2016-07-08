@@ -5,6 +5,8 @@ import DocNoticeComponent from './doc-elements/notice.component';
 import DocWarningComponent from './doc-elements/warning.component';
 import DocBestPracticeComponent from './doc-elements/best-practice.component';
 
+import "./vendor/prism"
+
 angular
   .module('app.shared', [])
   .component('docSection', DocSectionComponent)

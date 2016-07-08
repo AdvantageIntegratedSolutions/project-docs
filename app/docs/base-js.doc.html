@@ -1,554 +1,649 @@
 <section>
-	<doc-section>
-		<doc-header id="introduction">Introduction</doc-header>
-		<doc-caption>
-			<p><b>base-js</b> is a JavaScript library built for the QuickBase API.
-			</p>
-		</doc-caption>
-
-		<p>base-js includes functions for all common QuickBase API calls.</p>
-	</doc-section>
-
-	<doc-section>
-		<doc-header id="quickstart">Quickstart</doc-header>
-		<p>Utilizing base-js first requires a useable QuickBase application. Once you have an application, you will need to collect the database and table settings. base-js bootstraps these configurations to create a more-powerful, more object-oriented design.</p>
-
-		<p>Please the exact configuration needed please see below @ <a href="#settings">Settings</a></p>
-
-		<pre>
-			<hljs>
-				var config = {
-				  token: "cgfsmfcdc5vyp5k5s7h6b6v3m9v",
-				  async: false,
-				  databaseId: "bjbsgxy2r",
-				  tables: {
-				    teachers: {
-				      dbid: "bjbsgxy3t",
-				      rid: 3,
-				      recordOwner: 5,
-				      firstName: 8,
-				      lastName: 9
-				    }
-				  }
-				};
-
-				var db = new Base(config);
-			</hljs>
-		</pre>
-	</doc-section>
-
-	<doc-section>
-		<doc-header id="settings">Settings</doc-header>
-		<p>project-docs provides a standard UI to improve ease of use and readability, tools to shorten the documentation process and help develop documentation standards.</p>
-
-		<table class="table striped bordered">
-			<thead>
-				<th>Parameter</th>
-				<th>Value</th>
-				<th>Required</th>
-			</thead>
-
-			<tbody>
-				<tr>
-					<td>token</td>
-					<td>Application token string.</td>
-					<td>yes, if the application requires application tokens.</td>
-				</tr>
-				<tr>
-					<td>async</td>
-					<td>'callback' | 'promise' | 'false'</td>
-					<td>yes</td>
-				</tr>
-
-				<tr>
-					<td>database id</td>
-					<td>QuickBase database ID</td>
-					<td>yes</td>
-				</tr>
-
-				<tr>
-					<td>tables</td>
-					<td>Object of table ids and field ids</td>
-					<td>yes</td>
-				</tr>
-			</tbody>
-		</table>
-
-		<doc-header id="tables" class="secondary">Tables</doc-header>
-
-		<p>The tables parameter is important and powerful. This parameter is an object of all the tables, their names, dbids and field id's that will be used in your application. By supplying these settings, you do not need to worry about dbid's or field id's just the names you assign them. Even the return JSON will use the names you provide.</p>
-
-		<doc-header id="async-options" class="secondary">Async Options</doc-header>
-
-		<doc-best-practice>Using promises should be your #1 option. Callbacks #2. Synchronous is #3 but discourged and will most likely be deprecated in future versions.</doc-best-practice>
-	</doc-section>
-
-	<doc-section>
-		<doc-header id="common-functions">Common Functions</doc-header>
-		<p>The majority of API calls in the QuickBase API are covered by base-js but some API calls are much more utilized than others. Below are the list of the most common functions:</p>
-
-		<doc-header id="do-query" class="secondary">doQuery</doc-header>
-		<doc-caption>doQuery is used to retrieve records from a table.</doc-caption>
-
-		<a href="https://www.quickbase.com/api-guide/index.html#do_query.html" target="_blank">API_DoQuery</a>
-
-		<h5>Request</h5>
-
-		<table class="table striped bordered">
-			<thead>
-				<th>Parameter</th>
-				<th>Type</th>
-				<th>Value</th>
-				<th>Required</th>
-				<th>Example</th>
-			</thead>
-
-			<tbody>
-				<tr>
-					<td>query</td>
-					<td>object | array</td>
-					<td>Valid query filter</td>
-					<td>yes</td>
-					<td>{ name: { 'Walter White' } }</td>
-				</tr>
-				<tr>
-					<td>options</td>
-					<td>object</td>
-					<td><a href="http://www.quickbase.com/api-guide/index.html#do_query.html#Request_Parameters" target="_blank">API</a></td>
-					<td>yes, if no options use {}</td>
-					<td>{ clist: ["3", "6"], slist: "6" }</td>
-				</tr>
-			</tbody>
-		</table>
-
-		<h5>Response</h5>
-		<table class="table bordered striped">
-			<thead>
-				<th>Response</th>
-				<th>Type</th>
-				<th>Value</th>
-				<th>Example</th>
-			</thead>
-			<tbody>
-				<tr>
-					<td>records matched</td>
-					<td>array of objects</td>
-					<td>object's contains all table fields(key) and record values(value) set in configuration or clist</td>
-					<td>
-						<pre>
-							<hljs>
-								[
-									{ rid: "3", firstName: "Walter", lastName: "White" }, 
-									{ rid: "3", firstName: "Jesse", lastName: "Pinkman"}
-								]
-							</hljs>
-						</pre>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-
-		<h5>Example</h5>
-		<pre>
-			<hljs>
-				db.characters.doQuery({ firstName: "Walter" }, { slist: "6" }).then(function(characters){
-					console.log(characters);
-
-					//
-					[
-						{ rid: "3", firstName: "Walter", lastName: "White" }, 
-						{ rid: "3", firstName: "Jesse", lastName: "Pinkman"}
-					]	
-				});
-			</hljs>
-		</pre>
-
-		<doc-header id="add-record" class="secondary">addRecord</doc-header>
-		<doc-caption>addRecord is used to add a single record to a table.</doc-caption>
-		<a href="https://www.quickbase.com/api-guide/index.html#add_record.html" target="_blank">API_AddRecord</a>
-
-		<h5>Request</h5>
-
-		<table class="table striped bordered">
-			<thead>
-				<th>Parameter</th>
-				<th>Type</th>
-				<th>Value</th>
-				<th>Required</th>
-				<th>Example</th>
-			</thead>
-
-			<tbody>
-				<tr>
-					<td>record</td>
-					<td>object</td>
-					<td>object of field-values</td>
-					<td>yes</td>
-					<td>{ firstName: 'Walter', lastName: 'White' }</td>
-				</tr>
-			</tbody>
-		</table>
-
-		<h5>Response</h5>
-		<table class="table bordered striped">
-			<thead>
-				<th>Response</th>
-				<th>Type</th>
-				<th>Value</th>
-				<th>Example</th>
-			</thead>
-			<tbody>
-				<tr>
-					<td>record id</td>
-					<td>int</td>
-					<td>auto-generated record id</td>
-					<td>
-						10001
-					</td>
-				</tr>
-			</tbody>
-		</table>
-
-		<h5>Example</h5>
-		<pre>
-			<hljs>
-				db.characters.addRecord({ firstName: "Walter", lastName: 'White' }).then(function(newCharacterId){
-					//10001
-				});
-			</hljs>
-		</pre>
-
-		<doc-header id="delete-record" class="secondary">deleteRecord</doc-header>
-		<doc-caption>deleteRecord is used to delete a single record from a table.</doc-caption>
-
-		<a href="https://www.quickbase.com/api-guide/index.html#delete_record.html" target="_blank">API_DeleteRecord</a>
-
-		<h5>Request</h5>
-
-		<table class="table striped bordered">
-			<thead>
-				<th>Parameter</th>
-				<th>Type</th>
-				<th>Value</th>
-				<th>Required</th>
-				<th>Example</th>
-			</thead>
-
-			<tbody>
-				<tr>
-					<td>record id</td>
-					<td>string | int</td>
-					<td>Existing record id</td>
-					<td>yes</td>
-					<td>10001</td>
-				</tr>
-			</tbody>
-		</table>
-
-		<h5>Response</h5>
-		<table class="table bordered striped">
-			<thead>
-				<th>Response</th>
-				<th>Type</th>
-				<th>Value</th>
-				<th>Example</th>
-			</thead>
-			<tbody>
-				<tr>
-					<td>success or failure</td>
-					<td>boolean</td>
-					<td>true if record was successfully deleted, false if the record was not deleted.</td>
-					<td>10001</td>
-				</tr>
-			</tbody>
-		</table>
-
-		<h5>Example</h5>
-		<pre>
-			<hljs>
-				db.characters.deleteRecord(10001).then(function(success){
-					//true
-				});
-			</hljs>
-		</pre>
-
-		<doc-header id="import-from-csv" class="secondary">importFromCSV</doc-header>
-		<doc-caption>importFromCSV is used to add a collection of records to a table.</doc-caption>
-
-		<a href="https://www.quickbase.com/api-guide/index.html#import-from-csv.html" target="_blank">API_ImportFromCSV</a>
-
-		<h5>Request</h5>
-
-		<table class="table striped bordered">
-			<thead>
-				<th>Parameter</th>
-				<th>Type</th>
-				<th>Value</th>
-				<th>Required</th>
-				<th>Example</th>
-			</thead>
-
-			<tbody>
-				<tr>
-					<td>array of records</td>
-					<td>array</td>
-					<td>objects of field-values</td>
-					<td>yes</td>
-					<td>[{ firstName: 'Walter', lastName: 'White' }, { firstName: 'Jesse', lastName: 'Pinkman'}]</td>
-				</tr>
-			</tbody>
-		</table>
-
-		<h5>Response</h5>
-		<table class="table bordered striped">
-			<thead>
-				<th>Response</th>
-				<th>Type</th>
-				<th>Value</th>
-				<th>Example</th>
-			</thead>
-			<tbody>
-				<tr>
-					<td>array of new records id's</td>
-					<td>array</td>
-					<td>record id's</td>
-					<td>
-						[10001, 10002, 10003, 10004]
-					</td>
-				</tr>
-			</tbody>
-		</table>
-
-		<h5>Example</h5>
-		<pre>
-			<hljs>
-				let characters = [{ firstName: 'Walter', lastName: 'White' }, { firstName: 'Jesse', lastName: 'Pinkman'}];
-
-				db.characters.importFromCSV(characters).then(function(characters){
-					//[10001, 10002]
-				});
-			</hljs>
-		</pre>
-
-		<doc-best-practice>If adding a collection of records, use importFromCSV instead of addRecord. importFromCSV is way, way, faster.</doc-best-practice>
-	</doc-section>
-
-	<doc-section>
-		<doc-header id="querying">Querying</doc-header>
-		<p>Query filters specify the conditions that determine which records to select for read, update, and delete operations.</p>
-
-		<p>A query filter is an object that includes field-value conditions and its corresponding query comparison operator.</p>
-
-		<p>{ field: value } or { field : { XEX: value } }</p>
-
-		<doc-header id="query-comparison-operators" class="secondary">Query Comparison Operators</doc-header>
-		
-		<p>All QuickBase API query comparison operators are allowed. A full list can be found <a href="https://www.quickbase.com/api-guide/index.html#do_query.html#queryOperators" target="_blank">here.</a>
-		</p>
-
-		<doc-notice>By default a simple { field : value } will be treated as an equals operator("EX").</doc-notice>
-
-		<p>Common comparison operators include:</p>
-
-		<table class="table striped bordered">
-			<thead>
-				<th>Operator</th>
-				<th>Detail</th>
-				<th>Example</th>
-			</thead>
-			<tbody>
-				<tr>
-					<td>EX</td>
-					<td>is equal to value</td>
-					<td>{ name: "Walter White" }</td>
-				</tr>
-				<tr>
-					<td>XEX</td>
-					<td>is not equal to value</td>
-					<td>{ name: { XEX: "Walter White" } }</td>
-				</tr>
-				<tr>
-					<td>CT</td>
-					<td>contains value</td>
-					<td>{ name: { CT: "White" } }</td>
-				</tr>
-				<tr>
-					<td>XCT</td>
-					<td>does not contain value</td>
-					<td>{ name: { XCT: "White" } }</td>
-				</tr>
-				<tr>
-					<td>OBF</td>
-					<td>on or before value</td>
-					<td>{ birthday: { OBF: "01-01-1990" } }</td>
-				</tr>
-				<tr>
-					<td>OAF</td>
-					<td>on or after value</td>
-					<td>{ birthday: { OAF: "01-01-1990" } }</td>
-				</tr>
-				<tr>
-					<td>LT</td>
-					<td>less than value</td>
-					<td>{ dollars_in_bank: { LT: 10000 } }</td>
-				</tr>
-				<tr>
-					<td>GT</td>
-					<td>greater than value</td>
-					<td>{ dollars_in_bank: { GT: 10000 } }</td>
-				</tr>
-			</tbody>
-		</table>
-
-		<doc-header id="query-helpers" class="secondary">Finder Methods</doc-header>
-		<doc-caption>Finder methods are used the same way as doQuery except they have a specialized purpose</doc-caption>
-
-		<table>
-			<thead>
-				<th>Function</th>
-				<th>Purpose</th>
-				<th>Parameters</th>
-				<th>Response</th>
-			</thead>
-
-			<tbody>
-				<tr>
-					<td>doQueryCount</td>
-					<td>Find the number of records matching query filter</td>
-					<td>query</td>
-					<td>number of records(int)</td>
-				</tr>
-				<tr>
-					<td>find</td>
-					<td>retrieve a single record</td>
-					<td>record id</td>
-					<td>single record(object)</td>
-				</tr>
-				<tr>
-					<td>first</td>
-					<td>retrieve the first match</td>
-					<td>query, options</td>
-					<td>single record(object)</td>
-				</tr>
-				<tr>
-					<td>last</td>
-					<td>retrieve the last match</td>
-					<td>query, options</td>
-					<td>single record(object)</td>
-				</tr>
-				<tr>
-					<td>all</td>
-					<td>retrieve all records in table</td>
-					<td>options</td>
-					<td>records(array of objects)</td>
-				</tr>
-			</tbody>
-		</table>
-	</doc-section>
-
-	<doc-section>
-		<doc-header id="base-helpers">BaseHelpers</doc-header>
-		<p>BaseHelpers is an additional light-weight object with commonly used functions that is bundled with base-js. It is automatically included when base-js is loaded.</p>
-
-		<table class="table striped bordered">
-			<thead>
-
-			</thead>
-
-			<tbody>
-				<tr>
-					<td>setCookie</td>
-				</tr>
-				<tr>
-					<td>getCookie</td>
-				</tr>
-				<tr>
-					<td>inverseTables</td>
-				</tr>
-				<tr>
-					<td>getUrlParam</td>
-				</tr>
-				<tr>
-					<td>formatDateElement</td>
-				</tr>
-				<tr>
-					<td>dateToString</td>
-				</tr>
-				<tr>
-					<td>dateTimeToString</td>
-				</tr>
-				<tr>
-					<td>durationToString</td>
-				</tr>
-				<tr>
-					<td>timeOfDayToString</td>
-				</tr>
-				<tr>
-					<td>redirectToEditForm</td>
-				</tr>
-				<tr>
-					<td>redirectToViewForm</td>
-				</tr>
-				<tr>
-					<td>downloadFile</td>
-				</tr>
-			</tbody>
-		</table>
-
-		<doc-notice>BaseHelpers is bundled and automatically loaded with base-js. There is no additional requiring to access these functions.</doc-notice>
-	</doc-section>
-
-	<doc-section>
-		<doc-header id="deployment" nav-text="Deployment">Deployment</doc-header>
-
-		<p>base-js is hosted on Amazon S3. When deploying a new version, a new Amazon S3 folder and file will be generated and a new CDN url will be automatically generated.</p>
-
-		<p>To deploy a new version, run "gulp deploy". The './src/base.js' version will be compiled and stored in "./dist/x.y.z/base.min.js" and automatically uploaded to Amazon S3.
-		</p>
-
-		<doc-best-practice>Always deploy a new version no matter how small the patch.</doc-best-practice>
-		<doc-warning>Deploying changes to an existing version will overwrite the existing Amazon S3 file.</doc-warning>
-	</doc-section>
-
-	<doc-section>
-		<doc-header id="change-log">Change Log</doc-header>
-		<p>base-js uses semantic-versioning in the format of x.y.z(Major.Minor.Patch)</p>
-
-		<ul>
-			<li>x stands for a major version</li>
-			<li>y stands for a minor version</li>
-			<li>z stands for a patch</li>
-		</ul>
-
-		<p>Versions:</p>
-
-		<table class="table bordered striped">
-			<thead>
-				<th>Version</th>
-				<th>Description</th>
-				<th>Deployment Date</th>
-			</thead>
-			<tr>
-				<td>4.9.0</td>
-				<td>QuickBase API call error management.</td>
-				<td>07/01/2016</td>
-			</tr>
-			<tr>
-				<td>4.8.2</td>
-				<td>Local development proxy url updated.</td>
-				<td>06/01/2016</td>
-			</tr>
-			<tr>
-				<td>4.8.1</td>
-				<td>Return json errors.</td>
-				<td>05/01/2016</td>
-			</tr>
-			<tr>
-				<td>4.8.0</td>
-				<td>Added QuickStart portal functionality.</td>
-				<td>04/01/2016</td>
-			</tr>
-		</table>
-
-	</doc-section>
+  <doc-section>
+    <doc-header id="introduction">Introduction</doc-header>
+    <doc-caption>
+      <p><b>base-js</b> is a JavaScript library built for the QuickBase API.
+      </p>
+    </doc-caption>
+
+    <p>base-js includes functions for all common QuickBase API calls.</p>
+  </doc-section>
+
+  <doc-section>
+    <doc-header id="quickstart">Quickstart</doc-header>
+    <p>Utilizing base-js first requires a useable QuickBase application. Once you have an application, you will need to collect the database and table settings. base-js bootstraps these configurations to create a more-powerful, more object-oriented design.</p>
+
+    <p>Please the exact configuration needed please see below @ <a href="#settings">Settings</a></p>
+
+    <pre>
+      <code class="language-javascript">
+        const config = {
+          token: "cgfsmfcdc5vyp5k5s7h6b6v3m9v", //apptoken
+          async: "promise",
+          databaseId: "bjbsgxy2r", //main application dbid
+          tables: {
+            toys: {
+              dbid: "bjbsgxy3t", //table id
+              rid: 3, //field id
+              name: 6,
+              type: 8,
+              description: 9,
+              voicedBy: 10,
+              primary: 11
+            }
+          }
+        };
+
+        const db = new Base(config);
+
+        //retrieve all primary toy records
+        db.toys.doQuery({ primary: "1" }, { slist: [6,9] }).then(function(toys){
+          /*
+            toys => [
+              { name: "Buzz Lightyear", description: "Space-ranger action figure who wears a space suit." },
+              { name: "Woody", description: "Cowbody doll, Andy's favorite." },
+              { name: "Jesse", description: "Cowgirl doll and part of the Woody's Round Up gang." }
+            ]
+          */
+        });
+
+        //add new toy record
+        let toy = { 
+          name: "Hamm", 
+          description: "Wisecracking realist piggy bank.", 
+          voicedBy: "John Ratzenberger" 
+        };
+
+        db.toys.addRecord(toy).then(function(newRecordId){
+          //newRecordId => 10001
+        });
+
+        //delete toy record
+        db.toys.delete(10001).then(function(deleted){
+          //deleted => true
+        });        
+
+        //import collection of toys
+        let toys = [
+          { name: "Rex", description: "Excitable large, green, plastic Tyrannosaurus rex.", voicedBy: "Wallace Shawn" },
+          { name: "Slinky Dog", description: "Dachshund w/ slinky for body, speaks with a southern accent.", voicedBy: "Jim Varney" },
+          { name: "Mr. Potato Head", description: "Doll based on the real-life toy by Playskool.", voicedBy: "Don Rickles." },
+          { name: "Bullseye", description: "Woody's horse that acts like a dog.", voicedBy: "" },
+          { name: "Bo Peep", description: "Porcelain figurine attached to Molly's bedside lamp.", voicedBy: "Annie Potts" },
+        ];
+
+        db.toys.importFromCSV(toys).then(function(newRecordIds){
+          //newRecordIds => [10001, 10002, 10003, 10004, 10005]
+        });        
+      </code>
+    </pre>
+  </doc-section>
+
+  <doc-section>
+    <doc-header id="settings">Settings</doc-header>
+    <doc-caption>Initialize your client using these settings.</doc-caption>
+    <p>When initializing a client, base-js takes an object of predefined settings to help enhance its capabilities. Below are the properties available:</p>
+
+    <table class="table striped bordered">
+      <thead>
+        <th>Parameter</th>
+        <th>Value</th>
+        <th>Required</th>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>async</td>
+          <td>'callback' | 'promise' | 'false'</td>
+          <td>yes</td>
+        </tr>
+        <tr>
+          <td>token</td>
+          <td>Application token string.</td>
+          <td>yes, if the application requires application tokens.</td>
+        </tr>
+        <tr>
+          <td>database id</td>
+          <td>QuickBase database ID</td>
+          <td>yes</td>
+        </tr>
+        <tr>
+          <td>tables</td>
+          <td>Object of table ids and field ids</td>
+          <td>yes</td>
+        </tr>
+        <tr>
+          <td>ticket</td>
+          <td>Valid authentication ticket.</td>
+          <td>no</td>
+        </tr>
+        <tr>
+          <td>username</td>
+          <td>Valid quickbase username.</td>
+          <td>no</td>
+        </tr>
+        <tr>
+          <td>password</td>
+          <td>Valid quickbase password.</td>
+          <td>no</td>
+        </tr>
+        <tr>
+          <td>ticket</td>
+          <td>Valid authentication ticket.</td>
+          <td>no</td>
+        </tr>
+        <tr>
+          <td>realm</td>
+          <td>Quickbase realm.</td>
+          <td>no</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <doc-header id="tables" class="secondary">Tables</doc-header>
+    <doc-caption>Control your tables with predefined table names, field names and id's.</doc-caption>
+
+    <p>The tables parameter is an important setting required by base-js. This parameter is an object of all the tables that will be used in your application. This includes the table name, table id's, field name and field id's.</p>
+
+    <pre>
+      <code class="language-javascript">
+        const tables = {
+          toys: {
+            dbid: "bjbsgxy3t",
+            rid: 3,
+            name: 6,
+            type: 8,
+            description: 9,
+            voicedBy: 10,
+            primary: 11
+          },
+
+          locations: {
+            dbid: "bjbsgxy83",
+            rid: 3,
+            name: 6,
+            address: 7
+          }
+        };
+      </code>
+    </pre>
+
+    <doc-notice>Table names and field names can be named whatever you like. No need to match anything in QuickBase. These names will be used throughout the life of your project including request and response data.</doc-notice>
+
+    <doc-header id="async-options" class="secondary">Async Options</doc-header>
+
+    <doc-caption>Promises, callbacks or synchronous http requests</doc-caption>
+
+    <p>When you execute something synchronously, you wait for it to finish before moving on to another task. When you execute something asynchronously, you can move on to another task before it finishes. Below are the different values available for the async setting parameter:</p>
+
+    <p>The 'promise' and 'callback' setting tell the library to make all http requests asynchronously. 'false' will execute all API requests synchronously.</p>
+
+    <table class="table bordered striped">
+      <thead>
+        <th>Value</th>
+        <th>Description</th>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>promise</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>callback</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>false</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <doc-best-practice>
+      Using promises should be your #1 option. Callbacks #2. Synchronous is #3 but discourged and will most likely be deprecated in future versions.
+    </doc-best-practice>
+  </doc-section>
+
+  <doc-section>
+    <doc-header id="common-functions">Common Functions</doc-header>
+    <p>The majority of API calls in the QuickBase API are covered by base-js but some API calls are much more utilized than others. Below are the list of the most common functions:</p>
+
+    <doc-header id="do-query" class="secondary">doQuery</doc-header>
+    <doc-caption>Used to retrieve records from a table.</doc-caption>
+
+    <a href="https://www.quickbase.com/api-guide/index.html#do_query.html" target="_blank">API_DoQuery</a>
+
+    <h5>Request</h5>
+
+    <table class="table striped bordered">
+      <thead>
+        <th>Parameter</th>
+        <th>Type</th>
+        <th>Value</th>
+        <th>Required</th>
+        <th>Example</th>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>query</td>
+          <td>object | array</td>
+          <td>Valid query filter</td>
+          <td>yes</td>
+        </tr>
+        <tr>
+          <td>options</td>
+          <td>object</td>
+          <td><a href="http://www.quickbase.com/api-guide/index.html#do_query.html#Request_Parameters" target="_blank">API</a></td>
+          <td>yes, if no options use {}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h5>Response</h5>
+    <table class="table bordered striped">
+      <thead>
+        <th>Response</th>
+        <th>Type</th>
+        <th>Value</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>records matched</td>
+          <td>array of objects</td>
+          <td>object's contains all table fields(key) and record values(value) set in configuration or clist</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h5>Example</h5>
+    <pre>
+      <code class="language-javascript">
+        db.characters.doQuery({ firstName: "Walter" }, { slist: "6" }).then(function(characters){
+          console.log(characters);
+
+          //
+          [
+            { rid: "3", firstName: "Walter", lastName: "White" }, 
+            { rid: "3", firstName: "Jesse", lastName: "Pinkman"}
+          ]  
+        });
+      </code>
+    </pre>
+
+    <doc-header id="add-record" class="secondary">addRecord</doc-header>
+    <doc-caption>Used to add a single record to a table.</doc-caption>
+    <a href="https://www.quickbase.com/api-guide/index.html#add_record.html" target="_blank">API_AddRecord</a>
+
+    <h5>Request</h5>
+
+    <table class="table striped bordered">
+      <thead>
+        <th>Parameter</th>
+        <th>Type</th>
+        <th>Value</th>
+        <th>Required</th>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>record</td>
+          <td>object</td>
+          <td>object of field-values</td>
+          <td>yes</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h5>Response</h5>
+    <table class="table bordered striped">
+      <thead>
+        <th>Response</th>
+        <th>Type</th>
+        <th>Value</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>record id</td>
+          <td>int</td>
+          <td>auto-generated record id</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h5>Example</h5>
+    <pre>
+      <code class="language-javascript">
+        db.characters.addRecord({ firstName: "Walter", lastName: 'White' }).then(function(newCharacterId){
+          //10001
+        });
+      </code>
+    </pre>
+
+    <doc-header id="delete-record" class="secondary">deleteRecord</doc-header>
+    <doc-caption>Used to delete a single record from a table.</doc-caption>
+
+    <a href="https://www.quickbase.com/api-guide/index.html#delete_record.html" target="_blank">API_DeleteRecord</a>
+
+    <h5>Request</h5>
+
+    <table class="table striped bordered">
+      <thead>
+        <th>Parameter</th>
+        <th>Type</th>
+        <th>Value</th>
+        <th>Required</th>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>record id</td>
+          <td>string | int</td>
+          <td>Existing record id</td>
+          <td>yes</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h5>Response</h5>
+    <table class="table bordered striped">
+      <thead>
+        <th>Response</th>
+        <th>Type</th>
+        <th>Value</th>
+        <th>Example</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>success or failure</td>
+          <td>boolean</td>
+          <td>true if record was successfully deleted, false if the record was not deleted.</td>
+          <td>10001</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h5>Example</h5>
+    <pre>
+      <code class="language-javascript">
+        db.characters.deleteRecord(10001).then(function(success){
+          //true
+        });
+      </code>
+    </pre>
+
+    <doc-header id="import-from-csv" class="secondary">importFromCSV</doc-header>
+    <doc-caption>Used to add a collection of records to a table.</doc-caption>
+
+    <a href="https://www.quickbase.com/api-guide/index.html#import-from-csv.html" target="_blank">API_ImportFromCSV</a>
+
+    <h5>Request</h5>
+
+    <table class="table striped bordered">
+      <thead>
+        <th>Parameter</th>
+        <th>Type</th>
+        <th>Value</th>
+        <th>Required</th>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>array of records</td>
+          <td>array</td>
+          <td>objects of field-values</td>
+          <td>yes</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h5>Response</h5>
+    <table class="table bordered striped">
+      <thead>
+        <th>Response</th>
+        <th>Type</th>
+        <th>Value</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>array of new records id's</td>
+          <td>array</td>
+          <td>record id's</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h5>Example</h5>
+    <pre>
+      <code class="language-javascript">
+        let characters = [{ firstName: 'Walter', lastName: 'White' }, { firstName: 'Jesse', lastName: 'Pinkman'}];
+
+        db.characters.importFromCSV(characters).then(function(characters){
+          //[10001, 10002]
+        });
+      </code>
+    </pre>
+
+    <doc-best-practice>If adding a collection of records, use importFromCSV instead of addRecord. importFromCSV is way, way, faster.</doc-best-practice>
+  </doc-section>
+
+  <doc-section>
+    <doc-header id="querying">Querying</doc-header>
+    <p>Query filters specify the conditions that determine which records to select for read, update, and delete operations.</p>
+
+    <p>A query filter is an object that includes field-value conditions and its corresponding query comparison operator.</p>
+
+    <p>{ field: value } or { field : { XEX: value } }</p>
+
+    <doc-header id="query-comparison-operators" class="secondary">Query Comparison Operators</doc-header>
+    
+    <p>All QuickBase API query comparison operators are allowed. A full list can be found <a href="https://www.quickbase.com/api-guide/index.html#do_query.html#queryOperators" target="_blank">here.</a>
+    </p>
+
+    <doc-notice>By default a simple { field : value } will be treated as an equals operator("EX").</doc-notice>
+
+    <p>Common comparison operators include:</p>
+
+    <table class="table striped bordered">
+      <thead>
+        <th>Operator</th>
+        <th>Detail</th>
+        <th>Example</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>EX</td>
+          <td>is equal to value</td>
+          <td>{ name: "Walter White" }</td>
+        </tr>
+        <tr>
+          <td>XEX</td>
+          <td>is not equal to value</td>
+          <td>{ name: { XEX: "Walter White" } }</td>
+        </tr>
+        <tr>
+          <td>CT</td>
+          <td>contains value</td>
+          <td>{ name: { CT: "White" } }</td>
+        </tr>
+        <tr>
+          <td>XCT</td>
+          <td>does not contain value</td>
+          <td>{ name: { XCT: "White" } }</td>
+        </tr>
+        <tr>
+          <td>OBF</td>
+          <td>on or before value</td>
+          <td>{ birthday: { OBF: "01-01-1990" } }</td>
+        </tr>
+        <tr>
+          <td>OAF</td>
+          <td>on or after value</td>
+          <td>{ birthday: { OAF: "01-01-1990" } }</td>
+        </tr>
+        <tr>
+          <td>LT</td>
+          <td>less than value</td>
+          <td>{ dollars_in_bank: { LT: 10000 } }</td>
+        </tr>
+        <tr>
+          <td>GT</td>
+          <td>greater than value</td>
+          <td>{ dollars_in_bank: { GT: 10000 } }</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <doc-header id="query-helpers" class="secondary">Finder Methods</doc-header>
+    <doc-caption>Finder methods are used the same way as doQuery except they have a specialized purpose</doc-caption>
+
+    <table>
+      <thead>
+        <th>Function</th>
+        <th>Purpose</th>
+        <th>Parameters</th>
+        <th>Response</th>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>doQueryCount</td>
+          <td>Find the number of records matching query filter</td>
+          <td>query</td>
+          <td>number of records(int)</td>
+        </tr>
+        <tr>
+          <td>find</td>
+          <td>retrieve a single record</td>
+          <td>record id</td>
+          <td>single record(object)</td>
+        </tr>
+        <tr>
+          <td>first</td>
+          <td>retrieve the first match</td>
+          <td>query, options</td>
+          <td>single record(object)</td>
+        </tr>
+        <tr>
+          <td>last</td>
+          <td>retrieve the last match</td>
+          <td>query, options</td>
+          <td>single record(object)</td>
+        </tr>
+        <tr>
+          <td>all</td>
+          <td>retrieve all records in table</td>
+          <td>options</td>
+          <td>records(array of objects)</td>
+        </tr>
+      </tbody>
+    </table>
+  </doc-section>
+
+  <doc-section>
+    <doc-header id="base-helpers">BaseHelpers</doc-header>
+    <p>BaseHelpers is an additional light-weight object with commonly used functions that is bundled with base-js. It is automatically included when base-js is loaded.</p>
+
+    <table class="table striped bordered">
+      <thead>
+
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>setCookie</td>
+        </tr>
+        <tr>
+          <td>getCookie</td>
+        </tr>
+        <tr>
+          <td>inverseTables</td>
+        </tr>
+        <tr>
+          <td>getUrlParam</td>
+        </tr>
+        <tr>
+          <td>formatDateElement</td>
+        </tr>
+        <tr>
+          <td>dateToString</td>
+        </tr>
+        <tr>
+          <td>dateTimeToString</td>
+        </tr>
+        <tr>
+          <td>durationToString</td>
+        </tr>
+        <tr>
+          <td>timeOfDayToString</td>
+        </tr>
+        <tr>
+          <td>redirectToEditForm</td>
+        </tr>
+        <tr>
+          <td>redirectToViewForm</td>
+        </tr>
+        <tr>
+          <td>downloadFile</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <doc-notice>BaseHelpers is bundled and automatically loaded with base-js. There is no additional requiring to access these functions.</doc-notice>
+  </doc-section>
+
+  <doc-section>
+    <doc-header id="deployment" nav-text="Deployment">Deployment</doc-header>
+
+    <p>base-js is hosted on Amazon S3. When deploying a new version, a new Amazon S3 folder and file will be generated and a new CDN url will be automatically generated.</p>
+
+    <p>To deploy a new version, run "gulp deploy". The './src/base.js' version will be compiled and stored in "./dist/x.y.z/base.min.js" and automatically uploaded to Amazon S3.
+    </p>
+
+    <doc-best-practice>Always deploy a new version no matter how small the patch.</doc-best-practice>
+    <doc-warning>Deploying changes to an existing version will overwrite the existing Amazon S3 file.</doc-warning>
+  </doc-section>
+
+  <doc-section>
+    <doc-header id="change-log">Change Log</doc-header>
+    <p>base-js uses semantic-versioning in the format of x.y.z(Major.Minor.Patch)</p>
+
+    <ul>
+      <li>x stands for a major version</li>
+      <li>y stands for a minor version</li>
+      <li>z stands for a patch</li>
+    </ul>
+
+    <p>Versions:</p>
+
+    <table class="table bordered striped">
+      <thead>
+        <th>Version</th>
+        <th>Description</th>
+        <th>Deployment Date</th>
+      </thead>
+      <tr>
+        <td>4.9.0</td>
+        <td>QuickBase API call error management.</td>
+        <td>07/01/2016</td>
+      </tr>
+      <tr>
+        <td>4.8.2</td>
+        <td>Local development proxy url updated.</td>
+        <td>06/01/2016</td>
+      </tr>
+      <tr>
+        <td>4.8.1</td>
+        <td>Return json errors.</td>
+        <td>05/01/2016</td>
+      </tr>
+      <tr>
+        <td>4.8.0</td>
+        <td>Added QuickStart portal functionality.</td>
+        <td>04/01/2016</td>
+      </tr>
+    </table>
+
+  </doc-section>
 </section>

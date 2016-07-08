@@ -10,13 +10,12 @@ const DEPENDENCIES = [
   'templates',
   'app.layout',
   'app.shared',
-  'app.sideNav',
-  'hljs'
+  'app.sideNav'
 ];
 
 angular
   .module('app', DEPENDENCIES)
-  .config(($stateProvider, $urlRouterProvider, $locationProvider, hljsServiceProvider) => {
+  .config(($stateProvider, $urlRouterProvider, $locationProvider) => {
     $locationProvider.html5Mode(true);
     $stateProvider
       .state('app', {
@@ -33,10 +32,6 @@ angular
     });
 
     $urlRouterProvider.otherwise('/project-docs');
-
-    hljsServiceProvider.setOptions({
-      tabReplace: ' '
-    });
   })
   .run($rootScope => {
     $rootScope.sideNavs = [];
