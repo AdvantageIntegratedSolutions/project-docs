@@ -76,57 +76,261 @@
 
 		<doc-header id="tables" class="secondary">Tables</doc-header>
 
-		<p>The tables parameter is important and powerful. This parameter is an object of all the tables, their names, dbids and field id's that will be used in your application. By supplying these settings, you do not need to worry about dbid's or field id's just the names you assign them. Even the return JSON will use the names you provide.
+		<p>The tables parameter is important and powerful. This parameter is an object of all the tables, their names, dbids and field id's that will be used in your application. By supplying these settings, you do not need to worry about dbid's or field id's just the names you assign them. Even the return JSON will use the names you provide.</p>
 
-		<code>
-			{
-				characters: {
-					dbid: "bfghi321",
-					id: 3,
-					firstName: 6,
-					lastName: 7,
-					region: 8
-				}
-			}
-		</code>
+		<doc-header id="async-options" class="secondary">Async Options</doc-header>
+
+		<doc-best-practice>Using promises should be your #1 option. Callbacks #2. Synchronous is #3 but discourged and will most likely be deprecated in future versions.</doc-best-practice>
 	</doc-section>
 
 	<doc-section>
 		<doc-header id="common-functions">Common Functions</doc-header>
 		<p>The majority of API calls in the QuickBase API are covered by base-js but some API calls are much more utilized than others. Below are the list of the most common functions:</p>
 
-		<p>All the common functions are made at the table level which you can use your client.</p>
-
 		<doc-header id="do-query" class="secondary">doQuery</doc-header>
-
-		<p>doQuery is used to retrieve records from a table.</p>
+		<doc-caption>doQuery is used to retrieve records from a table.</doc-caption>
 
 		<a href="https://www.quickbase.com/api-guide/index.html#do_query.html" target="_blank">API_DoQuery</a>
+
+		<h5>Request</h5>
 
 		<table class="table striped bordered">
 			<thead>
 				<th>Parameter</th>
+				<th>Type</th>
 				<th>Value</th>
 				<th>Required</th>
+				<th>Example</th>
 			</thead>
 
 			<tbody>
 				<tr>
 					<td>query</td>
-					<td>object or array container query logic</td>
+					<td>object | array</td>
+					<td>Valid query filter</td>
 					<td>yes</td>
+					<td>{ name: { 'Walter White' } }</td>
 				</tr>
 				<tr>
 					<td>options</td>
-					<td>object: </td>
-					<td>yes</td>
+					<td>object</td>
+					<td><a href="http://www.quickbase.com/api-guide/index.html#do_query.html#Request_Parameters" target="_blank">API</a></td>
+					<td>yes, if no options use {}</td>
+					<td>{ clist: ["3", "6"], slist: "6" }</td>
 				</tr>
 			</tbody>
 		</table>
 
-		<doc-header id="add-record" class="secondary">AddRecord</doc-header>
-		<doc-header id="delete-record" class="secondary">DeleteRecord</doc-header>
-		<doc-header id="import-from-csv" class="secondary">ImportFromCSV</doc-header>
+		<h5>Response</h5>
+		<table class="table bordered striped">
+			<thead>
+				<th>Response</th>
+				<th>Type</th>
+				<th>Value</th>
+				<th>Example</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td>records matched</td>
+					<td>array of objects</td>
+					<td>object's contains all table fields(key) and record values(value) set in configuration or clist</td>
+					<td>
+						<pre>
+							<hljs>
+								[
+									{ rid: "3", firstName: "Walter", lastName: "White" }, 
+									{ rid: "3", firstName: "Jesse", lastName: "Pinkman"}
+								]
+							</hljs>
+						</pre>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<h5>Example</h5>
+		<pre>
+			<hljs>
+				db.characters.doQuery({ firstName: "Walter" }, { slist: "6" }).then(function(characters){
+					console.log(characters);
+
+					//
+					[
+						{ rid: "3", firstName: "Walter", lastName: "White" }, 
+						{ rid: "3", firstName: "Jesse", lastName: "Pinkman"}
+					]	
+				});
+			</hljs>
+		</pre>
+
+		<doc-header id="add-record" class="secondary">addRecord</doc-header>
+		<doc-caption>addRecord is used to add a single record to a table.</doc-caption>
+		<a href="https://www.quickbase.com/api-guide/index.html#add_record.html" target="_blank">API_AddRecord</a>
+
+		<h5>Request</h5>
+
+		<table class="table striped bordered">
+			<thead>
+				<th>Parameter</th>
+				<th>Type</th>
+				<th>Value</th>
+				<th>Required</th>
+				<th>Example</th>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td>record</td>
+					<td>object</td>
+					<td>object of field-values</td>
+					<td>yes</td>
+					<td>{ firstName: 'Walter', lastName: 'White' }</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<h5>Response</h5>
+		<table class="table bordered striped">
+			<thead>
+				<th>Response</th>
+				<th>Type</th>
+				<th>Value</th>
+				<th>Example</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td>record id</td>
+					<td>int</td>
+					<td>auto-generated record id</td>
+					<td>
+						10001
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<h5>Example</h5>
+		<pre>
+			<hljs>
+				db.characters.addRecord({ firstName: "Walter", lastName: 'White' }).then(function(newCharacterId){
+					//10001
+				});
+			</hljs>
+		</pre>
+
+		<doc-header id="delete-record" class="secondary">deleteRecord</doc-header>
+		<doc-caption>deleteRecord is used to delete a single record from a table.</doc-caption>
+
+		<a href="https://www.quickbase.com/api-guide/index.html#delete_record.html" target="_blank">API_DeleteRecord</a>
+
+		<h5>Request</h5>
+
+		<table class="table striped bordered">
+			<thead>
+				<th>Parameter</th>
+				<th>Type</th>
+				<th>Value</th>
+				<th>Required</th>
+				<th>Example</th>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td>record id</td>
+					<td>string | int</td>
+					<td>Existing record id</td>
+					<td>yes</td>
+					<td>10001</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<h5>Response</h5>
+		<table class="table bordered striped">
+			<thead>
+				<th>Response</th>
+				<th>Type</th>
+				<th>Value</th>
+				<th>Example</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td>success or failure</td>
+					<td>boolean</td>
+					<td>true if record was successfully deleted, false if the record was not deleted.</td>
+					<td>10001</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<h5>Example</h5>
+		<pre>
+			<hljs>
+				db.characters.deleteRecord(10001).then(function(success){
+					//true
+				});
+			</hljs>
+		</pre>
+
+		<doc-header id="import-from-csv" class="secondary">importFromCSV</doc-header>
+		<doc-caption>importFromCSV is used to add a collection of records to a table.</doc-caption>
+
+		<a href="https://www.quickbase.com/api-guide/index.html#import-from-csv.html" target="_blank">API_ImportFromCSV</a>
+
+		<h5>Request</h5>
+
+		<table class="table striped bordered">
+			<thead>
+				<th>Parameter</th>
+				<th>Type</th>
+				<th>Value</th>
+				<th>Required</th>
+				<th>Example</th>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td>array of records</td>
+					<td>array</td>
+					<td>objects of field-values</td>
+					<td>yes</td>
+					<td>[{ firstName: 'Walter', lastName: 'White' }, { firstName: 'Jesse', lastName: 'Pinkman'}]</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<h5>Response</h5>
+		<table class="table bordered striped">
+			<thead>
+				<th>Response</th>
+				<th>Type</th>
+				<th>Value</th>
+				<th>Example</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td>array of new records id's</td>
+					<td>array</td>
+					<td>record id's</td>
+					<td>
+						[10001, 10002, 10003, 10004]
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<h5>Example</h5>
+		<pre>
+			<hljs>
+				let characters = [{ firstName: 'Walter', lastName: 'White' }, { firstName: 'Jesse', lastName: 'Pinkman'}];
+
+				db.characters.importFromCSV(characters).then(function(characters){
+					//[10001, 10002]
+				});
+			</hljs>
+		</pre>
+
+		<doc-best-practice>If adding a collection of records, use importFromCSV instead of addRecord. importFromCSV is way, way, faster.</doc-best-practice>
 	</doc-section>
 
 	<doc-section>
@@ -196,18 +400,55 @@
 			</tbody>
 		</table>
 
-		<doc-header id="do-query-count" class="secondary">doQueryCount</doc-header>
-		<doc-header id="find" class="secondary">Find</doc-header>
-		<doc-header id="first" class="secondary">First</doc-header>
-		<doc-header id="last" class="secondary">Last</doc-header>
-		<doc-header id="all" class="secondary">All</doc-header>
+		<doc-header id="query-helpers" class="secondary">Finder Methods</doc-header>
+		<doc-caption>Finder methods are used the same way as doQuery except they have a specialized purpose</doc-caption>
+
+		<table>
+			<thead>
+				<th>Function</th>
+				<th>Purpose</th>
+				<th>Parameters</th>
+				<th>Response</th>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td>doQueryCount</td>
+					<td>Find the number of records matching query filter</td>
+					<td>query</td>
+					<td>number of records(int)</td>
+				</tr>
+				<tr>
+					<td>find</td>
+					<td>retrieve a single record</td>
+					<td>record id</td>
+					<td>single record(object)</td>
+				</tr>
+				<tr>
+					<td>first</td>
+					<td>retrieve the first match</td>
+					<td>query, options</td>
+					<td>single record(object)</td>
+				</tr>
+				<tr>
+					<td>last</td>
+					<td>retrieve the last match</td>
+					<td>query, options</td>
+					<td>single record(object)</td>
+				</tr>
+				<tr>
+					<td>all</td>
+					<td>retrieve all records in table</td>
+					<td>options</td>
+					<td>records(array of objects)</td>
+				</tr>
+			</tbody>
+		</table>
 	</doc-section>
 
 	<doc-section>
 		<doc-header id="base-helpers">BaseHelpers</doc-header>
 		<p>BaseHelpers is an additional light-weight object with commonly used functions that is bundled with base-js. It is automatically included when base-js is loaded.</p>
-
-		<doc-notice>BaseHelpers is bundled and automatically loaded with base-js. There is no additional requiring to access these functions.</doc-notice>
 
 		<table class="table striped bordered">
 			<thead>
@@ -253,10 +494,8 @@
 				</tr>
 			</tbody>
 		</table>
-	</doc-section>
 
-	<doc-section>
-		<doc-header id="other-api-calls">Other API Calls</doc-header>
+		<doc-notice>BaseHelpers is bundled and automatically loaded with base-js. There is no additional requiring to access these functions.</doc-notice>
 	</doc-section>
 
 	<doc-section>
