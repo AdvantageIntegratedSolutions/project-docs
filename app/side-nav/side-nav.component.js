@@ -2,14 +2,12 @@ class SideNavCtrl {
   constructor($scope, $rootScope, $location) {
   	const _self = this;
     _self.$location = $location;
-
     _self.navs = $rootScope.sideNavs;
 
     $rootScope.$watch('sideNavs', function(navs) {
       _self.navs = $rootScope.sideNavs;
       _self.findClosestParents(navs);
       _self.activateOnPageLoad();
-      Prism.highlightAll();
     });
 
     _self.onScroll();

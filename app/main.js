@@ -3,7 +3,7 @@ import "./layout";
 import "./shared";
 import "./side-nav";
 
-import Docs from "./docs/_docs"
+import docs from "./docs/_docs"
 
 const DEPENDENCIES = [
   'ui.router',
@@ -23,20 +23,31 @@ angular
         templateUrl: 'layout/app-layout.html'
       })
 
-    Docs.forEach(function(doc){
+    //set the state route and template for each doc
+    docs.forEach(function(doc){
       $stateProvider.state('app.' + doc, {
         url: '/' + doc,
         templateUrl: 'docs/' + doc + ".doc.html",
-        title: doc
+        title: doc,
+        controller: function($scope, $timeout){
+          $scope.$on('$viewContentLoaded', (event, nextState) => {
+            $timeout(function() {
+              Prism.highlightAll(); //highlight new code tags
+            }, 0);
+          });
+        } 
       })
     });
 
     $urlRouterProvider.otherwise('/project-docs');
   })
   .run($rootScope => {
+    //track all compiled header directives.
     $rootScope.sideNavs = [];
 
     $rootScope.$on('$stateChangeStart', function(event, nextState){ 
+
+      //clear out list of header directives that drive side-nav
       $rootScope.sideNavs = [];
     })
 
