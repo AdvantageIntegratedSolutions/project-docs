@@ -16,15 +16,16 @@ const DEPENDENCIES = [
 angular
   .module('app', DEPENDENCIES)
   .config(($stateProvider, $urlRouterProvider, $locationProvider) => {
+    
     $locationProvider.html5Mode(true);
-    $stateProvider
-      .state('app', {
-        abstract: true,
-        templateUrl: 'layout/app-layout.html'
-      })
+    
+    $stateProvider.state('app', {
+      abstract: true,
+      templateUrl: 'layout/app-layout.html'
+    });
 
     //set the state route and template for each doc
-    docs.forEach(function(doc){
+    docs.forEach(doc => {
       $stateProvider.state('app.' + doc, {
         url: '/' + doc,
         templateUrl: 'docs/' + doc + ".doc.html",
@@ -46,7 +47,6 @@ angular
     $rootScope.sideNavs = [];
 
     $rootScope.$on('$stateChangeStart', function(event, nextState){ 
-
       //clear out list of header directives that drive side-nav
       $rootScope.sideNavs = [];
     })

@@ -1,29 +1,33 @@
 class SideNavCtrl {
-  constructor($scope, $rootScope, $location) {
+  constructor($scope, $rootScope, $location, $window) {
   	const _self = this;
+
     _self.$location = $location;
+    _self.$window = $window;
+
     _self.navs = $rootScope.sideNavs;
 
     $rootScope.$watch('sideNavs', function(navs) {
       _self.navs = $rootScope.sideNavs;
       _self.findClosestParents(navs);
       _self.activateOnPageLoad();
+      _self.onScroll();
     });
-
-    _self.onScroll();
   }
 
   onScroll(){
-    $(window).unbind("scroll");
-
     const _self = this;
-    $(window).scroll(function(){
+    _self.$window.unbind("scroll");
+    _self.$window.scrollTo(0, 0);
+
+    _self.$window.scroll(function(){
       _self.scrolling();
     });
   }
 
   activateOnPageLoad(){
     const hash = this.$location.hash();
+
     if(!hash){
       this.navs[0].status = "active";
     };
