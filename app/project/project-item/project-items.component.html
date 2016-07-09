@@ -1,8 +1,15 @@
-<a href="/{{ $ctrl.name }}">
-	<div class="card darken-1 {{ $ctrl.color }}" ng-click="">
-	  <div class="card-content white-text">
-	    <span class="card-title">{{ $ctrl.name }}</span>
-	    <p>JavaScript library built for the QuickBase API.</p>
-	  </div>
-	</div>
-</a>
+<div class="project-item">
+	<a href="/{{ $ctrl.name }}">
+		<div 
+			class="card z-depth-1 {{ $ctrl.color }}"
+			ng-class="{'z-depth-4': hover}"
+			ng-mouseenter="hover = true"
+    	ng-mouseleave="hover = false"
+		>
+		  <div class="card-content white-text">
+		    <span class="card-title">{{ $ctrl.name }}</span>
+		    <p>{{ $ctrl.description }}</p>
+		  </div>
+		</div>
+	</a>
+</div>
