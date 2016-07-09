@@ -8,7 +8,8 @@ export default {
   bindings: {
   	name: "@",
   	description: "@",
-  	color: "@"
+  	color: "@",
+  	git: "@"
   },
   templateUrl: 'project/project-item/project-items.component.html',
   controller: ProjectItemCtrl
