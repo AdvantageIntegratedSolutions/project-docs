@@ -4,6 +4,7 @@ class SideNavCtrl {
 
     _self.$location = $location;
     _self.$window = $window;
+    _self.show = true;
 
     _self.navs = $rootScope.sideNavs;
 
@@ -11,7 +12,12 @@ class SideNavCtrl {
       _self.navs = $rootScope.sideNavs;
       _self.findClosestParents(navs);
       _self.activateOnPageLoad();
-      _self.onScroll();
+
+      _self.show = _self.navs.length != 0;
+
+      if(_self.show){
+        _self.onScroll();
+      };
     });
   }
 
@@ -27,7 +33,7 @@ class SideNavCtrl {
   activateOnPageLoad(){
     const hash = this.$location.hash();
 
-    if(!hash){
+    if(!hash && this.navs.length > 0){
       this.navs[0].status = "active";
     };
   };

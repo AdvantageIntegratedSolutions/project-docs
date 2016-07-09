@@ -1,0 +1,9 @@
+<div class="row">
+	<div ng-repeat="project in $ctrl.projects" class="col s4 m4 l4">
+		<project-item 
+			name="{{ project.name }}" 
+			description="{{ project.description }}" 
+			color="{{ project.color }}">
+		</project-item>
+	</div>
+</div>

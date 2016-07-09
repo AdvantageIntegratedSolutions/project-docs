@@ -2,11 +2,8 @@
   <div class="nav-wrapper">
 		<img ng-src="https://s3.amazonaws.com/advantage_assets/logo.png">
     <a href="#" class="brand-logo"></a>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li><a href="/project-docs">All Projects</a></li>
-      <li>
-      	<a href="https://github.com/orgs/AdvantageIntegratedSolutions/dashboard" target="_blank">Github</a>
-      </li>
+    <ul id="nav-mobile" class="right hide-on-med-and-down" ng-if="!$root.home">
+      <li><a href="/">Projects</a></li>
     </ul>
   </div>
 </nav>

@@ -2,6 +2,7 @@ import "../dist/templates";
 import "./layout";
 import "./shared";
 import "./side-nav";
+import "./project";
 
 import docs from "./docs/_docs"
 
@@ -10,7 +11,8 @@ const DEPENDENCIES = [
   'templates',
   'app.layout',
   'app.shared',
-  'app.sideNav'
+  'app.sideNav',
+  'app.project',
 ];
 
 angular
@@ -40,7 +42,7 @@ angular
       })
     });
 
-    $urlRouterProvider.otherwise('/project-docs');
+    $urlRouterProvider.otherwise('/');
   })
   .run($rootScope => {
     //track all compiled header directives.
@@ -53,6 +55,7 @@ angular
 
     $rootScope.$on('$stateChangeSuccess', (event, nextState) => {
       $rootScope.title = nextState.title;
+      $rootScope.home = nextState.url == "/";
     });
   })
 

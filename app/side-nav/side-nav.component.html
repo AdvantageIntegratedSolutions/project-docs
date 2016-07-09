@@ -2,7 +2,7 @@
 	<h5 class="title">{{ $root.title }}</h5>
 </div>
 
-<ul id="slide-out" class="side-nav fixed">
+<ul id="slide-out" class="side-nav fixed" ng-if="$ctrl.show">
 	<div id="side-nav-headings">
 		<side-nav-item ng-repeat="nav in $root.sideNavs" data="nav"></side-nav-item>
 	</div>
