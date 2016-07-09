@@ -76,7 +76,8 @@
 
 			&.active{
 				a{
-					color: $brand-primary;
+					color: white;
+					background-color: $brand-success;
 				}
 			}
 		}
