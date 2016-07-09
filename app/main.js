@@ -4,7 +4,7 @@ import "./shared";
 import "./side-nav";
 import "./dashboard";
 
-import docs from "./docs/_docs"
+import docs from "./docs/index"
 
 const DEPENDENCIES = [
   'ui.router',
@@ -39,7 +39,7 @@ angular
     docs.forEach(doc => {
       $stateProvider.state('app.' + doc.name, {
         url: '/' + doc.name,
-        templateUrl: 'docs/' + doc.name + ".doc.html",
+        templateUrl: 'docs/' + doc.name + "/index.doc.html",
         title: doc.name,
         controller: function($scope, $timeout){
           $scope.$on('$viewContentLoaded', (event, nextState) => {

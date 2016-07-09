@@ -1,0 +1,69 @@
+<doc-section>
+  <doc-header id="quickstart">Quickstart</doc-header>
+  <p>Utilizing base-js first requires a useable QuickBase application. Once you have an application, you will need to collect the database and table settings. base-js bootstraps these configurations to create a more-powerful, more object-oriented design.</p>
+
+  <p>Please the exact configuration needed please see below @ <a href="#settings">Settings</a></p>
+
+  <pre>
+    <code class="language-javascript">
+      const config = {
+        token: "cgfsmfcdc5vyp5k5s7h6b6v3m9v", //apptoken
+        async: "promise",
+        databaseId: "bjbsgxy2r", //main application dbid
+        tables: {
+          toys: {
+            dbid: "bjbsgxy3t", //table id
+            rid: 3, //field id
+            name: 6,
+            type: 8,
+            description: 9,
+            voicedBy: 10,
+            primary: 11
+          }
+        }
+      };
+
+      const db = new Base(config);
+
+      //retrieve all primary toy records
+      db.toys.doQuery({ primary: "1" }, { slist: [6,9] }).then(function(toys){
+        /*
+          toys => [
+            { name: "Buzz Lightyear", description: "Space-ranger action figure who wears a space suit." },
+            { name: "Woody", description: "Cowbody doll, Andy's favorite." },
+            { name: "Jesse", description: "Cowgirl doll and part of the Woody's Round Up gang." }
+          ]
+        */
+      });
+
+      //add new toy record
+      let toy = { 
+        name: "Hamm", 
+        description: "Wisecracking realist piggy bank.", 
+        voicedBy: "John Ratzenberger" 
+      };
+
+      db.toys.addRecord(toy).then(function(newRecordId){
+        //newRecordId => 10001
+      });
+
+      //delete toy record
+      db.toys.delete(10001).then(function(deleted){
+        //deleted => true
+      });        
+
+      //import collection of toys
+      let toys = [
+        { name: "Rex", description: "Excitable large, green, plastic Tyrannosaurus rex.", voicedBy: "Wallace Shawn" },
+        { name: "Slinky Dog", description: "Dachshund w/ slinky for body, speaks with a southern accent.", voicedBy: "Jim Varney" },
+        { name: "Mr. Potato Head", description: "Doll based on the real-life toy by Playskool.", voicedBy: "Don Rickles." },
+        { name: "Bullseye", description: "Woody's horse that acts like a dog.", voicedBy: "" },
+        { name: "Bo Peep", description: "Porcelain figurine attached to Molly's bedside lamp.", voicedBy: "Annie Potts" },
+      ];
+
+      db.toys.importFromCSV(toys).then(function(newRecordIds){
+        //newRecordIds => [10001, 10002, 10003, 10004, 10005]
+      });        
+    </code>
+  </pre>
+</doc-section>

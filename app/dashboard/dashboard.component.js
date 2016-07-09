@@ -1,4 +1,4 @@
-import docs from "../docs/_docs"
+import docs from "../docs/index"
 
 class DashboardCtrl {
   constructor($scope, $rootScope) {

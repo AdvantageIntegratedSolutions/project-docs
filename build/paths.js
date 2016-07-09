@@ -3,6 +3,6 @@ module.exports = {
   javascript: "app/**/*.js",
   html: "app/index.html",
   css: "app/**/*.{sass,scss,css}",
-  templates: "app/**/!(index).html",
+  templates: "app/**/*.html",
   output: "./dist"
 };
