@@ -54,6 +54,7 @@
 
 			&.active{
 				background-color: $brand-primary;
+				border-left: 7px solid $gray-dark;
 
 				a{
 					color: white;
@@ -67,17 +68,18 @@
 
 		&.secondary-nav{
 			background-color: $gray-lighter;
+			border-left: 7px solid $gray-dark;
 
 			a{
-				font-size: 11px;
-				font-weight: bold;
+				font-size: 12px;
+				// font-weight: bold;
 				padding-left: 15px;
 			}
 
 			&.active{
 				a{
-					color: white;
-					background-color: $brand-success;
+					color: $brand-primary;
+					//background-color: $gray-dark;
 				}
 			}
 		}
