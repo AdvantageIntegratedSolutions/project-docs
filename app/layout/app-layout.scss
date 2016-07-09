@@ -3,3 +3,18 @@
 .right-panel{
 	margin-left: 240px;
 }
+
+#scrollToTop{
+	position: fixed;
+	bottom: 0px;
+	right: 20px;
+	height: 50px;
+	width: 50px;
+	background-color: $brand-primary;
+
+	.material-icons{
+		padding: 13px;
+		color: white;
+		cursor: pointer;
+	}
+}

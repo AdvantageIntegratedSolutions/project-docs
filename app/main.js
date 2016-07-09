@@ -23,7 +23,16 @@ angular
     
     $stateProvider.state('app', {
       abstract: true,
-      templateUrl: 'layout/app-layout.html'
+      templateUrl: 'layout/app-layout.html',
+      controller: function($scope, $window){
+        $scope.atTop = false;
+
+        $scope.scrollToTop = function(){
+          //couldn't find an elegant solution to do this w/ angular.
+          $("html, body").animate({ scrollTop: 0 }, "slow");
+          $scope.atTop = false;
+        };
+      } 
     });
 
     //set the state route and template for each doc
