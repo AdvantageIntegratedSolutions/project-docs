@@ -1,9 +1,8 @@
-<div class="card darken-3 {{ $ctrl.color }}">
-  <div class="card-content white-text">
-    <span class="card-title">{{ $ctrl.name }}</span>
-    <p>JavaScript library built for the QuickBase API.</p>
-  </div>
-  <div class="card-action">
-    <a href="/{{ $ctrl.name }}" class="white-text">DOC</a>
-  </div>
-</div>
+<a href="/{{ $ctrl.name }}">
+	<div class="card darken-1 {{ $ctrl.color }}" ng-click="">
+	  <div class="card-content white-text">
+	    <span class="card-title">{{ $ctrl.name }}</span>
+	    <p>JavaScript library built for the QuickBase API.</p>
+	  </div>
+	</div>
+</a>

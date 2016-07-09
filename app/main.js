@@ -12,7 +12,7 @@ const DEPENDENCIES = [
   'app.layout',
   'app.shared',
   'app.sideNav',
-  'app.project',
+  'app.project'
 ];
 
 angular
@@ -28,10 +28,10 @@ angular
 
     //set the state route and template for each doc
     docs.forEach(doc => {
-      $stateProvider.state('app.' + doc, {
-        url: '/' + doc,
-        templateUrl: 'docs/' + doc + ".doc.html",
-        title: doc,
+      $stateProvider.state('app.' + doc.name, {
+        url: '/' + doc.name,
+        templateUrl: 'docs/' + doc.name + ".doc.html",
+        title: doc.name,
         controller: function($scope, $timeout){
           $scope.$on('$viewContentLoaded', (event, nextState) => {
             $timeout(function() {
