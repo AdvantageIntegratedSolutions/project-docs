@@ -1,9 +1,37 @@
-<div class="row">
-	<div ng-repeat="project in $ctrl.projects" class="col s3 m3 l3">
-		<project 
-			name="{{ project.name }}" 
-			description="{{ project.description }}" 
-			color="{{ project.color }}">
-		</project>
+<doc-section>
+	<div class="row">
+		<doc-header id="home">Welcome</doc-header>
+		<doc-caption>Documentation written in HTML/SASS!</doc-caption>
+
+		<p>project-docs is a platform to develop and store documentation for common libraries, projects and tools where the common README may not be sufficent.</p>
+
+		<p>project-docs provides a standard UI to improve ease of use and readability, tools to shorten the documentation process and help develop documentation standards.</p>
+
+		<p>All documentation is written in common HTML & SASS, no new rules or markdown to learn.</p>
+
+		<p>Functionality includes helper components, responsive CSS framework, automatic side-navigation and syntax highlighted code examples.</p>
+
+		<p>Inspired by other great documentation UI's</p>
+		<ul>
+			<li><a href="https://stripe.com/docs/api#intro" target="_blank">Stripe API</a></li>
+			<li><a href="https://angular.io/docs/ts/latest/" target="_blank">AngularJS</a></li>
+			<li><a href="http://underscorejs.org/" target="_blank">Underscore</a></li>
+			<li><a href="https://developers.google.com/maps/documentation/javascript/tutorial" target="_blank">Google Maps</a></li>
+		</ul>
 	</div>
-</div>
+</doc-section>
+
+<doc-section>
+	<doc-header id="projects">Projects</doc-header>
+	<doc-caption>Explore the project documentation library.</doc-caption>
+
+	<div class="row">
+		<div ng-repeat="project in $ctrl.projects" class="col s3 m3 l3">
+			<project 
+				name="{{ project.name }}" 
+				description="{{ project.description }}" 
+				color="{{ project.color }}">
+			</project>
+		</div>
+	</div>
+</doc-section>
