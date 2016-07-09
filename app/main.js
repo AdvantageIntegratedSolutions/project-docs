@@ -2,7 +2,7 @@ import "../dist/templates";
 import "./layout";
 import "./shared";
 import "./side-nav";
-import "./project";
+import "./dashboard";
 
 import docs from "./docs/_docs"
 
@@ -12,7 +12,7 @@ const DEPENDENCIES = [
   'app.layout',
   'app.shared',
   'app.sideNav',
-  'app.project'
+  'app.dashboard'
 ];
 
 angular

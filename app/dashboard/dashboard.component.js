@@ -1,6 +1,6 @@
 import docs from "../docs/_docs"
 
-class ProjectCtrl {
+class DashboardCtrl {
   constructor($scope, $rootScope) {
   	this.projects = docs;
   	this.addColor();
@@ -18,6 +18,6 @@ class ProjectCtrl {
 
 export default {
   bindings: {},
-  templateUrl: 'project/projects.component.html',
-  controller: ProjectCtrl
+  templateUrl: 'dashboard/dashboard.component.html',
+  controller: DashboardCtrl
 }

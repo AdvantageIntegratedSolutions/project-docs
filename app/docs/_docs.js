@@ -9,7 +9,7 @@ const projects = [
 	},
 	{ 
 		name: "quickstart", 
-		description: "Angular environment for quickbase."
+		description: "Angular environment for QuickBase."
 	}
 ]
 
