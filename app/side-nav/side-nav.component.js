@@ -17,10 +17,9 @@ class SideNavCtrl {
 
   onScroll(){
     const _self = this;
-    _self.$window.unbind("scroll");
-    _self.$window.scrollTo(0, 0);
 
-    _self.$window.scroll(function(){
+    $(window).unbind("scroll");
+    $(window).scroll(function(){
       _self.scrolling();
     });
   }
