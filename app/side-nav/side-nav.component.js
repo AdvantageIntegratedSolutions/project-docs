@@ -10,9 +10,9 @@ class SideNavCtrl {
     _self.navs = $rootScope.sideNavs;
 
     $rootScope.$watch('sideNavs', function(navs) {
+      $("html, body").animate({ scrollTop: 0 }, 0);
+      
       $timeout(function(){
-        console.log($rootScope.sideNavs.length);
-
         _self.navs = $rootScope.sideNavs;
         _self.findClosestParents(navs);
         _self.activateOnPageLoad(_self);
@@ -28,8 +28,6 @@ class SideNavCtrl {
 
   onScroll(){
     const _self = this;
-
-    console.log("on scroll.")
 
     $(window).unbind("scroll");
     $(window).scroll(function(){
@@ -53,7 +51,6 @@ class SideNavCtrl {
   };
 
   scrolling(){
-    console.log("scrolling.")
     const _self = this;
     const activeNavs = _self.getActiveNavs();
     let currentNav;
