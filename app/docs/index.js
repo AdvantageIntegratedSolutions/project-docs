@@ -12,6 +12,10 @@ const projects = [
 		description: "Angular environment for QuickBase."
 	},	
 	{ 
+		name: "quickstart-portal", 
+		description: "Client side-portal utilizing AWS lambda for security/validation."
+	},
+	{ 
 		name: "pdf-link", 
 		description: "Product to convert HTML pages to pdf's, save to QuickBase and/or email to client."
 	}
