@@ -10,6 +10,7 @@ class SideNavCtrl {
     _self.navs = $rootScope.sideNavs;
 
     $rootScope.$watch('sideNavs', function(navs) {
+      $(window).unbind("scroll");
       $("html, body").animate({ scrollTop: 0 }, 0);
       
       $timeout(function(){
@@ -28,8 +29,6 @@ class SideNavCtrl {
 
   onScroll(){
     const _self = this;
-
-    $(window).unbind("scroll");
     $(window).scroll(function(){
       _self.scrolling();
     });
