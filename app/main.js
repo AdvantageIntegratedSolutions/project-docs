@@ -29,7 +29,7 @@ angular
 
         $scope.scrollToTop = function(){
           //couldn't find an elegant solution to do this w/ angular.
-          $("html, body").animate({ scrollTop: 0 }, "slow");
+          $("html, body").animate({ scrollTop: 0 }, 0);
           $scope.atTop = false;
         };
       } 

@@ -1,5 +1,5 @@
 class SideNavCtrl {
-  constructor($scope, $rootScope, $location, $window) {
+  constructor($scope, $rootScope, $location, $window, $timeout) {
   	const _self = this;
 
     _self.$scope = $scope;
@@ -10,7 +10,9 @@ class SideNavCtrl {
     _self.navs = $rootScope.sideNavs;
 
     $rootScope.$watch('sideNavs', function(navs) {
-      setTimeout(function(){
+      $timeout(function(){
+        console.log($rootScope.sideNavs.length);
+
         _self.navs = $rootScope.sideNavs;
         _self.findClosestParents(navs);
         _self.activateOnPageLoad(_self);
@@ -27,6 +29,8 @@ class SideNavCtrl {
   onScroll(){
     const _self = this;
 
+    console.log("on scroll.")
+
     $(window).unbind("scroll");
     $(window).scroll(function(){
       _self.scrolling();
@@ -38,14 +42,18 @@ class SideNavCtrl {
 
     if(!hash && this.navs.length > 0){
       this.navs[0].status = "active";
-      console.log(self)
-      self.$scope.$apply();
-      console.log(this.navs[0]);
-      $("html, body").animate({ scrollTop: 0 }, "slow");
+      $("html, body").animate({ scrollTop: 0 }, 0);
+    }else{
+      this.navs.forEach(function(nav){
+        if(nav.anchor == hash){
+          nav["status"] = "active";
+        };
+      });
     };
   };
 
   scrolling(){
+    console.log("scrolling.")
     const _self = this;
     const activeNavs = _self.getActiveNavs();
     let currentNav;
