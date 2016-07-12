@@ -108,7 +108,8 @@ nav {
         font-size: 12px;
         padding-left: 15px; }
       .side-nav li.secondary-nav.active a {
-        color: #337ab7; }
+        color: #337ab7;
+        font-weight: bold; }
 
 .project-item .card {
   cursor: pointer;
