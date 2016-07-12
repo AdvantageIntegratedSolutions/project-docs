@@ -1,0 +1,112 @@
+<doc-section>
+  <doc-header id="querying">Querying</doc-header>
+  <p>Query filters specify the conditions that determine which records to select for read, update, and delete operations.</p>
+
+  <p>A query filter is an object that includes field-value conditions and its corresponding query comparison operator.</p>
+
+  <p>{ field: value } or { field : { XEX: value } }</p>
+
+  <doc-header id="comparison-operators" class="secondary">Comparison Operators</doc-header>
+  
+  <p>All QuickBase API query comparison operators are allowed. A full list can be found <a href="https://www.quickbase.com/api-guide/index.html#do_query.html#queryOperators" target="_blank">here.</a>
+  </p>
+
+  <doc-notice>By default a simple { field : value } will be treated as an equals operator("EX").</doc-notice>
+
+  <p>Common comparison operators include:</p>
+
+  <table class="table striped bordered">
+    <thead>
+      <th>Operator</th>
+      <th>Detail</th>
+      <th>Example</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>EX</td>
+        <td>is equal to value</td>
+        <td>{ name: "Walter White" }</td>
+      </tr>
+      <tr>
+        <td>XEX</td>
+        <td>is not equal to value</td>
+        <td>{ name: { XEX: "Walter White" } }</td>
+      </tr>
+      <tr>
+        <td>CT</td>
+        <td>contains value</td>
+        <td>{ name: { CT: "White" } }</td>
+      </tr>
+      <tr>
+        <td>XCT</td>
+        <td>does not contain value</td>
+        <td>{ name: { XCT: "White" } }</td>
+      </tr>
+      <tr>
+        <td>OBF</td>
+        <td>on or before value</td>
+        <td>{ birthday: { OBF: "01-01-1990" } }</td>
+      </tr>
+      <tr>
+        <td>OAF</td>
+        <td>on or after value</td>
+        <td>{ birthday: { OAF: "01-01-1990" } }</td>
+      </tr>
+      <tr>
+        <td>LT</td>
+        <td>less than value</td>
+        <td>{ dollars_in_bank: { LT: 10000 } }</td>
+      </tr>
+      <tr>
+        <td>GT</td>
+        <td>greater than value</td>
+        <td>{ dollars_in_bank: { GT: 10000 } }</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <doc-header id="query-helpers" class="secondary">Finder Methods</doc-header>
+  <doc-caption>Finder methods are used the same way as doQuery except they have a specialized purpose</doc-caption>
+
+  <table>
+    <thead>
+      <th>Function</th>
+      <th>Purpose</th>
+      <th>Parameters</th>
+      <th>Response</th>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>doQueryCount</td>
+        <td>Find the number of records matching query filter</td>
+        <td>query</td>
+        <td>number of records(int)</td>
+      </tr>
+      <tr>
+        <td>find</td>
+        <td>retrieve a single record</td>
+        <td>record id</td>
+        <td>single record(object)</td>
+      </tr>
+      <tr>
+        <td>first</td>
+        <td>retrieve the first match</td>
+        <td>query, options</td>
+        <td>single record(object)</td>
+      </tr>
+      <tr>
+        <td>last</td>
+        <td>retrieve the last match</td>
+        <td>query, options</td>
+        <td>single record(object)</td>
+      </tr>
+      <tr>
+        <td>all</td>
+        <td>retrieve all records in table</td>
+        <td>options</td>
+        <td>records(array of objects)</td>
+      </tr>
+    </tbody>
+  </table>
+</doc-section>

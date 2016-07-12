@@ -1,0 +1,125 @@
+<doc-section>
+  <doc-header id="settings">Settings</doc-header>
+  <doc-caption>Initialize your client using these settings.</doc-caption>
+  <p>When initializing a client, base-js takes an object of predefined settings to help enhance its capabilities. Below are the properties available:</p>
+
+  <table class="table striped bordered">
+    <thead>
+      <th>Parameter</th>
+      <th>Value</th>
+      <th>Required</th>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>async</td>
+        <td>'callback' | 'promise' | 'false'</td>
+        <td>yes</td>
+      </tr>
+      <tr>
+        <td>token</td>
+        <td>Application token string.</td>
+        <td>yes, if the application requires application tokens.</td>
+      </tr>
+      <tr>
+        <td>database id</td>
+        <td>QuickBase database ID</td>
+        <td>yes</td>
+      </tr>
+      <tr>
+        <td>tables</td>
+        <td>Object of table ids and field ids</td>
+        <td>yes</td>
+      </tr>
+      <tr>
+        <td>ticket</td>
+        <td>Valid authentication ticket.</td>
+        <td>no</td>
+      </tr>
+      <tr>
+        <td>username</td>
+        <td>Valid quickbase username.</td>
+        <td>no</td>
+      </tr>
+      <tr>
+        <td>password</td>
+        <td>Valid quickbase password.</td>
+        <td>no</td>
+      </tr>
+      <tr>
+        <td>ticket</td>
+        <td>Valid authentication ticket.</td>
+        <td>no</td>
+      </tr>
+      <tr>
+        <td>realm</td>
+        <td>Quickbase realm.</td>
+        <td>no</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <doc-header id="tables" class="secondary">Tables</doc-header>
+  <doc-caption>Control your tables with predefined table names, field names and id's.</doc-caption>
+
+  <p>The tables parameter is an important setting required by base-js. This parameter is an object of all the tables that will be used in your application. This includes the table name, table id's, field name and field id's.</p>
+
+  <pre>
+    <code class="language-javascript">
+      const tables = {
+        toys: {
+          dbid: "bjbsgxy3t",
+          rid: 3,
+          name: 6,
+          type: 8,
+          description: 9,
+          voicedBy: 10,
+          primary: 11
+        },
+
+        locations: {
+          dbid: "bjbsgxy83",
+          rid: 3,
+          name: 6,
+          address: 7
+        }
+      };
+    </code>
+  </pre>
+
+  <doc-notice>Table names and field names can be named whatever you like. No need to match anything in QuickBase. These names will be used throughout the life of your project including request and response data.</doc-notice>
+
+  <doc-header id="async-options" class="secondary">Async Options</doc-header>
+
+  <doc-caption>Promises, callbacks or synchronous http requests</doc-caption>
+
+  <p>When you execute something synchronously, you wait for it to finish before moving on to another task. When you execute something asynchronously, you can move on to another task before it finishes. Below are the different values available for the async setting parameter:</p>
+
+  <p>The 'promise' and 'callback' setting tell the library to make all http requests asynchronously. 'false' will execute all API requests synchronously.</p>
+
+  <table class="table bordered striped">
+    <thead>
+      <th>Value</th>
+      <th>Description</th>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>promise</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>callback</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>false</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <doc-best-practice>
+    Using promises should be your #1 option. Callbacks #2. Synchronous is #3 but discourged and will most likely be deprecated in future versions.
+  </doc-best-practice>
+</doc-section>

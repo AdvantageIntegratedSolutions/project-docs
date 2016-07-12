@@ -9,15 +9,17 @@ class SideNavCtrl {
     _self.navs = $rootScope.sideNavs;
 
     $rootScope.$watch('sideNavs', function(navs) {
-      _self.navs = $rootScope.sideNavs;
-      _self.findClosestParents(navs);
-      _self.activateOnPageLoad();
+      setTimeout(function(){
+        _self.navs = $rootScope.sideNavs;
+        _self.findClosestParents(navs);
+        _self.activateOnPageLoad();
 
-      _self.show = _self.navs.length != 0;
+        _self.show = _self.navs.length != 0;
 
-      if(_self.show){
-        _self.onScroll();
-      };
+        if(_self.show){
+          _self.onScroll();
+        };
+      }, 0)
     });
   }
 

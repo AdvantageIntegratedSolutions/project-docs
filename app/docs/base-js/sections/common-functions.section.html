@@ -1,0 +1,221 @@
+<doc-section>
+  <doc-header id="common-functions">Common Functions</doc-header>
+  <p>The majority of API calls in the QuickBase API are covered by base-js but some API calls are much more utilized than others. Below are the list of the most common functions:</p>
+
+  <doc-header id="do-query" class="secondary">doQuery</doc-header>
+  <doc-caption>Used to retrieve records from a table.</doc-caption>
+
+  <a href="https://www.quickbase.com/api-guide/index.html#do_query.html" target="_blank">API_DoQuery</a>
+
+  <h5>Request</h5>
+
+  <table class="table striped bordered">
+    <thead>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Value</th>
+      <th>Required</th>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>query</td>
+        <td>object | array</td>
+        <td>Valid query filter</td>
+        <td>yes</td>
+      </tr>
+      <tr>
+        <td>options</td>
+        <td>object</td>
+        <td><a href="http://www.quickbase.com/api-guide/index.html#do_query.html#Request_Parameters" target="_blank">API</a></td>
+        <td>yes, if no options use {}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h5>Response</h5>
+  <table class="table bordered striped">
+    <thead>
+      <th>Response</th>
+      <th>Type</th>
+      <th>Value</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>records matched</td>
+        <td>array of objects</td>
+        <td>object's contains all table fields(key) and record values(value) set in configuration or clist</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h5>Example</h5>
+  <pre>
+    <code class="language-javascript">
+      db.characters.doQuery({ firstName: "Walter" }, { slist: "6" }).then(function(characters){
+        console.log(characters);
+
+        //
+        [
+          { rid: "3", firstName: "Walter", lastName: "White" }, 
+          { rid: "3", firstName: "Jesse", lastName: "Pinkman"}
+        ]  
+      });
+    </code>
+  </pre>
+
+  <doc-header id="add-record" class="secondary">addRecord</doc-header>
+  <doc-caption>Used to add a single record to a table.</doc-caption>
+  <a href="https://www.quickbase.com/api-guide/index.html#add_record.html" target="_blank">API_AddRecord</a>
+
+  <h5>Request</h5>
+
+  <table class="table striped bordered">
+    <thead>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Value</th>
+      <th>Required</th>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>record</td>
+        <td>object</td>
+        <td>object of field-values</td>
+        <td>yes</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h5>Response</h5>
+  <table class="table bordered striped">
+    <thead>
+      <th>Response</th>
+      <th>Type</th>
+      <th>Value</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>record id</td>
+        <td>int</td>
+        <td>auto-generated record id</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h5>Example</h5>
+  <pre>
+    <code class="language-javascript">
+      db.characters.addRecord({ firstName: "Walter", lastName: 'White' }).then(function(newCharacterId){
+        //10001
+      });
+    </code>
+  </pre>
+
+  <doc-header id="delete-record" class="secondary">deleteRecord</doc-header>
+  <doc-caption>Used to delete a single record from a table.</doc-caption>
+
+  <a href="https://www.quickbase.com/api-guide/index.html#delete_record.html" target="_blank">API_DeleteRecord</a>
+
+  <h5>Request</h5>
+
+  <table class="table striped bordered">
+    <thead>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Value</th>
+      <th>Required</th>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>record id</td>
+        <td>string | int</td>
+        <td>Existing record id</td>
+        <td>yes</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h5>Response</h5>
+  <table class="table bordered striped">
+    <thead>
+      <th>Response</th>
+      <th>Type</th>
+      <th>Value</th>
+      <th>Example</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>success or failure</td>
+        <td>boolean</td>
+        <td>true if record was successfully deleted, false if the record was not deleted.</td>
+        <td>10001</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h5>Example</h5>
+  <pre>
+    <code class="language-javascript">
+      db.characters.deleteRecord(10001).then(function(success){
+        //true
+      });
+    </code>
+  </pre>
+
+  <doc-header id="import-from-csv" class="secondary">importFromCSV</doc-header>
+  <doc-caption>Used to add a collection of records to a table.</doc-caption>
+
+  <a href="https://www.quickbase.com/api-guide/index.html#import-from-csv.html" target="_blank">API_ImportFromCSV</a>
+
+  <h5>Request</h5>
+
+  <table class="table striped bordered">
+    <thead>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Value</th>
+      <th>Required</th>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>array of records</td>
+        <td>array</td>
+        <td>objects of field-values</td>
+        <td>yes</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h5>Response</h5>
+  <table class="table bordered striped">
+    <thead>
+      <th>Response</th>
+      <th>Type</th>
+      <th>Value</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>array of new records id's</td>
+        <td>array</td>
+        <td>record id's</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h5>Example</h5>
+  <pre>
+    <code class="language-javascript">
+      let characters = [{ firstName: 'Walter', lastName: 'White' }, { firstName: 'Jesse', lastName: 'Pinkman'}];
+
+      db.characters.importFromCSV(characters).then(function(characters){
+        //[10001, 10002]
+      });
+    </code>
+  </pre>
+
+  <doc-best-practice>If adding a collection of records, use importFromCSV instead of addRecord. importFromCSV is way, way, faster.</doc-best-practice>
+</doc-section>
