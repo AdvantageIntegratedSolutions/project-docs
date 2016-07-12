@@ -2,6 +2,7 @@ class SideNavCtrl {
   constructor($scope, $rootScope, $location, $window) {
   	const _self = this;
 
+    _self.$scope = $scope;
     _self.$location = $location;
     _self.$window = $window;
     _self.show = true;
@@ -12,7 +13,7 @@ class SideNavCtrl {
       setTimeout(function(){
         _self.navs = $rootScope.sideNavs;
         _self.findClosestParents(navs);
-        _self.activateOnPageLoad();
+        _self.activateOnPageLoad(_self);
 
         _self.show = _self.navs.length != 0;
 
@@ -32,11 +33,15 @@ class SideNavCtrl {
     });
   }
 
-  activateOnPageLoad(){
+  activateOnPageLoad(self){
     const hash = this.$location.hash();
 
     if(!hash && this.navs.length > 0){
       this.navs[0].status = "active";
+      console.log(self)
+      self.$scope.$apply();
+      console.log(this.navs[0]);
+      $("html, body").animate({ scrollTop: 0 }, "slow");
     };
   };
 
