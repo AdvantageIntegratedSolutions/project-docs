@@ -10,6 +10,10 @@ const projects = [
 	{ 
 		name: "quickstart", 
 		description: "Angular environment for QuickBase."
+	},	
+	{ 
+		name: "pdf-link", 
+		description: "Product to convert HTML pages to pdf's, save to QuickBase and/or email to client."
 	}
 ]
 
