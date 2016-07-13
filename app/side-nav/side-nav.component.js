@@ -84,7 +84,7 @@ class SideNavCtrl {
     //prevent snapping to anchor when changing hash
     setTimeout(function(){
       $(element).attr("id", anchor);
-    }, 100)
+    }, 0)
   }
 
   activeStatus(nav, currentNav){
@@ -138,7 +138,7 @@ class SideNavCtrl {
       if(nav.anchor){
         let navOffset = $("#" + nav.anchor).offset();
 
-        if(!navOffset){ //id may have been removed to prevent snapping
+        if(!navOffset){ //id may have been removed to prevent
           navOffset = 0;
         }else{
           navOffset = navOffset.top - fromTop
