@@ -100,8 +100,6 @@ class SideNavCtrl {
 
     this.navs.forEach(function(nav){
       if(_self.activeStatus(nav, currentNav)){
-
-        console.log(currentNav.anchor)
         nav["display"] = true;
 
         const status = nav.anchor == currentNav.anchor || nav.anchor == currentNav.closestParent;
@@ -115,8 +113,6 @@ class SideNavCtrl {
             nav["status"] = "";
           };
         };
-
-        console.log(nav["status"]);
       }else{
         nav["display"] = nav.tier != "secondary-nav";
         nav["status"] = "";
@@ -135,7 +131,7 @@ class SideNavCtrl {
     this.navs.forEach(function(nav, index){
       if(nav.anchor){
         const navOffset = $("#" + nav.anchor).offset().top - fromTop;
-        if(navOffset <= 2){
+        if(navOffset <= 0){
           nav["offset"] =  navOffset;
           activeNavs.push(nav);
         };
