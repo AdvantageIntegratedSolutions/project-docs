@@ -1,8 +1,31 @@
 <doc-section>
   <doc-header id="quickstart">Quickstart</doc-header>
-  <p>Utilizing base-js first requires a useable QuickBase application. Once you have an application, you will need to collect the database and table settings. base-js bootstraps these configurations to create a more-powerful, more object-oriented design.</p>
+  <p>Utilizing base-js first requires a useable QuickBase application. Once you have an application, you will need to collect the database and table settings. base-js bootstraps these configurations to create a more-powerful, object-oriented client.</p>
 
-  <p>Please the exact configuration needed please see below @ <a href="#settings">Settings</a></p>
+  <doc-header id="cdn" class="secondary">CDN</doc-header>
+  
+  <p>
+    The library is hosted and managed on <a href="https://github.com/AdvantageIntegratedSolutions/base-js" target="_blank">Github</a>. The CDN is hosted on Amazon S3. Include the below scripts in your project.</a> jQuery is the only library dependency so be sure to also include jQuery in your project.
+  </p>
+
+  <ul>
+    <li>https://s3.amazonaws.com/ais_libraries/BaseJS/x.x.x/base.min.js</li>
+    <li>https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js</li>
+  </ul>
+
+  <doc-notice><br>Latest Version: <br>https://s3.amazonaws.com/ais_libraries/BaseJS/4.9.0/base.min.js</doc-notice>
+
+  <doc-header id="" class="secondary">Initialize</doc-header>
+  <p>Initializing is easy, yet powerful. A <b>base-js</b> client is initialized by taking a configuration object including all the <a href="#settings">settings</a> and QuickBase database properties that allow you to develop faster with an object-oriented mindset and forget about tedious QuickBase configuration.</p>
+
+  <pre>
+    <code class="language-javascript">
+      const db = new Base(configObject);
+    </code>
+  </pre>
+
+  <doc-header id="quick-examples" class="secondary">Quick Examples</doc-header>
+  <doc-caption>Let's move on to some quick examples of the most commonly used functions.</doc-caption>
 
   <pre>
     <code class="language-javascript">

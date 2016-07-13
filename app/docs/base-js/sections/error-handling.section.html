@@ -1,0 +1,19 @@
+<doc-section>
+  <doc-header id="error-handling">Error Handling</doc-header>
+
+  <p>As of v4.9.0, all HTTP errors or QuickBase errors are returned.</p>
+
+  <p>Errors will bypass any callback functions and automatically return an error JSON object. A message description of the error will be included along with a error code. The error code will either reflect a network error code or the actual <a href="http://www.quickbase.com/api-guide/index.html#errorcodes.html" target="_blank">QuickBase error codes</a>.</p>
+
+  <h5>Examples</h5>
+
+  <pre>
+  	<code class="language-javascript">
+  		{ error: { message: "Something went wrong.", code: "500" } }
+  		{ error: { message: "Invalid input", code: "2" } }
+  		{ error: { message: "Missing required field", code: "50" } }
+  	</code>
+  </pre>
+
+  <doc-warning>Please provide feedback on error handling as neccessary as this is a new as of v4.9.0 and may not meet all needs.</doc-warning>
+</doc-section>

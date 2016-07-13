@@ -1,7 +1,7 @@
 <doc-section>
   <doc-header id="settings">Settings</doc-header>
-  <doc-caption>Initialize your client using these settings.</doc-caption>
-  <p>When initializing a client, base-js takes an object of predefined settings to help enhance its capabilities. Below are the properties available:</p>
+  <doc-caption>Initialize your client using these settings in your configuration object.</doc-caption>
+  <p>When initializing a client, <b>base-js</b> takes an object of settings to help enhance its capabilities. Below are the object properties available:</p>
 
   <table class="table striped bordered">
     <thead>
@@ -62,7 +62,7 @@
   <doc-header id="tables" class="secondary">Tables</doc-header>
   <doc-caption>Control your tables with predefined table names, field names and id's.</doc-caption>
 
-  <p>The tables parameter is an important setting required by base-js. This parameter is an object of all the tables that will be used in your application. This includes the table name, table id's, field name and field id's.</p>
+  <p>The tables parameter is an important required setting. This parameter is an object of all the tables that will be used in your application. This includes the table name, table id's, field name and field id's.</p>
 
   <pre>
     <code class="language-javascript">
@@ -87,15 +87,15 @@
     </code>
   </pre>
 
-  <doc-notice>Table names and field names can be named whatever you like. No need to match anything in QuickBase. These names will be used throughout the life of your project including request and response data.</doc-notice>
+  <doc-notice>Table names and field names can be named whatever you like. No need to match anything to QuickBase. These names will be used throughout the life of your project including the request and response data.</doc-notice>
 
   <doc-header id="async-options" class="secondary">Async Options</doc-header>
 
   <doc-caption>Promises, callbacks or synchronous http requests</doc-caption>
 
-  <p>When you execute something synchronously, you wait for it to finish before moving on to another task. When you execute something asynchronously, you can move on to another task before it finishes. Below are the different values available for the async setting parameter:</p>
+  <p>When you execute something synchronously, you wait for it to finish before moving on to another task. When you execute something asynchronously, you can move on to another task before it finishes. Below are the different options available for the async setting parameter:</p>
 
-  <p>The 'promise' and 'callback' setting tell the library to make all http requests asynchronously. 'false' will execute all API requests synchronously.</p>
+  <p>The 'promise' and 'callback' setting tell the library to make all HTTP requests asynchronously. 'false' will execute all API requests synchronously.(not recommended)</p>
 
   <table class="table bordered striped">
     <thead>
@@ -106,15 +106,15 @@
     <tbody>
       <tr>
         <td>promise</td>
-        <td></td>
+        <td>All HTTP requests will be executed asynchronously and will return a promise.</td>
       </tr>
       <tr>
         <td>callback</td>
-        <td></td>
+        <td>All HTTP requests will be executed asynchronously and a callback function will be executed once the request is complete.</td>
       </tr>
       <tr>
         <td>false</td>
-        <td></td>
+        <td>All HTTP requests to QuickBase will be made synchronously.</td>
       </tr>
     </tbody>
   </table>

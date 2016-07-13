@@ -1,14 +1,34 @@
 <doc-section>
   <doc-header id="querying">Querying</doc-header>
-  <p>Query filters specify the conditions that determine which records to select for read, update, and delete operations.</p>
+  <p>To query records in a table, you must specify the conditions that determine which records to select for read, update, and delete operations by using query filters and comparison operators.</p>
 
-  <p>A query filter is an object that includes field-value conditions and its corresponding query comparison operator.</p>
+  <doc-header id="query-filters" class="secondary">Query Filters</doc-header>
+  <p>A query filter is an object that includes a single field-value condition or collections of conditions with corresponding query comparison operators. This isn't a new concept and was inspired by <a href="https://docs.mongodb.com/manual/tutorial/query-documents/" target="_blank">MongoDB</a> method of querying records.</p>
 
   <p>{ field: value } or { field : { XEX: value } }</p>
 
+  <doc-notice>The field value in a query is the name you set in your original configuration object in your table fields. Never use field id's, it won't work and it is not good practice.</doc-notice>
+
+  <doc-header id="query-examples" class="secondary">Query Examples</doc-header>
+
+  <pre>
+    <code class="language-javascript">
+      { name: "Woody" },
+      { description: { XEX: "cowboy" } },
+      { name: "Woody", voicedBy: "Tom Hanks" },
+      { or: [{ name: "Woody" }, { name: "Buzz" }] },
+      { or: [{ name: { XEX: "Buzz"} }, { voicedBy: "Tom Hanks" }] },
+      { or: [{ name: { CT: "Buzz"} }, { name: "Hamm" }, { voicedBy: { CT: "Hanks" } }] },
+      { name: "Woody", or: [{ voicedBy: "Tim Allen" }] },
+      { name: "Woody", or: [{ voicedBy: "Tim Allen" }], recordId: 10001 },
+      { name: { in: ["Woody", "Buzz"]}}
+    </code>
+  </pre>
+
+
   <doc-header id="comparison-operators" class="secondary">Comparison Operators</doc-header>
   
-  <p>All QuickBase API query comparison operators are allowed. A full list can be found <a href="https://www.quickbase.com/api-guide/index.html#do_query.html#queryOperators" target="_blank">here.</a>
+  <p>All <a href="https://www.quickbase.com/api-guide/index.html#do_query.html#queryOperators" target="_blank">QuickBase API query comparison operators</a> are allowed.
   </p>
 
   <doc-notice>By default a simple { field : value } will be treated as an equals operator("EX").</doc-notice>
@@ -25,50 +45,50 @@
       <tr>
         <td>EX</td>
         <td>is equal to value</td>
-        <td>{ name: "Walter White" }</td>
+        <td>{ name: "Woody" }</td>
       </tr>
       <tr>
         <td>XEX</td>
         <td>is not equal to value</td>
-        <td>{ name: { XEX: "Walter White" } }</td>
+        <td>{ name: { XEX: "Buzz Lightyear" } }</td>
       </tr>
       <tr>
         <td>CT</td>
         <td>contains value</td>
-        <td>{ name: { CT: "White" } }</td>
+        <td>{ name: { CT: "Buzz" } }</td>
       </tr>
       <tr>
         <td>XCT</td>
         <td>does not contain value</td>
-        <td>{ name: { XCT: "White" } }</td>
+        <td>{ name: { XCT: "Wood" } }</td>
       </tr>
       <tr>
         <td>OBF</td>
         <td>on or before value</td>
-        <td>{ birthday: { OBF: "01-01-1990" } }</td>
+        <td>{ dateCreated: { OBF: "01-01-2015" } }</td>
       </tr>
       <tr>
         <td>OAF</td>
         <td>on or after value</td>
-        <td>{ birthday: { OAF: "01-01-1990" } }</td>
+        <td>{ dateCreated: { OAF: "01-01-2015" } }</td>
       </tr>
       <tr>
         <td>LT</td>
         <td>less than value</td>
-        <td>{ dollars_in_bank: { LT: 10000 } }</td>
+        <td>{ number_of_toys: { LT: 10 } }</td>
       </tr>
       <tr>
         <td>GT</td>
         <td>greater than value</td>
-        <td>{ dollars_in_bank: { GT: 10000 } }</td>
+        <td>{ number_of_toys: { GT: 12 } }</td>
       </tr>
     </tbody>
   </table>
 
   <doc-header id="query-helpers" class="secondary">Finder Methods</doc-header>
-  <doc-caption>Finder methods are used the same way as doQuery except they have a specialized purpose</doc-caption>
+  <p>Finder methods are used the same way as doQuery except they have a specialized purpose. Just need the first record, the last record or all records, use these quick hitters.</p>
 
-  <table>
+  <table class="table bordered striped">
     <thead>
       <th>Function</th>
       <th>Purpose</th>
@@ -106,6 +126,12 @@
         <td>retrieve all records in table</td>
         <td>options</td>
         <td>records(array of objects)</td>
+      </tr>
+      <tr>
+        <td>getRids</td>
+        <td>retrieve any array of record id's</td>
+        <td>query</td>
+        <td>rids(array of record id's)</td>
       </tr>
     </tbody>
   </table>

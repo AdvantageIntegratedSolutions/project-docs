@@ -28,7 +28,7 @@
         <td>options</td>
         <td>object</td>
         <td><a href="http://www.quickbase.com/api-guide/index.html#do_query.html#Request_Parameters" target="_blank">API</a></td>
-        <td>yes, if no options use {}</td>
+        <td>yes, if no options still use {}</td>
       </tr>
     </tbody>
   </table>
@@ -52,14 +52,15 @@
   <h5>Example</h5>
   <pre>
     <code class="language-javascript">
-      db.characters.doQuery({ firstName: "Walter" }, { slist: "6" }).then(function(characters){
-        console.log(characters);
-
-        //
-        [
-          { rid: "3", firstName: "Walter", lastName: "White" }, 
-          { rid: "3", firstName: "Jesse", lastName: "Pinkman"}
-        ]  
+      //retrieve all primary toy records
+      db.toys.doQuery({ primary: "1" }, { slist: [6,9] }).then(function(toys){
+        /*
+          toys => [
+            { name: "Buzz Lightyear", description: "Space-ranger action figure who wears a space suit." },
+            { name: "Woody", description: "Cowbody doll, Andy's favorite." },
+            { name: "Jesse", description: "Cowgirl doll and part of the Woody's Round Up gang." }
+          ]
+        */
       });
     </code>
   </pre>
@@ -107,8 +108,15 @@
   <h5>Example</h5>
   <pre>
     <code class="language-javascript">
-      db.characters.addRecord({ firstName: "Walter", lastName: 'White' }).then(function(newCharacterId){
-        //10001
+      //add new toy record
+      let toy = { 
+        name: "Hamm", 
+        description: "Wisecracking realist piggy bank.", 
+        voicedBy: "John Ratzenberger" 
+      };
+
+      db.toys.addRecord(toy).then(function(newRecordId){
+        //newRecordId => 10001
       });
     </code>
   </pre>
@@ -159,8 +167,9 @@
   <h5>Example</h5>
   <pre>
     <code class="language-javascript">
-      db.characters.deleteRecord(10001).then(function(success){
-        //true
+      //delete toy record
+      db.toys.delete(10001).then(function(deleted){
+        //deleted => true
       });
     </code>
   </pre>
@@ -209,13 +218,20 @@
   <h5>Example</h5>
   <pre>
     <code class="language-javascript">
-      let characters = [{ firstName: 'Walter', lastName: 'White' }, { firstName: 'Jesse', lastName: 'Pinkman'}];
+      //import collection of toys
+      let toys = [
+        { name: "Rex", description: "Excitable large, green, plastic Tyrannosaurus rex.", voicedBy: "Wallace Shawn" },
+        { name: "Slinky Dog", description: "Dachshund w/ slinky for body, speaks with a southern accent.", voicedBy: "Jim Varney" },
+        { name: "Mr. Potato Head", description: "Doll based on the real-life toy by Playskool.", voicedBy: "Don Rickles." },
+        { name: "Bullseye", description: "Woody's horse that acts like a dog.", voicedBy: "" },
+        { name: "Bo Peep", description: "Porcelain figurine attached to Molly's bedside lamp.", voicedBy: "Annie Potts" },
+      ];
 
-      db.characters.importFromCSV(characters).then(function(characters){
-        //[10001, 10002]
-      });
+      db.toys.importFromCSV(toys).then(function(newRecordIds){
+        //newRecordIds => [10001, 10002, 10003, 10004, 10005]
+      }); 
     </code>
   </pre>
 
-  <doc-best-practice>If adding a collection of records, use importFromCSV instead of addRecord. importFromCSV is way, way, faster.</doc-best-practice>
+  <doc-best-practice>If adding a collection of records, use importFromCSV instead of addRecord. importFromCSV is way faster.</doc-best-practice>
 </doc-section>
