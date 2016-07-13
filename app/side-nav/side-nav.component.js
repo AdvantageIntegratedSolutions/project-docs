@@ -42,9 +42,22 @@ class SideNavCtrl {
       this.navs[0].status = "active";
       $("html, body").animate({ scrollTop: 0 }, 0);
     }else{
+      let currentAnchor;
+
       this.navs.forEach(function(nav){
         if(nav.anchor == hash){
+          currentAnchor = nav;
+        };
+      });
+
+      this.navs.forEach(function(nav){
+        if(currentAnchor.anchor == nav.anchor || currentAnchor.closestParent == nav.anchor){
           nav["status"] = "active";
+          nav["display"] = true;
+        };
+
+        if(nav.closestParent && nav.closestParent == currentAnchor.closestParent){
+          nav["display"] = true;
         };
       });
     };
