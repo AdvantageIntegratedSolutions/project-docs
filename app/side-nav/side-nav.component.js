@@ -31,6 +31,7 @@ class SideNavCtrl {
     const _self = this;
     $(window).scroll(function(){
       _self.scrolling();
+      _self.$scope.$apply();
     });
   }
 
@@ -99,10 +100,23 @@ class SideNavCtrl {
 
     this.navs.forEach(function(nav){
       if(_self.activeStatus(nav, currentNav)){
+
+        console.log(currentNav.anchor)
         nav["display"] = true;
 
         const status = nav.anchor == currentNav.anchor || nav.anchor == currentNav.closestParent;
-        nav["status"] = status ? "active" : "";
+
+        if(status){
+          if(nav["status"] != "active"){
+            nav["status"] = "active";
+          };
+        }else{
+          if(nav["status"] != ""){
+            nav["status"] = "";
+          };
+        };
+
+        console.log(nav["status"]);
       }else{
         nav["display"] = nav.tier != "secondary-nav";
         nav["status"] = "";
