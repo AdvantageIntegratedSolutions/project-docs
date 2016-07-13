@@ -75,10 +75,16 @@ class SideNavCtrl {
 
   updateHash(anchor){
     const element = $("#" + anchor);
+
+     //remove ID to prevent auto-scrolling onchange
+    $(element).attr("id", "");
     
-    $(element).attr("id", ""); //remove ID to prevent auto-scrolling onchange
     document.location.hash = anchor;
-    $(element).attr("id", anchor);
+
+    //prevent snapping to anchor when changing hash
+    setTimeout(function(){
+      $(element).attr("id", anchor);
+    }, 100)
   }
 
   activeStatus(nav, currentNav){
@@ -100,8 +106,6 @@ class SideNavCtrl {
 
     this.navs.forEach(function(nav){
       if(_self.activeStatus(nav, currentNav)){
-
-        console.log(currentNav.anchor)
         nav["display"] = true;
 
         const status = nav.anchor == currentNav.anchor || nav.anchor == currentNav.closestParent;
@@ -115,8 +119,6 @@ class SideNavCtrl {
             nav["status"] = "";
           };
         };
-
-        console.log(nav["status"]);
       }else{
         nav["display"] = nav.tier != "secondary-nav";
         nav["status"] = "";
@@ -134,7 +136,14 @@ class SideNavCtrl {
 
     this.navs.forEach(function(nav, index){
       if(nav.anchor){
-        const navOffset = $("#" + nav.anchor).offset().top - fromTop;
+        let navOffset = $("#" + nav.anchor).offset();
+
+        if(!navOffset){ //id may have been removed to prevent snapping
+          navOffset = 0;
+        }else{
+          navOffset = navOffset.top - fromTop
+        };
+
         if(navOffset <= 2){
           nav["offset"] =  navOffset;
           activeNavs.push(nav);
