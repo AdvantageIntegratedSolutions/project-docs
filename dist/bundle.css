@@ -106,10 +106,10 @@ nav {
       border-left: 7px solid #333333; }
       .side-nav li.secondary-nav a {
         font-size: 12px;
+        font-weight: bold;
         padding-left: 15px; }
       .side-nav li.secondary-nav.active a {
-        color: #337ab7;
-        font-weight: bold; }
+        color: #337ab7; }
 
 .project-item .card {
   cursor: pointer;
