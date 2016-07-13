@@ -3,13 +3,26 @@
 
 	<doc-caption>Nothing new to learn. The folder organization will do most of the work.</doc-caption>
 
-	<p>All documentation is stored under the "/docs" folder within the <a href="https://github.com/KitHensel/project-docs" target="_blank">project-docs</a> Angular QuickStart application. Each documented project has a folder titled after the project name making it clear and easy to organize documentation. Inside each folder is an index.doc.html file and a 'sections' folder that contains each section of documentation.</p>
+	<p>All documentation is stored within the <a href="https://github.com/KitHensel/project-docs" target="_blank">project-docs</a> Angular QuickStart application.</p>
+
+	<p>Each documented project has its own folder under the "/docs" folder making it clear and easy-to-organize and find documentation. Inside each folder is an index.doc.html file and a 'sections' folder.</p>
+
+	<p>Once your folder structure is setup, everything else is automatic including the routing, side-navigation, and making your project visible to the team on the dashboard.</p>
 	
-	<h5>Steps to document a new project:</h5>
+	<doc-header id="instructions" class="secondary">Instructions</doc-header>
 
 	<ol>
-		<li>Add a new folder under "/docs", titling it with the name of your project.</li>
-		<li>Add the name of the new document to the "_docs.js" file.</li>
-		<li>Add the new project to the project-docs list of current projects("project-docs.doc.html")</li>
+		<li>Download the <a href="https://github.com/KitHensel/project-docs" target="_blank">project-docs</a> application and run npm install.</li>
+		<li>Run the below project gulp task. The documentation boilerplate will automatically be generated under "/docs/(name-of-project)".
+			<br>
+			<h5>gulp project --name name-of-project</h5>
+		</li>
+		<li>Add the project name and a short description to the "/docs/index.js" file.</li>
+		<li>Document and review locally using "gulp local".</li>
+		<li>When complete, commit & pull to the project-docs application at "/apps/project-docs" located on the web-server.</li>
 	</ol>
+
+	<doc-notice>The name used to title your project in the gulp task will also be the route where you can find your documentation. '<b>localhost:3000/name-of-project</b>' or '<b>docs.advantagequickstart.com/name-of-project</b>'</doc-notice>
+
+	<doc-warning>Ensure the project folder matches the project name in the "/docs/index.js" configuration file.</doc-warning>
 </doc-section>

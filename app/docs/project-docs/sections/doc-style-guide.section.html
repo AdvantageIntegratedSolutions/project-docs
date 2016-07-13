@@ -1,13 +1,12 @@
 <doc-section>
 	<doc-header id="doc-style-guide">Doc Style Guide</doc-header>
 
-	<p>All documentation is written in common html. No new markdown language or a long list of rules. Be sure to take advantage of the responsive CSS framework included(<a target="_blank" href="http://materializecss.com/">Materialize</a>).
+	<p>All documentation is written in common HTML and SASS. No new markdown language or a long list of rules. Be sure to take advantage of the responsive CSS framework included(<a target="_blank" href="http://materializecss.com/">Materialize</a>).
 	</p>
 
-	<doc-header id="style-guide" class="secondary">Style Guide</doc-header>
+	<doc-header id="style-guide" class="secondary">Organization Guide</doc-header>
 
-	<p>To create documentation that is consistent and easy-to-follow across projects, here is a general guide to structure your documents.
-	</p>
+	<p>To create documentation that is consistent across projects and take advantage of new reusable components, below is a list of general rules to structure and organize your documentation.</p>
 
 	<table class="table bordered striped">
 		<thead>
@@ -17,71 +16,79 @@
 		<tbody>
 			<tr>
 				<td>Sections</td>
-				<td>Wrap sections of content in a 'doc-section' tag.</td>
+				<td>For each section of documentation, create a new section file in your sections project folder and include it in your index file. This will increase maintainability over time and keep files short and sweet. Wrap all data in section with a 'doc-section' component tag.</td>
 			</tr>
+
 			<tr>
-				<td>Headings</td>
-				<td>Use 'doc-header' for headings that belong in the side nav.</td>
+				<td>Headers</td>
+				<td>Use clear and concise header names. Headers automatically render in the side-navigation so they must be simple and make their purpose obvious. Wrap headers with a 'doc-header' component tag so they are automatically loaded in the side-nav.</td>
 			</tr>
+
 			<tr>
-				<td>Content</td>
-				<td>Use 'p' tags to store text.</td>
+				<td>Misc Content</td>
+				<td>Store content in 'p' tags.</td>
 			</tr>
+
 			<tr>
-				<td>Other Headings</td>
-				<td>Use 'h3'(primary), 'h4'(secondary), 'h5' tags.</td>
+				<td>Collections</td>
+				<td>
+					Use tables to store collections. Use the 'table' tag and include the 'table', 'striped', 'bordered' classes provided by Materialize.
+				</td>
 			</tr>
-			<tr>
-				<td>Tables</td>
-				<td>Use tables to store collections. Use 'table', 'striped' and 'bordered' classes on table tag.</td>
-			</tr>
+
 			<tr>
 				<td>Notices</td>
-				<td>Use the 'doc-notice', 'doc-warning' or 'doc-best-practice' to bring attention to a useful piece of information.</td>
+				<td>Use notices when you need to draw attention to important information. Use the 'doc-notice', 'doc-warning', or 'doc-best-practice' component tags.</td>
+			</tr>
+
+			<tr>
+				<td>Code Examples</td>
+				<td>Include simple and direct code examples whenever possible. Use the 'code' tag wrapped with a 'pre' tag to display syntax highlighted code. The syntax will try to be automatically detected but to set the language explicitly include the class such as 'language-javascript', 'language-html' or 'language-css'. <a href="http://prismjs.com/#languages-list" target="_blank">here</a> is a list of all supported languages</td>
 			</tr>
 		</tbody>
 	</table>
 
-	<doc-header id="helper-tags" class="secondary">Helper Tags</doc-header>
-
-	<p>Helper tags help speed up the process of writing the HTML by packing up the common parts of a document.
-	</p>
+	<doc-header id="components" class="secondary">Components</doc-header>
+	<p>Utilize these components to reuse common elements of documentation:</p>
 
 	<table class="table bordered striped">
+		<thead></thead>
+
 		<tbody>
 			<tr>
 				<td>doc-section</td>
-				<td>Adding class to headers will add heading to side-navigation.</td>
+				<td>Use to separate sections of documentation.</td>
 			</tr>
+
 			<tr>
 				<td>doc-header</td>
-				<td></td>
+				<td>Use to add new header to the side-nav and create the anchor.</td>
 			</tr>
-			<tr>
-				<td>doc-code</td>
-				<td>Adding class to headers will add heading as indented header to side-navigation.</td>
-			</tr>
-			<tr>
-				<td>doc-notice</td>
-				<td>Adding class to headers will add heading as indented header to side-navigation.</td>
-			</tr>
-			<tr>
-				<td>doc-alert</td>
-				<td>Adding class to headers will add heading as indented header to side-navigation.</td>
-			</tr>
-			<tr>
-				<td>doc-best-practice</td>
-				<td>Adding class to headers will add heading as indented header to side-navigation.</td>
-			</tr>
+
 			<tr>
 				<td>doc-caption</td>
-				<td>Adding class to headers will add heading as indented header to side-navigation.</td>
+				<td>Pair with doc-header to create caption under header.</td>
+			</tr>
+
+			<tr>
+				<td>doc-notice</td>
+				<td>Use to build notice on page.</td>
+			</tr>
+
+			<tr>
+				<td>doc-warning</td>
+				<td>Use to build warning on page.</td>
+			</tr>
+
+			<tr>
+				<td>doc-best-practice</td>
+				<td>Use to build best-practive notice on page.</td>
 			</tr>
 		</tbody>
 	</table>
 
 	<doc-notice>
-		These tags are optional. You can use any HTML tag you wish but these tags pack a punch.
+		These tags are optional. You can use any HTML tag you wish but these components pack a punch.
 	</doc-notice>
 
 	<doc-header id="classes" class="secondary" it="has">Classes</doc-header>
@@ -93,6 +100,18 @@
 			<tr>
 				<td>secondary</td>
 				<td>Add this class to 'doc-header' to have header display as a subheader in the navigation pane.</td>
+			</tr>
+			<tr>
+				<td>table</td>
+				<td>Add common styling to a table</td>
+			</tr>
+			<tr>
+				<td>striped</td>
+				<td>Add row striping to your table</td>
+			</tr>
+			<tr>
+				<td>bordered</td>
+				<td>Add borders to your table</td>
 			</tr>
 		</tbody>
 	</table>
