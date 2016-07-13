@@ -25,6 +25,29 @@
     </code>
   </pre>
 
+  <doc-header id="and-ors" class="secondary">And's, Or's</doc-header>
+
+  <p>To concatenate multiple query criterias together(AND's), simply add additional key-values to your query filter and they will automatically be combined.</p>
+
+  <pre>
+    <code class="language-javascript">
+      { name: "Woody", voicedBy: "Tom Hanks" } will translate to "{'name'.EX.'Wooday'}AND{'voicedBy'.EX.'Tom Hanks'}"
+    </code>
+  </pre>
+
+  <p>To generate an or query:</p>
+  
+  <ul>
+    <li>add an 'or' key value and set the value an array of query filters</li>
+    <li>add a field name as the key and set the value as an object with 'in' set as the key and an array of values as the value.</li>
+  </ul>
+
+  <pre>
+    <code class="language-javascript">
+      { or: [{ name: "Woody" }, { name: "Buzz" }] } will translate to "{'name'.EX.'Wooday'}OR{'name'.EX.'Buzz'}"
+      { name: ['Woody', 'Buzz'] } will translate to "{'name'.EX.'Woody'}OR{'name'.EX.'Buzz'}"
+    </code>
+  </pre>
 
   <doc-header id="comparison-operators" class="secondary">Comparison Operators</doc-header>
   
