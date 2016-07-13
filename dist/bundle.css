@@ -14,8 +14,11 @@ p {
   font-size: 14px;
   max-width: 800px; }
 
+footer .content {
+  height: 200px; }
+
 footer img {
-  height: 120px;
+  height: 160px;
   width: auto; }
 
 footer .nav {
