@@ -8,7 +8,8 @@ export default {
   bindings: {
   	name: "@",
   	description: "@",
-  	color: "@"
+  	color: "@",
+  	status: "@"
   },
   templateUrl: 'dashboard/projects/projects.component.html',
   controller: ProjectCtrl

@@ -30,7 +30,14 @@
       </div>
     </div>
 
-    <div id="scrollToTop" ng-hide="atTop" ng-click="scrollToTop()">
+    <div 
+      id="scrollToTop" 
+      ng-class="{'z-depth-4': hover}"
+      ng-mouseenter="hover = true"
+      ng-mouseleave="hover = false"
+      ng-hide="atTop" 
+      ng-click="scrollToTop()" 
+    >
       <i class="material-icons">keyboard_arrow_up</a>
     </div>
   </footer>

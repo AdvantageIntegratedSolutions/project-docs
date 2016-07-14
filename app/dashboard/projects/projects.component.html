@@ -9,6 +9,19 @@
 		  <div class="card-content white-text">
 		    <span class="card-title">{{ $ctrl.name }}</span>
 		    <p>{{ $ctrl.description }}</p>
+
+		    <div class="valign-wrapper">
+			    <div class="status center-align">
+			    	<div class="valign-wrapper" ng-if="$ctrl.status!='current'">
+			    		<i class="material-icons">error</i>
+			    		&nbsp;{{ $ctrl.status }}
+			    	</div>
+			    	<div class="valign-wrapper" ng-if="$ctrl.status=='current'">
+			    		<i class="material-icons">done</i>
+			    		&nbsp;{{ $ctrl.status }}
+			    	</div>
+			    </div>
+			  </div>
 		  </div>
 		</div>
 	</a>
