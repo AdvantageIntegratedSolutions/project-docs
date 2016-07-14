@@ -40,6 +40,13 @@ footer {
 	border: 2px solid $gray-dark;
 }
 
+li{
+	pre{
+		margin-top: 10px !important;
+		margin-bottom: 10px !important;
+	}
+}
+
 pre{
 	margin: 0px !important;
 	padding: 0px !important;

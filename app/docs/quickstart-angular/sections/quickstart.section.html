@@ -1,0 +1,45 @@
+<doc-section>
+  <doc-header id="quickstart">Quickstart</doc-header>
+  <doc-caption>Starting a new project.</doc-caption>
+
+  <p>Once your environment is all setup, starting a new project is easy. The <b>quickstart-angular</b> framework is hosted on GitHub and no external dependencies are required. This is ideal, because we will clone this repo, quickly adapt to our new project and hit the ground running.</p>
+
+  <h5>Step-by-step instructions:</h5>
+
+  <ol>
+  	<li>Create new repo on Github and title the repo to the name of your project.</li>
+  	<li>Clone the <b><a href="https://github.com/AdvantageIntegratedSolutions/quickstart-angular.git" target="_blank">quickstart-angular</a></b>repo and provide the name of your new project.
+<pre>
+<code class="language-http">
+	git clone https://github.com/AdvantageIntegratedSolutions/quickstart-angular.git new-app-name
+</code>
+</pre>
+  	</li>
+  	<li>Update the git origin remote with your app's repo url.
+<pre>
+<code class="language-http">
+	git remote set-url origin new-repo-git-url
+</code>
+</pre>
+  	</li>
+  	<li>Install node modules at the root of your new project folder.
+<pre>
+<code class="language-bash">
+	npm install
+</code>
+</pre>
+  	</li>
+
+  	<li>Configure the 'config/app.config.js' file to your new project.</li>
+  	<li>Start your local server on 'localhost:3000'.
+<pre>
+<code class="language-bash">
+	gulp local
+</code>
+</pre>
+  	</li>
+  	<li>
+  		You are all setup. Visit 'local:3000' to view your project.
+  	</li>
+  </ol>
+</doc-section>

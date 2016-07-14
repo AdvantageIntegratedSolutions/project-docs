@@ -15,9 +15,9 @@ const projects = [
 		status: 'current'
 	},
 	{ 
-		name: "quickstart", 
+		name: "quickstart-angular", 
 		description: "Angular environment for QuickBase.",
-		status: 'not started'
+		status: 'in progress'
 	},	
 	{ 
 		name: "quickstart-portal", 

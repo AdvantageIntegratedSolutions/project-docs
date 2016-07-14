@@ -28,6 +28,10 @@ footer .nav {
   margin: 10px 0px 10px 0px;
   border: 2px solid #333333; }
 
+li pre {
+  margin-top: 10px !important;
+  margin-bottom: 10px !important; }
+
 pre {
   margin: 0px !important;
   padding: 0px !important; }
