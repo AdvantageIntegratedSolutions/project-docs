@@ -1,0 +1,140 @@
+<doc-section>
+  <doc-header id="saving-pdf">Saving PDF</doc-header>
+  <doc-caption>Save the pdf back to QuickBase</doc-caption>
+
+  <p>Many times you may need to convert a QuickBase page and save the PDF back to QuickBase.</p>
+
+  <p>Let's say you have a button on a customer form titled "Generate Invoice". The user could click this button, generate an invoice by converting an invoice custom page to a PDF and then save this new invoice pdf back to the customer record.</p>
+
+  <p>There are three options to save a PDF:</p>
+
+  <ul>
+  	<li>Attach the PDF to an existing record in a file attachment field in QuickBase.</li>
+  	<li>Create a child record and relate to a parent record in QuickBase.</li>
+  	<li>Download the PDF to local clients computer.</li>
+  </ul>
+
+  <p>Each use case uses different url parameters. Below are the different required parameters to save a pdf to QuickBase.</p>
+
+
+  <doc-header id="attach-to-record" class="secondary">Attach to record</doc-header>
+	<table class="table striped bordered">
+		<thead>
+			<th>Parameter</th>
+			<th>Value</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td>domain</td>
+				<td>quickbase domain of application</td>
+			</tr>
+			<tr>
+				<td>app_token</td>
+				<td>application's app token, required if enabled in application</td>
+			</tr>
+			<tr>
+				<td>dbid</td>
+				<td>dbid of table that contains record</td>
+			</tr>
+			<tr>
+				<td>rid</td>
+				<td>record id</td>
+			</tr>
+			<tr>
+				<td>file_fid</td>
+				<td>field id of file attachment field</td>
+			</tr>
+		</tbody>
+	</table>
+
+<pre>
+	<code class="language-javascript">
+	//required parameters
+	const url = encodeURIComponent("https://www.google.com");
+	const filename = "invoice-10001"
+
+	//parameters to save pdf to record
+	const domain = "ais"
+	const dbid = "bfghighi";
+	const rid = 10001;
+	const file_fid = 10;
+
+	const parameters = 
+		"&url=" + url + 
+		"&FileName=" + filename + 
+		"&domain=" + domain + 
+		"&dbid" + dbid + 
+		"&rid" + rid + 
+		"&file_fid" + file_fid;
+
+	const pdfUrl = "https://pdflink.advantagesoftware.net/convert/new?rocket=true" + parameters;
+
+	$.get(pdfUrl);
+	</code>
+</pre>
+
+	<doc-header id="create-new-record" class="secondary">Create new record</doc-header>
+	<table class="table striped bordered">
+		<thead>
+			<th>Parameter</th>
+			<th>Value</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td>domain</td>
+				<td>quickbase domain of application</td>
+			</tr>
+			<tr>
+				<td>app_token</td>
+				<td>application's app token, required if enabled in application</td>
+			</tr>
+			<tr>
+				<td>rid</td>
+				<td>record id of parent record</td>
+			</tr>
+			<tr>
+				<td>parent_fid</td>
+				<td>field id of parent reference field</td>
+			</tr>
+			<tr>
+				<td>child_dbid</td>
+				<td>dbid of table where new record will be saved with pdf</td>
+			</tr>
+			<tr>
+				<td>file_fid</td>
+				<td>field id of file attachment field in child table</td>
+			</tr>
+		</tbody>
+	</table>
+
+<pre>
+	<code class="language-javascript">
+	//required parameters
+	const url = encodeURIComponent("https://www.google.com");
+	const filename = "invoice-10001"
+
+	//parameters to save pdf to record
+	const domain = "ais"
+	const rid = 10001;
+	const parent_fid = 6;
+	const child_dbid = "bfghiag3"
+	const file_fid = 10;
+
+	const parameters = 
+		"&url=" + url + 
+		"&FileName=" + filename + 
+		"&domain=" + domain + 
+		"&rid" + rid + 
+		"&parent_fid" + parent_fid +
+		"&child_dbid" + child_dbid + 
+		"&file_fid" + file_fid;
+
+	const pdfUrl = "https://pdflink.advantagesoftware.net/convert/new?rocket=true" + parameters;
+
+	$.get(pdfUrl);
+	</code>
+</pre>
+
+	<doc-header id="download" class="secondary">Download</doc-header>
+	<p>If you only want to download the pdf, ignore the above parameters and just include the required and optional format parameters.</p>
+</doc-section>

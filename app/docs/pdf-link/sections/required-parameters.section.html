@@ -1,0 +1,42 @@
+<doc-section>
+  <doc-header id="required-parameters">Required Parameters</doc-header>
+
+  <p>The following parameters are required for converting an HTML page to PDF.</p>
+
+	<table class="table striped bordered">
+		<thead>
+			<th>Required Parameters</th>
+			<th>Purpose</th>
+		</thead>
+
+		<tbody>
+			<tr>
+				<td>url</td>
+				<td>Url of HTML page being converted. Must be url <a href="http://meyerweb.com/eric/tools/dencoder/" target="_blank">encoded</a>.</td>
+			</tr>
+			<tr>
+				<td>rocket</td>
+				<td>Must be set to true. Tells pdf-link to use newer pdf converting service.</td>
+			</tr>
+			<tr>
+				<td>FileName</td>
+				<td>Name of desired output file. Exclude file extension.</td>
+			</tr>
+		</tbody>
+	</table>
+
+<pre>
+	<code class="language-javascript">
+	const url = encodeURIComponent("https://www.google.com");
+	const filename = "invoice-10001"
+
+	const pdfUrl = "https://pdflink.advantagesoftware.net/convert/new?rocket=true&" + "url=" + url + "&FileName=" + filename;
+
+	$.get(pdfUrl);
+	</code>
+</pre>
+
+	<doc-warning>The 'rocket' parameter forces pdf-link to use html2pdfrocket intead of ConvertAPI. Convert API is a previous third-party service that had issues splitting tables and hard to reach support.</doc-warning>
+
+	<doc-notice>Always remember your first url query parameter will follow a '?' not a '&'.</doc-notice>
+</doc-section>

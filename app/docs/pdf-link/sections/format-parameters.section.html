@@ -1,0 +1,152 @@
+<doc-section>
+  <doc-header id="format-parameters">Format Parameters</doc-header>
+
+  <p>Additional parameters can be used to format and configure the setings of the pdf. The majority if not all the parameters found on <a href="https://www.html2pdfrocket.com/" target="_blank">html2pdfrocket</a> are supported.
+	</p>
+
+	<table class="table striped bordered">
+		<thead>
+			<th>Parameters</th>
+			<th>Purpose</th>
+		</thead>
+
+		<tbody>
+			<tr>
+				<td>MarginLeft</td>
+				<td>Value of left margin - default is 0</td>
+			</tr>
+			<tr>
+				<td>MarginRight</td>
+				<td>Value of right margin - default is 0</td>
+			</tr>
+			<tr>
+				<td>MarginTop</td>
+				<td>Value of top margin - default is 0</td>
+			</tr>
+			<tr>
+				<td>MarginBottom</td>
+				<td>Value of bottom margin - default is 0</td>
+			</tr>
+			<tr>
+				<td>UseGrayscale</td>
+				<td>true to generate PDF in grayscale, false or leave blank for full colour</td>
+			</tr>
+			<tr>
+				<td>UseLandscape</td>
+				<td>true to rotate page to landscape, false or leave blank for portrait</td>
+			</tr>
+			<tr>
+				<td>EnableForms</td>
+				<td>true to turn html form fields into pdf form fields</td>
+			</tr>
+			<tr>
+				<td>LowQuality</td>
+				<td>true to reduce the quality, which may lower your network usage if quality is still satisfactory</td>
+			</tr>
+			<tr>
+				<td>DisableShrinking</td>
+				<td>true to disable the intelligent shrinking process we use make the pixel/dpi ratio constant</td>
+			</tr>
+			<tr>
+				<td>DisableJavascript</td>
+				<td>true to disable running JS on page, otherwise javascript runs</td>
+			</tr>
+			<tr>
+				<td>JavascriptDelay</td>
+				<td>Milliseconds to wait for JS to finish executing before converting the page.  Useful for ajax calls.</td>
+			</tr>
+			<tr>
+				<td>UsePrintStylesheet</td>
+				<td>true to use the print media stylesheet, false or leave blank to use normal stylesheet</td>
+			</tr>
+			<tr>
+				<td>FooterSpacing</td>
+				<td>Spacing between the header and the content in mm - default is 0</td>
+			</tr>
+			<tr>
+				<td>HeaderSpacing</td>
+				<td>Spacing between the footer and the content in mm - default is 0</td>
+			</tr>
+			<tr>
+				<td>PageSize</td>
+				<td>Default size is A4 but you can use Letter, A0, A2, A3, A5, Legal, etc.</td>
+			</tr>
+			<tr>
+				<td>PageWidth</td>
+				<td>Page width - if you use this, you must also use PageHeight</td>
+			</tr>
+			<tr>
+				<td>PageHeight</td>
+				<td>Page Height - if you use this, you must also use PageHeight</td>
+			</tr>
+			<tr>
+				<td>ViewPort</td>
+				<td>e.g. 800x600 - Set if you have custom scrollbars or css attribute overflow to emulate window size</td>
+			</tr>
+			<tr>
+				<td>Dpi</td>
+				<td>Explicitly set the DPI, which is 96 by default.  Also see Zoom settings</td>
+			</tr>
+			<tr>
+				<td>Zoom</td>
+				<td>Default zoom is 1.00  You can use any floating point number, e.g. 0.5, 0.75, 1.10, 2.55, 3...</td>
+			</tr>
+			<tr>
+				<td>OutputFormat</td>
+				<td>Must be either "pdf", "jpg", "png", "bmp" or "svg" if not supplied the default is PDF</td>
+			</tr>
+			<tr>
+				<td>Username</td>
+				<td>For URL conversions, creates a secure basic authentication connection to your server</td>
+			</tr>
+			<tr>
+				<td>Password</td>
+				<td>For URL conversions, creates a secure basic authentication connection to your server</td>
+			</tr>
+			<tr>
+				<td>Cookie</td>
+				<td>Supply in format: NAME|||VALUE|||NAME|||VALUE (that's 2 cookies).  Often used for authentication.</td>
+			</tr>
+			<tr>
+				<td>HeaderUrl</td>
+				<td>To use an html header on each page - a url starting with http containing the html</td>
+			</tr>
+			<tr>
+				<td>FooterUrl</td>
+				<td>To use an html footer on each page - a url starting with http containing the html</td>
+			</tr>
+			<tr>
+				<td>HeaderLeft</td>
+				<td>Top left header text (can use replacement tags below)</td>
+			</tr>
+			<tr>
+				<td>HeaderRight</td>
+				<td>Top right header text (can use replacement tags below)</td>
+			</tr>
+			<tr>
+				<td>FooterLeft</td>
+				<td>Bottom left footer (can use replacement tags below)</td>
+			</tr>
+			<tr>
+				<td>FooterRight</td>
+				<td>Bottom right footer (can use replacement tags below)</td>
+			</tr>
+			<tr>
+				<td>FooterFontName</td>
+				<td>Footer font names - Arial by default</td>
+			</tr>
+			<tr>
+				<td>HeaderFontName</td>
+				<td>Header font names - Arial by default</td>
+			</tr>
+			<tr>
+				<td>FooterFontSize</td>
+				<td>The font sizes - 12 by default.  Use the the plain value (do not use px or pt)</td>
+			</tr>
+			<tr>
+				<td>HeaderFontSize</td>
+				<td>The font sizes - 12 by default.  Use the the plain value (do not use px or pt)</td>
+			</tr>
+		</tbody>
+	</table>
+</doc-section>

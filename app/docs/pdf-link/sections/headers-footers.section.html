@@ -1,0 +1,33 @@
+<doc-section>
+  <doc-header id="headers-footers">Headers and Footers</doc-header>
+  <p>Headers and footers can be configured using the above format parameters. Simple values such as page numbers or date stamps can be easily passed across in the url and the converter will auto-include on these values on every page.</p>
+
+  <doc-header id="complex-header-footer" class="secondary">Complex Headers/Footers</doc-header>
+  <p>Often times you may need to have headers and footers that are repeated on every page but are much more complex than simple page numbers or a datestamp. To accomplish this you can utilize the 'HeaderUrl' and 'FooterUrl' parameters.</p>
+
+  <p>You can pass in an additional encoded url to have the entire content of a page be embedded as a header or footer.</p>
+
+ <pre>
+	<code class="language-javascript">
+	//required parameters
+	const url = encodeURIComponent("https://www.google.com");
+	const filename = "invoice-10001"
+
+	//parameters to set header/footer with html content
+	const headerUrl = encodeURIComponent("https://ais.quickbase.com/header.html")
+	const footerUrl = encodeURIComponent("https://ais.quickbase.com/footer.html")
+
+	const parameters = 
+		"&url=" + url + 
+		"&FileName=" + filename + 
+		"&headerUrl=" + headerUrl + 
+		"&footerUrl" + footerUrl 
+
+	const pdfUrl = "https://pdflink.advantagesoftware.net/convert/new?rocket=true" + parameters;
+
+	$.get(pdfUrl);
+	</code>
+</pre>
+
+  <doc-warning>Do not attempt to use CSS page-break properties or javascript algorithms to solve the fixed repeated footer on every page problem. Many have tried, many have failed.</doc-warning>
+</doc-section>
