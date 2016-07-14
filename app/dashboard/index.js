@@ -9,6 +9,6 @@ angular
     $stateProvider.state('app.dashboard', {
       url: '/',
       template: '<dashboard></dashboard>',
-      title: 'project-docs'
+      title: 'project-library'
     })
   })
