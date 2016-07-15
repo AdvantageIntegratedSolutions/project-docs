@@ -4,6 +4,15 @@
 	color: black;
 }
 
+.doc-command{
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+
+	.card-panel{
+		background-color: #272822;
+		border-radius: 4px;
+	}
+}
+
 .doc-caption{
 	font-size: 22px;
 	font-weight: 300;

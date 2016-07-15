@@ -1,7 +1,27 @@
 <doc-section>
   <doc-header id="conceptual-overview">Conceptual Overview</doc-header>
-  <doc-caption>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</doc-caption>
+  <p>This section briefly touches on all of the important parts of <b>quickstart-angular</b>.</p>
 
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dolor lectus, pretium a eros sit amet, eleifend faucibus leo. Nam vel vulputate lacus. Morbi maximus sapien et imperdiet elementum. Donec elementum eros neque, vel semper erat scelerisque quis. Ut tristique cursus est, sit amet iaculis sem tincidunt quis. Mauris finibus commodo lobortis. Nullam lobortis tempor enim, sit amet feugiat urna malesuada vel. Nam sagittis turpis non egestas venenatis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer sed tempor erat. Donec id justo est.
+  <doc-header id="angular-js" class="secondary">AngularJS</doc-header>
+
+  <p>AngularJS is the heart and soul of <b>quickstart-angular</b>. If you are comfortable with AngularJS, much of this framework will be familiar. This framework serves as a vehicle to utilize and organize the many core features of AngularJS. A great start to understanding each aspect of this application is to dive right into the AngularJS v1.5 <a href="https://docs.angularjs.org/guide" target="_blank">docs</a>.</p>
+
+  <p>AngularJS is ideal fit for building single-page applications for cloud-platforms like QuickBase and ServiceNow. Due to the advancements in web-development and JavaScript, most modern solutions no longer need a complicated, (million-moving-parts) server-side setup that requires support, uptime and routine maintainance. With these single-page applications we can focus on the customer and the development and let to the cloud-platform worry about everything else.</p>
+
+	<doc-header id="components" class="secondary">Components</doc-header>
+	<p>
+		Many frameworks are beginning to be built around the concept of components. <b>quickstart-angular</b> utilizes AngularJS components and is architectured to support a much more object-oriented/component driven platform. Since we are ensuring our code is organized correctly, we can being developing and importing commonly used <a href="https://github.com/AdvantageIntegratedSolutions/qsm" target="_blank">angular modules</a>. <b>quickstart-angular</b> was built with Angular2 in mind. Here is a quick segue <a href="https://toddmotto.com/exploring-the-angular-1-5-component-method/" target="_blank">article</a> on components() vs directives(). 
 	</p>
+
+	<doc-header id="base-js" class="secondary">base.js</doc-header>
+  <p><a href="https://github.com/AdvantageIntegratedSolutions/base-js">base.js</a> is a Javascript library built for the QuickBase API. base-js includes functions for almost all QuickBase API calls. It provides common helper functions, query selectors and finder methods. Everything is JSON instead of QuickBase's default XML. Promises and callbacks are both supported. 
+	</p>
+
+  <doc-header id="gulp" class="secondary">Gulp</doc-header>
+
+  <p><a href="https://github.com/gulpjs/gulp" target="_blank">Gulp</a> is a toolkit that helps you automate painful or time-consuming tasks in your development workflow. That is exactly what it is doing in <b>quickstart-angular</b>, doing alot of tasks that we would otherwise have to do manually. These tasks include but are not limited to: compiling and minifying source code, launching development server, automatically updating browser on change, caching templates and deploying.</p>
+
+  <p>The mechanisms of gulp could be considered complicated however the library of <a href="http://gulpjs.com/plugins/" target="_blank">plugins</a> built by the community make it very powerful and easy to configure.</p>
+
+
 </doc-section>

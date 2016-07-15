@@ -4,6 +4,7 @@ import DocCaptionComponent from './doc-elements/caption.component';
 import DocNoticeComponent from './doc-elements/notice.component';
 import DocWarningComponent from './doc-elements/warning.component';
 import DocBestPracticeComponent from './doc-elements/best-practice.component';
+import DocCommandComponent from './doc-elements/command.component';
 
 import "../vendor/prism/main"
 
@@ -15,3 +16,4 @@ angular
   .component('docNotice', DocNoticeComponent)
   .component('docWarning', DocWarningComponent)
   .component('docBestPractice', DocBestPracticeComponent)
+  .component('docCommand', DocCommandComponent)

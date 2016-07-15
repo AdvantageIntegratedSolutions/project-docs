@@ -1,10 +1,39 @@
 <doc-section>
   <doc-header id="app-structure">App Structure</doc-header>
 
-  <p><b>quickstart-angular</b> is an angular web-framework to build consistent, quality QuickBase and ServiceNow single-page applications.
+  <p>This section briefly introduces the structure of <b>quickstart-angular</b>.
 	</p>
 
-	<p>quickstart-angular allows developers to fire up single-page application within minutes. Reusable angular modules can be quickly imported from a <a href="https://github.com/AdvantageIntegratedSolutions/qsm" target="_blank">centralized angular module library</a>.</p>
-
-	<p>It allows developers to spend less time setting up a suitable environment and more time developing client solutions. The framework includes a intuitive local development environment,  a consistent directory structure across projects and common helper tasks to compile, serve and deploy your project.</p>
+	<table class="table striped bordered">
+		<thead>
+			<th>Folder</th>
+			<th>Purpose</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td>app</td>
+				<td>src code related to the actual web app solution. Includes controllers, directives, components, layouts, styles.</td>
+			</tr>
+			<tr>
+				<td>build</td>
+				<td>build-gulp tasks for your environment.</td>
+			</tr>
+			<tr>
+				<td>config</td>
+				<td>project & application configuration</td>
+			</tr>
+			<tr>
+				<td>dist</td>
+				<td>minified/compiled/ready-for-production version of your src code</td>
+			</tr>
+			<tr>
+				<td>node_modules</td>
+				<td>node-module dependencies for environment</td>
+			</tr>
+			<tr>
+				<td>tmp</td>
+				<td>compiled version of code for local development</td>
+			</tr>
+		</tbody>
+	</table>
 </doc-section>

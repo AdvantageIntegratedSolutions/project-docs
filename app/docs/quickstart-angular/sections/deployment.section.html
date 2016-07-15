@@ -1,7 +1,15 @@
 <doc-section>
   <doc-header id="deployment">Deployment</doc-header>
-  <doc-caption>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</doc-caption>
+  <doc-caption>Deploying your application to the web</doc-caption>
 
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dolor lectus, pretium a eros sit amet, eleifend faucibus leo. Nam vel vulputate lacus. Morbi maximus sapien et imperdiet elementum. Donec elementum eros neque, vel semper erat scelerisque quis. Ut tristique cursus est, sit amet iaculis sem tincidunt quis. Mauris finibus commodo lobortis. Nullam lobortis tempor enim, sit amet feugiat urna malesuada vel. Nam sagittis turpis non egestas venenatis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer sed tempor erat. Donec id justo est.
+  <p>When you are ready to deploy your application, you can deploy your application straight from your console. <b>quickstart-angular</b> currently only supports automated deployment to a QuickBase application. If you need to deploy to a different platform, you can manually copy the auto-compiled files in your /tmp folder.
 	</p>
+
+	<p>To deploy your application, shut down your local server and run:</p>
+
+	<doc-command>gulp deploy</doc-command>
+
+	<p>Running 'gulp deploy' will ensure all of your source-code is recompiled, minified, paths are resolved and files are uploaded to QuickBase. Your distribution code will be stored in the /dist folder and each file will be prefixed with the name of your application configured in /config/app.config.js.</p>
+
+	<doc-warning>If pages in QuickBase already exist within the QuickBase application and your /dist filenames match the existing pagenames, the existing QuickBase pages will be overwritten.</doc-warning>
 </doc-section>
