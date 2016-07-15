@@ -39,6 +39,12 @@ pre {
 .gray-bar {
   background-color: #424242; }
 
+#library {
+  position: relative; }
+  #library .hello {
+    position: absolute;
+    right: 0px;
+    top: 0px; }
 
 .right-panel {
   margin-left: 240px; }

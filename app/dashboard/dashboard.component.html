@@ -21,7 +21,13 @@
 	<doc-caption>Explore the project documentation library.</doc-caption>
 
 	<div class="row">
-		<div ng-repeat="project in $ctrl.projects" class="col s3 m3 l3">
+		<div class="col s4 m4 l4 offset-m8 offset-l8">
+			<input type="search" ng-model="search" placeholder="Search the library" class="left-align"></input>
+		</div>
+	</div>
+
+	<div class="row">
+		<div ng-repeat="project in $ctrl.projects | filter:search" class="col s3 m3 l3">
 			<project 
 				name="{{ project.name }}" 
 				description="{{ project.description }}" 
