@@ -10,16 +10,22 @@
 
 	<doc-header id="components" class="secondary">Components</doc-header>
 	<p>
-		Many frameworks are beginning to be built around the concept of components. <b>quickstart-angular</b> utilizes AngularJS components and is architectured to support a much more object-oriented/component driven platform. Since we are ensuring our code is organized correctly, we can being developing and importing commonly used <a href="https://github.com/AdvantageIntegratedSolutions/qsm" target="_blank">angular modules</a>. <b>quickstart-angular</b> was built with Angular2 in mind. Here is a quick segue <a href="https://toddmotto.com/exploring-the-angular-1-5-component-method/" target="_blank">article</a> on components() vs directives(). 
+		Many frameworks are beginning to be built around the concept of components. <b>quickstart-angular</b> utilizes AngularJS components and is architectured to support a much more object-oriented/component driven platform. Since we are ensuring our code is organized correctly, we can begin developing and importing commonly used <a href="https://github.com/AdvantageIntegratedSolutions/qsm" target="_blank">angular modules</a>. <b>quickstart-angular</b> was built with Angular2 in mind. Here is a quick segue <a href="https://toddmotto.com/exploring-the-angular-1-5-component-method/" target="_blank">article</a> on components() vs directives(). 
 	</p>
+
+  <doc-header id="template-cache" class="secondary">Template Cache</doc-header>
+  <doc-caption>Template cache is awesome.</doc-caption>
+  <p> 
+    So how do we build a single-page application when we have multiple pages/templates/partials needed witin our app? By using the angular's $templateCache service. All html files in the /app folder are automatically registered in angular's <a href="https://docs.angularjs.org/api/ng/service/$templateCache" target="_blank">$templateCache</a>. Once the files are registered, we can include the page/template/partial path in any of our directives and components.
+  </p>
 
 	<doc-header id="base-js" class="secondary">base.js</doc-header>
   <p><a href="https://github.com/AdvantageIntegratedSolutions/base-js">base.js</a> is a Javascript library built for the QuickBase API. base-js includes functions for almost all QuickBase API calls. It provides common helper functions, query selectors and finder methods. Everything is JSON instead of QuickBase's default XML. Promises and callbacks are both supported. 
 	</p>
 
-  <doc-header id="gulp" class="secondary">Gulp</doc-header>
+  <doc-header id="gulp" class="secondary">gulp</doc-header>
 
-  <p><a href="https://github.com/gulpjs/gulp" target="_blank">Gulp</a> is a toolkit that helps you automate painful or time-consuming tasks in your development workflow. That is exactly what it is doing in <b>quickstart-angular</b>, doing alot of tasks that we would otherwise have to do manually. These tasks include but are not limited to: compiling and minifying source code, launching development server, automatically updating browser on change, caching templates and deploying.</p>
+  <p><a href="https://github.com/gulpjs/gulp" target="_blank">gulp</a> is a toolkit that helps you automate painful or time-consuming tasks in your development workflow. That is exactly what it is doing in <b>quickstart-angular</b>, doing alot of tasks that we would otherwise have to do manually. These tasks include but are not limited to: compiling and minifying source code, launching development server, automatically updating browser on change, caching templates and deploying.</p>
 
   <p>The mechanisms of gulp could be considered complicated however the library of <a href="http://gulpjs.com/plugins/" target="_blank">plugins</a> built by the community make it very powerful and easy to configure.</p>
 

@@ -1,7 +1,16 @@
 <doc-section>
   <doc-header id="local-environment">Local Environment</doc-header>
-  <doc-caption>Perform all of your deve</doc-caption>
+  <doc-caption>Perform all of your development locally.</doc-caption>
 
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dolor lectus, pretium a eros sit amet, eleifend faucibus leo. Nam vel vulputate lacus. Morbi maximus sapien et imperdiet elementum. Donec elementum eros neque, vel semper erat scelerisque quis. Ut tristique cursus est, sit amet iaculis sem tincidunt quis. Mauris finibus commodo lobortis. Nullam lobortis tempor enim, sit amet feugiat urna malesuada vel. Nam sagittis turpis non egestas venenatis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer sed tempor erat. Donec id justo est.
+  <p>All development and testing can be done locally by launching a local server. Due to cross-origin restrictions all QuickBase API requests will be made through a AWS lambda proxy. This is all done automatically when building within <b>quickstart-angular</b>.
 	</p>
+
+	To launch your local server run the below command at the root of your project:
+	<doc-command>gulp local</doc-command>
+
+	<p>Once your local server has successfully launched, a tab should automatically open in your default browser at localhost:3000.</p>
+
+	<p>Now that we are up and running, any saved changes to any of your application code will automatically trigger a refresh of your browser window.</p> 
+
+	<doc-notice>Any syntax errors will be caught and will not crash your server. If something isn't refreshing correctly, ensure to revisit your terminal to track any logged errors.</doc-notice>
 </doc-section>

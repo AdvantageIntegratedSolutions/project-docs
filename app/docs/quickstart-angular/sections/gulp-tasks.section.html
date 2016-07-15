@@ -1,7 +1,68 @@
 <doc-section>
-  <doc-header id="gulp-tasks">Gulp Tasks</doc-header>
-  <doc-caption>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</doc-caption>
+  <doc-header id="gulp-tasks">gulp Tasks</doc-header>
+  <doc-caption>Automated tedious tasks.</doc-caption>
 
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla dolor lectus, pretium a eros sit amet, eleifend faucibus leo. Nam vel vulputate lacus. Morbi maximus sapien et imperdiet elementum. Donec elementum eros neque, vel semper erat scelerisque quis. Ut tristique cursus est, sit amet iaculis sem tincidunt quis. Mauris finibus commodo lobortis. Nullam lobortis tempor enim, sit amet feugiat urna malesuada vel. Nam sagittis turpis non egestas venenatis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer sed tempor erat. Donec id justo est.
+  <p>gulp is responsible for all of the automation within <b>quickstart-angular</b>. You can safety assume that any actions taken to your project are somehow related to gulp. All gulp tasks are loaded in our gulpfile.js at the root of the project. All tasks are located in our /build folder.
 	</p>
+
+	<doc-header id="list-of-tasks" class="secondary">List of tasks</doc-header>
+	<table class="table striped bordered">
+		<thead>
+			<th>Task</th>
+			<th>Purpose</th>
+		</thead>
+
+		<tbody>
+			<tr>
+				<td>local</td>
+				<td>launches local server at localhost:3000</td>
+			</tr>
+			<tr>
+				<td>deploy</td>
+				<td>deploy all application source code to QuickBase</td>
+			</tr>
+			<tr>
+				<td>js-dev</td>
+				<td>run all javascript tasks required for development</td>
+			</tr>
+			<tr>
+				<td>js-prod</td>
+				<td>run all javascript tasks required for production</td>
+			</tr>
+			<tr>
+				<td>css-dev</td>
+				<td>run all css tasks required for development</td>
+			</tr>
+			<tr>
+				<td>css-prod</td>
+				<td>run all css tasks required for production</td>
+			</tr>
+			<tr>
+				<td>html-dev</td>
+				<td>run all html tasks required for development</td>
+			</tr>
+			<tr>
+				<td>html-prod</td>
+				<td>run all html tasks required for production</td>
+			</tr>
+			<tr>
+				<td>upload-html</td>
+				<td>upload dist index html to QuickBase application</td>
+			</tr>
+			<tr>
+				<td>upload-assets</td>
+				<td>upload dist assets to QuickBase application</td>
+			</tr>
+			<tr>
+				<td>templates</td>
+				<td>load all html files into template cache</td>
+			</tr>
+			<tr>
+				<td>init</td>
+				<td>clear and populate readme</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<doc-notice>Any of these tasks can be run individually by running 'gulp task-name' within your command line however the majority of these are automatically bundled into the tasks 'local' or 'deploy'.</doc-notice>
 </doc-section>
