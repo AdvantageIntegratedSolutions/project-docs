@@ -1,12 +1,12 @@
 <doc-section>
   <doc-header id="step-1">Step 1: App Monitoring</doc-header>
-  <doc-caption>Ensure all hosted web applications are up-and-running</doc-caption>
+  <doc-caption>Ensure all hosted web applications are up-and-running.</doc-caption>
 
-  <p>For any web application that is not hosted in QuickBase, Advantage is responsilbe for hosting and maintaining these solutions. Advantage hosts all web applications on a dedicated AWS instance.</p>
+  <p>For any web application that is not hosted in QuickBase, Advantage is responsilbe for hosting and maintaining these solutions. Advantage hosts all web applications on several dedicated AWS instances.</p>
 
-  <p>All apps are hosted using <b>ubuntu@ec2-54-158-153-66.compute-1.amazonaws.com</b> under the /apps folder. Web server configuration is located at <b>/opt/nginx/conf/nginx.conf</b>.</p>
+  <p>The majority of web applications are hosted at <b>ubuntu@ec2-54-158-153-66.compute-1.amazonaws.com</b> under the /apps folder. Web server configuration is always located at <b>/opt/nginx/conf/nginx.conf</b>.</p>
 
-  <doc-task>Ensure all of the following URL's are up-and-running. A page should be served successfully for each app.</doc-task>
+  <doc-task>Ensure all of the following end-points are up-and-running. A page should be served successfully for each app.</doc-task>
 
   <table class="table striped bordered">
     <thead>
@@ -71,14 +71,24 @@
         <td><a href="http://portal.nilservices.com" target="_blank">portal.nilservices.com</a></td>
       </tr>
       <tr>
+        <td>HowardAlanCreditCardSystem</td>
+        <td>Howard Alan</td>
+        <td><a href="https://howardalan.advantagesoftware.net/users/sign_in" target="_blank">howardalan.advantagesoftware.net/users/sign_in</a></td>
+      </tr>
+      <tr>
         <td>project-docs</td>
         <td>Advantage</td>
         <td><a href="http://docs.advantagequickstart.com" target="_blank">docs.advantagequickstart.com</a></td>
       </tr>
       <tr>
         <td>AdvantageApps</td>
-        <td>Advantage (Please note this app is on it's own server)</td>
+        <td>Advantage</td>
         <td><a href="https://link.advantagesoftware.net" target="_blank">link.advantagesoftware.net</a></td>
+      </tr>
+      <tr>
+        <td>AccountManager</td>
+        <td>Advantage</td>
+        <td><a href="https://accountmanager.advantagesoftware.net/resque/overview" target="_blank">accountmanager.advantagesoftware.net/resque/overview</a></td>
       </tr>
     </tbody>
   </table>
