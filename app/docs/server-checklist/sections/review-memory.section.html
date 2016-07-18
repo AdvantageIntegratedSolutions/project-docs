@@ -1,0 +1,58 @@
+<doc-section>
+  <doc-header id="step-3">Step 3: Review Memory</doc-header>
+
+  <p>Memory-management is exactly what it sounds like. Many issues can arise if the server is out of RAM or disk space. Login to EC2 Management Console using the AWS credentials to view all current servers.
+  </p>
+
+  <doc-task>Log-on to each server below and review memory usage. Take any neccessary actions.</doc-task>
+  <doc-task>Clear larger log files(cp /dev/null filename). Only delete log files if they are no longer active.</doc-task>
+
+  <table class="table striped borderd">
+    <thead>
+      <th>Server Name</th>
+      <th>IP</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Web Server</td>
+        <td>ubuntu@server_web.advantagesoftware.net</td>
+      </tr>
+      <tr>
+        <td>Database Server</td>
+        <td>ubuntu@server_database.advantagesoftware.net</td>
+      </tr>
+      <tr>
+        <td>Client Processing Server</td>
+        <td>ubuntu@server_client_processing.advantagesoftware.net</td>
+      </tr>
+      <tr>
+        <td>ResCare Processing Server</td>
+        <td>ubuntu@server_rescare_processing.advantagesoftware.net</td>
+      </tr>
+      <tr>
+        <td>Products Server</td>
+        <td>ubuntu@server_products.advantagesoftware.net</td>
+      </tr>
+      <tr>
+        <td>ACube Scripting</td>
+        <td>ubuntu@ec2-54-89-197-154.compute-1.amazonaws.com</td>
+      </tr>
+      <tr>
+        <td>Application Server</td>
+        <td>ubuntu@ec2-54-82-121-255.compute-1.amazonaws.com</td>
+      </tr>
+      <tr>
+        <td>Account Management Tool Server</td>
+        <td>ubuntu@ec2-54-89-161-237.compute-1.amazonaws.com</td>
+      </tr>
+      <tr>
+        <td>Howard Alan Events - Credit Card App</td>
+        <td>server_howard_alan.advantagesoftware.net</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <doc-notice>sudo find . -type f -size +3M -name *log* will find all log files over 3M.</doc-notice>
+
+  <doc-notice>If you are comfortable using AWS, login to the EC2 Management Console using the AWS credentials to read the server info directly.</doc-notice>
+</doc-section>

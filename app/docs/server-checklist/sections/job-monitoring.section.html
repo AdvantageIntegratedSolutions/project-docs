@@ -1,0 +1,38 @@
+<doc-section>
+  <doc-header id="step-2">Step 2: Job Monitoring</doc-header>
+  <doc-caption>Ensure schedulers and queues are active.</doc-caption>
+
+  <p>All background jobs are managed and triggered <a href="https://github.com/resque/resque" target="_blank">Resque</a> workers and schedulers. Resque provides a Monitoring User Interface to monitor workers, active jobs and failed jobs. We can also retry or manually kick off jobs from the Monitoring User Interface. Notifications can be setup but are currently turned off.</p>
+
+  <doc-task>Review the below Resque monitoring interfaces and ensure the workers are active.</doc-task>
+  <doc-task>Review all failed jobs and take any neccessary actions.</doc-task>
+  <doc-task>Clear failed jobs that have been addressed or are unimportant.</doc-task>
+  <doc-task>Log-on to server and ensure that the 'scheduler' processes are alive.</doc-task>
+
+  <table class="table striped bordered">
+    <thead>
+      <th>App</th>
+      <th>Resque Monitoring Tool</th>
+      <th>Server</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="https://github.com/AdvantageIntegratedSolutions/AdvantageApps" target="_blank">AdvantageApps(v1)</a></td>
+        <td><a href="https://link.advantagesoftware.net/resque/overview" target="_blank">Resque</a></td>
+        <td>ubuntu@54.235.255.133</td>
+      </tr>
+      <tr>
+        <td>
+          <a href="https://github.com/AdvantageIntegratedSolutions/BackgroundJobs" target="_blank">BackgroundJobs(v2)</a>
+        </td>
+        <td>Resque is not implemented for this app. Must review log files manually.</td>
+        <td>ubuntu@54.235.255.133</td>
+      </tr>
+      <tr>
+        <td><a href="https://github.com/AdvantageIntegratedSolutions/MailLink" target="_blank">MailLink</a></td>
+        <td><a href="https://maillink.advantagesoftware.net/resque/overview" target="_blank">Resque</a></td>
+        <td>ubuntu@174.129.242.165</td>
+      </tr>
+    </tbody>
+  </table>
+</doc-section>
