@@ -1,0 +1,16 @@
+<doc-section>
+  <doc-header id="quickstart">Quickstart</doc-header>
+	
+	<p>The specifications listed below are for a typical webhook. A new hook can be created under the "Webhooks" section in QuickBase's table settings.</p>
+
+	<p><strong>Endpoint URL</strong>: <a href="https://d48pr0dwh3.execute-api.us-east-1.amazonaws.com/prod/LoadPage">https://d48pr0dwh3.execute-api.us-east-1.amazonaws.com/prod/LoadPage</a></p>
+	<p><strong>HTTP method</strong>: POST</p>
+	<p><strong>Message format</strong>: JSON</p>
+	<p><strong>Message body</strong>: <em>This input takes a stringified object (JSON) that will be converted to GET parameters when making a request to your code page. See example:</em>
+
+	<code class="language-javascript">{"notes":"This data was posted by a client side page via a webhook. Neat."}</code>
+
+	<p>In addition to the above, there are a number of <a href="#required-parameters">required parameters</a> that you must pass as header values to the aforementioned endpoint. In QuickBase these are defined under the <strong>Message header</strong> section.</p>
+
+	<doc-warning><strong>isomorph-js</strong> uses PhantomJS to execute your code. Due to this, you may run into trouble with certain ES6 features such as classes, arrow functions and certain iterators. Keep your code as vanilla as possible and it's unlikely you will have any problems.</doc-warning>
+</doc-section>
