@@ -18,6 +18,12 @@ const projects = [
 		type: 'project'
 	},
 	{ 
+		name: "isomorph-js", 
+		description: "AWS Lambda that executes client-side QuickBase code.",
+		status: 'current',
+		type: 'project'
+	},
+	{ 
 		name: "quickstart-angular", 
 		description: "Angular environment for QuickBase.",
 		status: 'in progress',
@@ -33,12 +39,6 @@ const projects = [
 		name: "quickstart-portal", 
 		description: "Client side-portal utilizing AWS Lambda for security/validation.",
 		status: 'not started',
-		type: 'project'
-	},
-	{ 
-		name: "isomorph-js", 
-		description: "AWS Lambda that executes client-side QuickBase code.",
-		status: 'in-progress',
 		type: 'project'
 	}
 ]
