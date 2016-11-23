@@ -17,9 +17,9 @@
         <td>yes</td>
       </tr>
       <tr>
-        <td>token</td>
+        <td>apptoken</td>
         <td>Application token string.</td>
-        <td>yes, if the application requires application tokens.</td>
+        <td>yes, if the application requires application tokens and no usertoken is supplied.</td>
       </tr>
       <tr>
         <td>database id</td>
@@ -44,6 +44,11 @@
       <tr>
         <td>password</td>
         <td>Valid quickbase password.</td>
+        <td>no</td>
+      </tr>
+      <tr>
+        <td>usertoken</td>
+        <td>Valid API user token. This value takes precedence over username/password and ticket.</td>
         <td>no</td>
       </tr>
       <tr>
