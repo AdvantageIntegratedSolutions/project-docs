@@ -39,6 +39,12 @@ pre {
 .gray-bar {
   background-color: #424242; }
 
+.gif {
+  width: 400px;
+  height: auto;
+  border: 4px solid black;
+  margin: 15px; }
+
 #library {
   position: relative; }
   #library .hello {

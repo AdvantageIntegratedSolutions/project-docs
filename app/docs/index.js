@@ -40,6 +40,12 @@ const projects = [
 		description: "Client side-portal utilizing AWS Lambda for security/validation.",
 		status: 'not started',
 		type: 'project'
+	},
+	{ 
+		name: "code-snippets", 
+		description: "Simple reusable code snippets or solutions.",
+		status: 'in-progress',
+		type: 'project'
 	}
 ]
 

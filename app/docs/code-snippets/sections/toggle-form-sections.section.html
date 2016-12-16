@@ -1,0 +1,59 @@
+<doc-section>
+  <doc-header id="toggle-form-sections">toggle-form-sections</doc-header>
+
+  <doc-caption>Automatically expand & collapse QuickBase form sections with a native button.</doc-caption>
+
+  <img class="gif" src="http://i.giphy.com/3oz8xC41Rxexow1YR2.gif">
+
+  <doc-header id="instructions" class="secondary">Instructions</doc-header>
+
+  <ol>
+    <li>Create a new 'Formula - Url' button, set 'Link Text' as 'Expand/Collapse Sections' and add to top of form.</li>
+    <li>
+      Paste the following in the new formula field and update the app dbid.
+      <pre>
+        <code class="language-javascript">
+  "javascript:void($.getScript('" & URLRoot() & "db/INSERT_DBID_HERE?a=dbpage&pagename=toggle-form-sections.js'))"
+        </code>
+      </pre>
+    </li>
+    <li>Create a new code page, title it 'toggle-form-sections.js' and copy the below code snippet.
+      <pre>
+        <code class="language-javascript">
+  var buttonTitle = "Expand/Collapse Sections";
+  var button = $($("a:contains('"+buttonTitle+"')")[0]);
+
+  var collapsedAttr = "collapsed";
+  var collapsed = $(button)[0].hasAttribute(collapsedAttr);
+
+  if(collapsed){
+    $(button).removeAttr(collapsedAttr)
+  }else{
+    $(button).attr(collapsedAttr, true);
+  };
+
+  $(".sectionTitle").each(function(index, ele){
+    var parent = $(ele).closest(".sectionDiv");
+
+    if(collapsed){
+      if($(parent).hasClass("expanded")){
+        $(ele).trigger("click");
+      };
+    }else{
+      if($(parent).hasClass("collapsed")){
+        $(ele).trigger("click");
+      };
+    };
+  });
+        </code>
+      </pre>
+    </li>
+    <li>
+      Toggle.
+    </li>
+  </ol>
+
+  <doc-notice>
+    If you want your button to have a different title then "Expand/Collapse Sections" just update the first line of code in the snippet to match your new button title.
+  </doc-notice>
+</doc-section>
