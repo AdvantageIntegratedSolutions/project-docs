@@ -44,7 +44,7 @@ const projects = [
 	{ 
 		name: "code-snippets", 
 		description: "Simple reusable code snippets or solutions.",
-		status: 'in-progress',
+		status: 'current',
 		type: 'project'
 	}
 ]
