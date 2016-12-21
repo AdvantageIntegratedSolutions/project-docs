@@ -6,18 +6,6 @@ class DashboardCtrl {
   	this.addColor();
 
     this.hover = false;
-
-    $scope.processFilter = function(doc){ 
-      if(doc.type == "process"){
-        return doc;
-      };
-    }
-
-    $scope.projectFilter = function(doc){ 
-      if(doc.type == "project"){
-        return doc;
-      };
-    }
   }
 
   addColor(){
