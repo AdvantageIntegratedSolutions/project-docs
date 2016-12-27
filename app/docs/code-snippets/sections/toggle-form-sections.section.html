@@ -24,7 +24,15 @@
   var button = $($("a:contains('"+buttonTitle+"')")[0]);
 
   var collapsedAttr = "collapsed";
+  var firstClickAttr = "firstClick";
+
   var collapsed = $(button)[0].hasAttribute(collapsedAttr);
+  var firstClick = !$(button)[0].hasAttribute(firstClickAttr);
+
+  if(firstClick){
+    collapsed = $($(".sectionDiv")[1]).hasClass("expanded");
+    $(button).attr(firstClickAttr, true);
+  };
 
   if(collapsed){
     $(button).removeAttr(collapsedAttr)
