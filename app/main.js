@@ -15,6 +15,8 @@ const DEPENDENCIES = [
   'app.dashboard'
 ];
 
+const rootRepo = "https://raw.githubusercontent.com/KitHensel/quickbase-snippets/master/src/";
+
 angular
   .module('app', DEPENDENCIES)
   .config(($stateProvider, $urlRouterProvider, $locationProvider) => {
@@ -42,6 +44,7 @@ angular
         templateUrl: 'docs/' + doc.name + "/index.doc.html",
         title: doc.name,
         controller: function($scope, $timeout){
+          $scope.rootRepo = rootRepo; 
           $scope.$on('$viewContentLoaded', (event, nextState) => {
             $timeout(function() {
               Prism.highlightAll(); //highlight new code tags

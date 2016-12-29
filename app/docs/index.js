@@ -35,7 +35,7 @@ const projects = [
 		status: 'not started'
 	},
 	{ 
-		name: "code-snippets", 
+		name: "quickbase-snippets", 
 		description: "Simple reusable code snippets or solutions.",
 		status: 'current'
 	}
