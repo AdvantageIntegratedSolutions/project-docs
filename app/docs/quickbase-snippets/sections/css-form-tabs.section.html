@@ -1,9 +1,18 @@
 <doc-section>
   <doc-header id="css-form-tabs">css-form-tabs</doc-header>
 
-  <doc-caption>Add CSS customizable tabs on a QuickBase form and modularize large QuickBase forms into separate forms.</doc-caption>
+  <doc-caption>Add CSS customizable tabs on a QuickBase form and toggle multiple forms.</doc-caption>
 
-  <p>
-    To make adjustsments to any of the snippets, copy the snippet to a new page in the app and point any formulas or buttons to this new page url instead of the standard snippet hosted on github.
-  </p>
+  <img class="gif" src="https://raw.githubusercontent.com/KitHensel/quickbase-snippets/master/src/css-form-tabs/example.gif">
+
+  <ol>
+    <li>Create a 'Formula - Text' field and title 'Tabs 1'.</li>
+    <li>Enable 'Allow some HTML tags to be inserted in the field'.</li>
+    <li>Copy this <a href="{{rootRepo}}css-form-tabs/index.js" target="_blank">snippet</a> into the formula field.</li>
+    <li>Create a new form for each additional tab needed.</li>
+    <li>Update the 'tab settings' form ids in the formula to match the new form ids(dfids).</li>
+    <li>Duplicate the 'Tabs 1' formula field for each additional tab needed (i.e. Tab 2, Tab 3, etc)</li>
+    <li>Update the 'activeTab' variable in each new formula field to the tabs position.(i.e. 1, 2, 3)</li>
+    <li>Add one tab field to each form.</li>
+  </ol>
 </doc-section>
