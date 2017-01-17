@@ -1,0 +1,29 @@
+<doc-section>
+  <doc-header id="do-save-add">do-save-add</doc-header>
+
+  <doc-caption>Add an additional Save button on a form and optionally execute form actions.</doc-caption>
+
+  <img class="gif" src="https://raw.githubusercontent.com/KitHensel/quickbase-snippets/master/src/fixed-info-display/example.gif">
+
+  <ol>
+    <li>Create a new 'Formula - Text' field.</li>
+    <li>Enable 'Allow some HTML tags'.</li>
+    <li>
+      Copy this <a href="{{rootRepo}}misc/image-onload.js" target="_blank">snippet</a> into the formula field.
+    </li>
+    <li>Insert optional custom jQuery actions prior to DoSaveAdd() call.</li>
+  </ol>
+
+  <pre>
+    <code class="language-javascript">
+      //example 1
+      onclick='$(\"#_fid_33\").prop(\"checked\", true); DoSaveAdd()';
+
+      //example 2
+      onclick='$(\"#_fid_21\").val("Active"); DoSaveAdd()';
+
+      //example 3
+      onclick='$(\"#_fid_33\").prop(\"checked\", true); $(\"#_fid_21\").val("Active"); DoSaveAdd()';
+    </code>
+  </pre>
+</doc-section>
