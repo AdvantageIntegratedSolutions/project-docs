@@ -45,6 +45,9 @@ pre {
   border: 4px solid black;
   margin: 15px; }
 
+.doc-notice a {
+  color: green; }
+
 #library {
   position: relative; }
   #library .hello {

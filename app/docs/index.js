@@ -38,6 +38,11 @@ const projects = [
 		name: "quickbase-snippets", 
 		description: "Simple reusable code snippets or solutions.",
 		status: 'current'
+	},
+	{ 
+		name: "coke-calendar", 
+		description: "JavaScript monthly/weekly/daily asset calendar.",
+		status: 'current'
 	}
 ]
 

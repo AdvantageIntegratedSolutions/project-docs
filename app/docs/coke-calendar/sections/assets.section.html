@@ -1,0 +1,29 @@
+<doc-section>
+  <doc-header id="assets">Assets</doc-header>
+  <p>
+    All calendar events on the calendar represent an asset from the MCR Tracker application. The calendar queries the 'Assets' table in MCR Tracker QuickBase application and renders all assets.</p>
+
+  <doc-header id="source-data" class="secondary">Source Data</doc-header>
+  
+  <p>
+    The calendar loads all assets that are found in the native quickbase report, <a target="_blank" href="https://cokecbs.quickbase.com/db/be87em4ih?a=q&qid=152">Report #152</a>.
+
+    Any filter changes to this report will automatically be relected on the calendar.
+
+    Columns in this report do not control any calendar functionality and can be updated without any impact.
+  </p>
+
+  <p>The calendar uses QuickBase fields <a href="https://cokecbs.quickbase.com/db/be87em4ih?a=mf&fid=11" target="_blank">'Start Date'</a> and <a href="https://cokecbs.quickbase.com/db/be87em4ih?a=mf&fid=12" target="_blank">'End Date'</a> to determine the calendar start-end date of the calendar event.</p>
+
+  <doc-header id="event-title" class="secondary">Event Title</doc-header>
+
+  <p>
+    When an calendar event is rendered on the calendar, the event displays a title. The calendar event title can be configured in QuickBase by updating the <a href="https://cokecbs.quickbase.com/db/be87em4ih?a=mf&fid=267" target="_blank">'Calendar V2 Event Title' formula.</a>
+  </p>
+
+  <doc-header id="hover-data" class="secondary">Hover Data</doc-header>
+
+  <p>
+    When an calendar event is hovered, a hover-text box will be displayed providing additional asset information. The hover content can be configured in QuickBase by updating the <a href="https://cokecbs.quickbase.com/db/be87em4ih?a=mf&fid=266" target="_blank">'Calendar V2 Hover Content' formula.</a>
+  </p>
+</doc-section>

@@ -1,0 +1,19 @@
+<doc-section>
+  <doc-header id="filters">Filters</doc-header>
+  <p>Filters can be applied directly on the rendered calendar. By default the calendar will render all assets found in the source data report and then be filtered down from there.</p>
+
+  <p>Filters are hardcoded in the calendar and require adjustments to calendar if new filters are required.</p>
+
+  <p>All filters indivdually are treated as OR's conditions, but all filter together are combined as an AND condition.</p>
+
+  <h5>Example:</h5>
+  <pre class="language-javascript">
+    <code>
+    Site Filter -> [ 'MCR', 'Diet Coke' ] -> Site is either 'MCR' or 'Diet Coke'
+
+    AND 
+
+    Group Filter -> [ 'Social', 'Outbound' ] -> Group is either 'Social' or 'Outbound'
+    </code>
+  </pre>
+</doc-section>
