@@ -43,6 +43,11 @@ const projects = [
 		name: "coke-calendar", 
 		description: "JavaScript monthly/weekly/daily asset calendar.",
 		status: 'current'
+	},
+	{
+		name: "QPI",
+		description: "Exact forms, easier - Format data, build tables, and go from database to Web page with minimal effort",
+		status: "current"
 	}
 ]
 
