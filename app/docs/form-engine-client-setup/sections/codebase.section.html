@@ -1,0 +1,55 @@
+<doc-section>
+  <doc-header>
+    Codebase
+  </doc-header>
+  <doc-caption> Changes that need to be made inside of the codebase for the form-engine to get new clients up and running</doc-caption>
+
+  <h5>Update files: config/quickstart.config.js & config/schema.service.config</h5>
+  <ul>
+    <li>config/quickstart.config.js</li>
+    <ul>
+      <li>convert table DBID's over to their new counterparts</li>
+    </ul>
+  </ul>
+
+  <br>
+
+  <h5>appConfig changes</h5>
+  <ul>
+    <li>DON'T change name (this is the prefix for the page that is built out with the gulp task)</li>
+    <li>description shouldn't be visible so shouldn't matter</li>
+    <li>CHANGE Client to match new client's desires. If there is no client Display name then the client object will be displayed. If there is a client display name this is what will be displayed over the client</li>
+    <li>DON'T change username (this is how the interaction with the lambda works)</li>
+    <li>origin and authors are fine empty</li>
+    <li>DON'T change the bootstrap</li>
+    <li>CHANGE timezone to match clients needs (check BaseJS docs for syntax accepted)</li>
+    <li>baseConfig</li>
+      <ul>
+        <li>DON'T change quickstart from true</li>
+        <li>CHANGE realm to match clients quickbase realm (Will be last step after transferring app to client)</li>
+        <li>DON'T change async from 'promise'</li>
+        <li>databaseID will need to be changed to match the new ids instructions where to find this is under the get Table DBID's section</li>
+      </ul>
+    <li>the formBuilder[useNewDownload] object should remain true for all new clients (only legacy clients rely on a false value)</li>
+    <li>userManagement will need to be updated with the link relating to the appropriate link (which will basically cover changing the realm, dbid, and potentially the pageID#)</li>
+    <li>If manual reference to table (for example AIN-portal) is needed add table information inside of the quickstart.config.js inside tables object under databaseID</li>
+  </ul>
+
+  <br>
+  <doc-warning><h5>SchemaService does not currently function with applications with AppTokens</h5></doc-warning>
+  <br>
+
+  <h5>Make sure there is no required AppToken for form engine to work</h5>
+  <br>
+
+  <h5>When adding a table make sure to add permissions to Quickstart User role under users/manage-roles roles/quickstart permissions</h5>
+  <ul>
+    <li>ADD/DELETE = Checked</li>
+    <li>Fields = Full Access</li>
+    <li>View/Modify = All Records</li>
+    <li>Save Common Reports = unchecked</li>
+    <li>Edit Field Properties = unchecked</li>
+    <li>under App Access only Edit app structure and permissions is checked, no others should be checked</li>
+  </ul>
+
+</doc-section>
