@@ -55,32 +55,6 @@ pre {
     right: 0px;
     top: 0px; }
 
-.right-panel {
-  margin-left: 240px; }
-
-#scrollToTop {
-  position: fixed;
-  bottom: 0px;
-  right: 20px;
-  height: 50px;
-  width: 50px;
-  background-color: #337ab7; }
-  #scrollToTop .material-icons {
-    padding: 13px;
-    color: white;
-    cursor: pointer; }
-
-nav {
-  box-shadow: none; }
-
-.nav-wrapper img {
-  height: 50px;
-  width: auto;
-  margin-top: 7px;
-  margin-left: 20px;
-  margin-right: 20px;
-  float: right; }
-
 #side-nav-header {
   position: fixed;
   top: 0px;
@@ -132,6 +106,32 @@ nav {
         padding-left: 15px; }
       .side-nav li.secondary-nav.active a {
         color: #337ab7; }
+
+.right-panel {
+  margin-left: 240px; }
+
+#scrollToTop {
+  position: fixed;
+  bottom: 0px;
+  right: 20px;
+  height: 50px;
+  width: 50px;
+  background-color: #337ab7; }
+  #scrollToTop .material-icons {
+    padding: 13px;
+    color: white;
+    cursor: pointer; }
+
+nav {
+  box-shadow: none; }
+
+.nav-wrapper img {
+  height: 50px;
+  width: auto;
+  margin-top: 7px;
+  margin-left: 20px;
+  margin-right: 20px;
+  float: right; }
 
 .project-item .card {
   cursor: pointer;

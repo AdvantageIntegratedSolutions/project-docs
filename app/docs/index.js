@@ -48,6 +48,11 @@ const projects = [
 		name: "QPI",
 		description: "Exact forms, easier - Format data, build tables, and go from database to Web page with minimal effort",
 		status: "current"
+	},
+	{
+		name: "file-authenticator",
+		description: "Easily apply auth. ticket in URL to page's external file references",
+		status: "current"
 	}
 ]
 
