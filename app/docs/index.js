@@ -46,12 +46,17 @@ const projects = [
 	},
 	{
 		name: "QPI",
-		description: "Exact forms, easier - Format data, build tables, and go from database to Web page with minimal effort",
+		description: "Exact forms, easier - Format data, build tables, and go from database to Web page with minimal effort.",
 		status: "current"
 	},
 	{
 		name: "file-authenticator",
-		description: "Easily apply auth. ticket in URL to page's external file references",
+		description: "Easily apply auth. ticket in URL to page's external file references.",
+		status: "current"
+	},
+	{
+		name: "serverless-chrome",
+		description: "API endpoint for automating browser actions, e.g. printing to PDF and uploading to S3/QB, using a modern browser.",
 		status: "current"
 	}
 ]
